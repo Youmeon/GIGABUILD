@@ -1,0 +1,17 @@
+name: gigachat-bot
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - fastapi
+    - uvicorn
+    - python-dotenv
+    - requests
+    - sentence-transformers
+    - faiss-cpu
+    - python-docx
+    - PyMuPDF
+    - hnswlib

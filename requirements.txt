@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-dotenv
+requests
+langchain>=0.1.17
+langchain_community>=0.0.21
+langchain_gigachat>=0.0.6
+langchain-huggingface
+faiss-cpu
+python-docx
+PyMuPDF
