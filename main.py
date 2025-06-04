@@ -195,7 +195,13 @@
 
 
 # ----------------------------------------------------------------------
+
+
+from fastapi import FastAPI, Form, File, UploadFile, Depends
 import os
+from email.message import EmailMessage
+from aiosmtplib import send
+from dotenv import load_dotenv
 import base64
 import uuid
 import sqlite3
@@ -210,6 +216,26 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 import json
+
+load_dotenv()
+SMTP_HOST = os.getenv("SMTP_HOST")
+SMTP_PORT = int(os.getenv("SMTP_PORT", 465))
+SMTP_USER = os.getenv("SMTP_USER")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+SMTP_RECEIVER = os.getenv("SMTP_RECEIVER")
+GIGACHAT_CLIENT_ID = os.getenv("GIGACHAT_CLIENT_ID")
+GIGACHAT_CLIENT_SECRET = os.getenv("GIGACHAT_CLIENT_SECRET")
+PORT = int(os.getenv("PORT", 8000))
+
+# Проверка SMTP-переменных
+if not all([SMTP_HOST, SMTP_USER, SMTP_PASSWORD, SMTP_RECEIVER]):
+    missing_vars = [var for var, value in [
+        ("SMTP_HOST", SMTP_HOST),
+        ("SMTP_USER", SMTP_USER),
+        ("SMTP_PASSWORD", SMTP_PASSWORD),
+        ("SMTP_RECEIVER", SMTP_RECEIVER)
+    ] if not value]
+    raise ValueError(f"Следующие SMTP-переменные не определены в .env: {missing_vars}")
 
 # Отключаем предупреждения о самоподписанных сертификатах
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -238,11 +264,11 @@ app.add_middleware(
 )
 
 # Статика
-if os.path.exists("./frontend"):
-    app.mount("/static", StaticFiles(directory="./frontend", html=True), name="static")
-    print("Папка frontend смонтирована как /static")
+if os.path.exists("./frontend/dist"):
+    app.mount("/static", StaticFiles(directory="./frontend/dist", html=True), name="static")
+    print("Папка frontend/dist смонтирована как /static")
 else:
-    print("Предупреждение: папка './frontend' не найдена, статика не будет смонтирована.")
+    print("Предупреждение: папка './frontend/dist' не найдена, статика не будет смонтирована.")
 
 # Глобальные переменные
 token = None
@@ -331,19 +357,20 @@ except Exception as e:
 
 @app.get("/")
 async def root():
-    index_path = os.path.join("./frontend", "index.html")
+    index_path = os.path.join("./frontend/dist", "index.html")
     if os.path.exists(index_path):
         return FileResponse(index_path)
     return JSONResponse({"error": "index.html не найден"}, status_code=404)
 
 @app.get("/favicon.ico")
 async def favicon():
-    path = os.path.join("./frontend", "favicon.ico")
+    path = os.path.join("./frontend/dist", "favicon.ico")
     if os.path.exists(path):
         return FileResponse(path)
     return {}
 
 @app.post("/chat")
+
 async def chat(request: Request):
     global token, vectorstore
     try:
@@ -400,3 +427,48 @@ async def chat(request: Request):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=PORT)
+
+@app.post("/api/send-form")
+async def send_form(
+    name: str = Form(...),
+    phone: str = Form(...),
+    email: str = Form(None)
+):
+    try:
+        msg = EmailMessage()
+        msg["Subject"] = "Новая заявка с сайта"
+        msg["From"] = SMTP_USER
+        msg["To"] = SMTP_RECEIVER
+
+        msg.set_content(f"""
+        📝 Новая заявка:
+
+        Имя: {name}
+        Телефон: {phone}
+        Email: {email or "не указан"}
+        """)
+
+        # Исправленный вызов send
+        await send(
+            msg,  # Позиционный аргумент
+            hostname=SMTP_HOST,
+            port=SMTP_PORT,
+            username=SMTP_USER,
+            password=SMTP_PASSWORD,
+            use_tls=True,
+        )
+
+        return {"success": True}
+    except Exception as e:
+        print(f"Ошибка при отправке письма: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "error": "Ошибка отправки письма"},
+        )
+
+@app.get("/api/send-form")
+async def send_form_get():
+    return JSONResponse(
+        status_code=405,
+        content={"error": "Метод GET не поддерживается для /api/send-form. Используйте POST."}
+    )

@@ -1,46 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чат-бот</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <button id="chat-toggle" class="chat-toggle">Чат</button>
-    <div id="chat-container" class="chat-container hidden">
-        <div class="chat-header">
-            Чат-бот
-            <button id="chat-close" class="chat-close"></button>
-        </div>
-        <div id="chat-messages" class="chat-messages"></div>
-        <div class="chat-input-area">
-            <textarea id="chat-input" rows="2" placeholder="Ваше сообщение..."></textarea>
-            <button id="chat-send">Отправить</button>
-        </div>
-    </div>
-    <script>
-    const toggle = document.getElementById("chat-toggle");
-    const container = document.getElementById("chat-container");
-    const closeBtn = document.getElementById("chat-close");
-    toggle.onclick = () => container.classList.remove("hidden");
-    closeBtn.onclick = () => container.classList.add("hidden");
-    document.getElementById("chat-send").onclick = async () => {
-        const input = document.getElementById("chat-input");
-        const msg = input.value.trim();
-        if (!msg) return;
-        const msgs = document.getElementById("chat-messages");
-        msgs.innerHTML += `<div class=\"message user\">${msg}</div>`;
-        input.value = "";
-        const res = await fetch("http://localhost:8000/chat", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({message: msg})
-        });
-        const data = await res.json();
-        msgs.innerHTML += `<div class=\"message bot\">${data.answer}</div>`;
-        msgs.scrollTop = msgs.scrollHeight;
-    };
-    </script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/static/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

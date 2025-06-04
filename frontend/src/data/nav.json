@@ -1,0 +1,6 @@
+[
+  { "text": "Приемка квартир", "to": "/apartment-inspection" },
+  { "text": "Главная", "to": "/" },
+  { "text": "О нас", "to": "/about" },
+  { "text": "Услуги", "to": "/services" }
+]

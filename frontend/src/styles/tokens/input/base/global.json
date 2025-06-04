@@ -1,0 +1,88 @@
+{
+  "color": {
+    "neutral": {
+      "100": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#FAFAFC",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#4C4C4E",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#262628",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#212123",
+        "$type": "color"
+      },
+      "1000": {
+        "$value": "#1B1B1D",
+        "$type": "color"
+      }
+    },
+    "blue": {
+      "600": {
+        "$value": "#3D59EB",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#4F6CFF",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#4F7BFF",
+        "$type": "color"
+      }
+    },
+    "brand": {
+      "default": {
+        "$value": "#4F6CFF",
+        "$type": "color"
+      }
+    },
+    "text": {
+      "white-primary": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "white-secondary": {
+        "$value": "rgba(170, 170, 174, 0.85);",
+        "$type": "color"
+      },
+      "dark-primary": {
+        "$value": "#262628",
+        "$type": "color"
+      },
+      "dark-secondary": {
+        "$value": "#4C4C4E",
+        "$type": "color"
+      },
+      "blue-primary": {
+        "$value": "#3D59EB",
+        "$type": "color"
+      },
+      "blue-secondary": {
+        "$value": "#729CFF",
+        "$type": "color"
+      }
+    },
+    "star": {
+      "default": {
+        "$value": "#FFAD28",
+        "$type": "color"
+      }
+    },
+    "shadow": {
+      "dark-blue": {
+        "$color": "rgba(5, 26, 131, 0.2);",
+        "$type": "color"
+      }
+    }
+  }
+}

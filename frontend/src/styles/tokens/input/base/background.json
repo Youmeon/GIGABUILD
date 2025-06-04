@@ -1,0 +1,28 @@
+{
+  "background": {
+    "blue": {
+      "600": {
+        "$value": "#3D59EB",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "100": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "1000": {
+        "$value": "#1B1B1D",
+        "$type": "color"
+      }
+    },
+    "white-primary": {
+      "$color": "#FAFAFC",
+      "$type": "color"
+    },
+    "white-secondary": {
+      "$color": "rgba(238, 240, 249, 1)",
+      "$type": "color"
+    }
+  }
+}
