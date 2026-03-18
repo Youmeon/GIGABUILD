@@ -17,12 +17,12 @@
           Оставьте заявку<br />
           и мы свяжемся с вами в ближайшее время
         </h2>
-        <router-link
-          to="#"
-          class="max-w-[384px] rounded-2xl bg-neutral-800 px-8 py-5 text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-neutral-100 max-lg:px-4 max-lg:py-3 max-sm:text-[16px]"
+        <button
+          @click = "openRequestModal"
+          class="max-w-[384px] rounded-2xl bg-neutral-800 transition-all duration-300 ease-out px-8 py-5 text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-neutral-100 max-lg:px-4 max-lg:py-3 max-sm:text-[16px] hover:bg-neutral-700"
         >
           Оставить заявку
-        </router-link>
+        </button>
       </div>
       <div
         class="flex flex-col flex-nowrap gap-[10px] text-[48px] max-lg:items-center max-sm:text-2xl"
@@ -78,8 +78,10 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
+
+const openRequestModal = inject('openRequestModal')
 
 const route = useRoute()
 const isSpecialPage = computed(() => {

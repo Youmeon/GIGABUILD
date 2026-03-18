@@ -10,6 +10,7 @@
         </div>
         <div className="rounded-2xl">
           <router-link
+            @click = 'openRequestModal'
             to="#"
             class="size-full rounded-2xl bg-neutral-100 px-[55px] py-[18px] text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-blue-600 transition-all duration-300 ease-out hover:bg-blue-500 hover:text-neutral-100 focus:bg-blue-400 focus:text-neutral-100 max-lg:px-4 max-lg:py-3 max-sm:text-[16px]"
           >
@@ -252,6 +253,8 @@
 <script setup>
 import heroImage from '@/assets/images/apart-insp.jpg'
 import InspectionSlider from '@/components/InspectionSlider.vue'
+import {inject} from 'vue'
+const openRequestModal = inject('openRequestModal')
 </script>
 
 <style scoped>
