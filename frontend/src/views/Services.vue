@@ -67,34 +67,42 @@
           </div>
         </div>
       </div>
-      <div
-        class="mt-10 flex w-full items-stretch gap-8 max-sm:flex-wrap max-sm:gap-4 sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center lg:flex-wrap lg:justify-around xl:flex-nowrap xl:justify-center"
-      >
-        <div
+      <div class="mt-10 grid grid-cols-3 gap-8">
+        <router-link
           v-for="card in cards"
           :key="card.id"
-          className="max-w-[28rem] max-sm:w-full max-sm:items-center flex flex-col justify-between rounded-2xl pb-3 px-3 shadow-[0_0_40px_0_rgba(59,130,246,0.05)] bg-white"
+          :to="`/services/${card.id}`"
+          class="flex flex-col justify-between overflow-hidden rounded-2xl bg-white shadow-[0_0_40px_0_rgba(59,130,246,0.05)] transition-shadow hover:shadow-lg"
         >
-          <div
-            className="flex items-start gap-4 pt-8 max-sm:pt-4 max-w-[384px] max-sm:justify-center px-5 max-sm:px-2"
-          >
-            <div>
-              <h4
-                className="text-neutral-800 pb-6 max-sm:pb-3 text-[2rem] font-normal leading-[125%] tracking-[-4%]"
+          <div class="p-8">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <h4
+                  class="mb-6 text-[2rem] font-medium leading-[125%] tracking-[-4%] text-neutral-800"
+                >
+                  {{ card.title }}
+                </h4>
+                <p
+                  class="text-[20px] leading-[150%] tracking-[-3%] text-neutral-700"
+                >
+                  {{ card.description }}
+                </p>
+              </div>
+              <div
+                class="flex size-9 shrink-0 items-center justify-center rounded-full bg-blue-600/10 text-blue-600"
               >
-                {{ card.title }}
-              </h4>
-              <p className="pb-8 text-neutral-700">{{ card.description }}</p>
+                <ArrowUpRight class="size-5" />
+              </div>
             </div>
           </div>
-          <div className="w-[26.5rem] max-sm:w-[20rem] h-[15.3125rem]">
+          <div class="h-[245px] w-full">
             <img
               :src="getImageUrl(card.image)"
-              alt="card image"
-              className=" rounded-2xl"
+              :alt="card.title"
+              class="size-full object-cover"
             />
           </div>
-        </div>
+        </router-link>
       </div>
     </section>
   </main>
