@@ -1,9 +1,0 @@
-{
-	"mcpServers": {
-		"Framelink MCP for Figma":
-		{
-			"command": "/home/youmeon/.nvm/versions/node/v18.20.8/bin/figma-developer-mcp",
-			"args": [ "--figma-api-key=figd_RlbC4xg3789Cn32HR33ByeL8J00OUp2V2-7Y17Y_", "--stdio"]
-		}
-	}
-}
