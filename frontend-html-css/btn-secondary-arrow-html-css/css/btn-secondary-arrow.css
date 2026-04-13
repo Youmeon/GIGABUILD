@@ -1,0 +1,77 @@
+.btn-secondary-arrow {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	padding: 19px;
+	border: 1px dashed #9747ff;
+	border-radius: 5px;
+}
+
+
+
+/* btn-property-1-default */
+
+.btn-property-1-default {
+	width: 100%;
+	min-height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	flex-grow: 1;
+	text-align: unset;
+	padding: 18px 11px;
+	border-radius: 16px;
+}
+
+.btn-property-1-default-icon-arrow {
+	width: 24px; height: 24px;
+	flex-shrink: 0;
+}
+
+.btn-property-1-default-label {
+	text-align: right;
+}
+/* end btn-property-1-default*/
+
+
+.btn-property-1-default1 {
+	background-color: var(--neutral-100);
+}
+
+.btn-property-1-default1 .btn-property-1-default-label {
+	color: var(--blue-600);
+}
+
+.btn-property-1-hover {
+	background-color: var(--blue-500);
+}
+
+.btn-property-1-press {
+	background-color: var(--blue-400);
+}
+
+.btn-property-1-press .btn-property-1-default-icon {
+	width: 46px;
+}
+
+
+
+/* container queries (flex rows) */
+
+@media(max-width:596px) {
+	.btn-secondary-arrow {
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+	.btn-secondary-arrow > .btn-property-1-default1 {
+		width: 100%;
+	}
+	.btn-secondary-arrow > .btn-property-1-hover {
+		width: 100%;
+	}
+	.btn-secondary-arrow > .btn-property-1-press {
+		width: 100%;
+	}
+}

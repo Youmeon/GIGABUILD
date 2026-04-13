@@ -68,41 +68,7 @@
         </div>
       </div>
       <div class="mt-10 grid grid-cols-3 gap-8">
-        <router-link
-          v-for="card in cards"
-          :key="card.id"
-          :to="`/services/${card.id}`"
-          class="flex flex-col justify-between overflow-hidden rounded-2xl bg-white shadow-[0_0_40px_0_rgba(59,130,246,0.05)] transition-shadow hover:shadow-lg"
-        >
-          <div class="p-8">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <h4
-                  class="mb-6 text-[2rem] font-medium leading-[125%] tracking-[-4%] text-neutral-800"
-                >
-                  {{ card.title }}
-                </h4>
-                <p
-                  class="text-[20px] leading-[150%] tracking-[-3%] text-neutral-700"
-                >
-                  {{ card.description }}
-                </p>
-              </div>
-              <div
-                class="flex size-9 shrink-0 items-center justify-center rounded-full bg-blue-600/10 text-blue-600"
-              >
-                <ArrowUpRight class="size-5" />
-              </div>
-            </div>
-          </div>
-          <div class="h-[245px] w-full">
-            <img
-              :src="getImageUrl(card.image)"
-              :alt="card.title"
-              class="size-full object-cover"
-            />
-          </div>
-        </router-link>
+        <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
     </section>
   </main>
@@ -110,9 +76,8 @@
 
 <script setup>
 import servicesData from '@/data/services.json'
-import { ArrowUpRight } from 'lucide-vue-next'
 import { ref } from 'vue'
-import getImageUrl from '../utils/getImageURL'
+import CardService from '../components/CardService.vue'
 const cards = ref(servicesData)
 </script>
 

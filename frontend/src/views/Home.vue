@@ -166,37 +166,8 @@
           </div>
         </div>
       </div>
-      <div
-        class="flex w-full items-stretch gap-8 max-sm:flex-wrap max-sm:gap-4 sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center lg:flex-wrap lg:justify-around xl:flex-nowrap xl:justify-center"
-      >
-        <div
-          v-for="card in cards"
-          :key="card.id"
-          className="max-w-[28rem] max-sm:w-full max-sm:items-center flex flex-col justify-between rounded-2xl pb-3 px-3 shadow-[0_0_40px_0_rgba(59,130,246,0.05)] bg-white"
-        >
-          <div
-            className="flex items-start gap-4 pt-8 max-sm:pt-4 max-w-[384px] max-sm:justify-center px-5 max-sm:px-2"
-          >
-            <div>
-              <h4
-                className="text-neutral-800 pb-6 max-sm:pb-3 text-[2rem] font-normal leading-[125%] tracking-[-4%]"
-              >
-                {{ card.title }}
-              </h4>
-              <p className="pb-8 text-neutral-700">{{ card.description }}</p>
-            </div>
-            <div className="mt-3 max-sm:px-1">
-              <ArrowUpRight />
-            </div>
-          </div>
-          <div className="w-[26.5rem] max-sm:w-[20rem] h-[15.3125rem]">
-            <img
-              :src="getImageUrl(card.image)"
-              alt="card image"
-              className=" rounded-2xl"
-            />
-          </div>
-        </div>
+      <div class="grid grid-cols-3 gap-8">
+        <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
     </section>
     <section
@@ -236,7 +207,7 @@ import servicesData from '@/data/services.json'
 import { ArrowUpRight } from 'lucide-vue-next'
 import { ref } from 'vue'
 import SliderReviews from '../components/SliderReviews.vue'
-import getImageUrl from '../utils/getImageURL'
+import CardService from '../components/CardService.vue'
 const cards = ref(servicesData)
 </script>
 
