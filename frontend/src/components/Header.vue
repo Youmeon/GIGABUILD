@@ -12,7 +12,9 @@ const openRequestModal = inject('openRequestModal')
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const route = useRoute()
-const isSmallScreen = ref(false) // Добавлено для отслеживания размера экрана
+const isSmallScreen = ref(false)
+const isHeaderHidden = ref(false)
+const lastScrollY = ref(0)
 
 // Проверка специальных страниц
 const isSpecialPage = () => {
@@ -30,12 +32,42 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 
+// Получить триггерную секцию для текущей страницы
+const getTriggerSection = () => {
+  const path = route.path
+  
+  if (path === '/') {
+    return document.getElementById('why-choose-us')
+  } else if (path === '/apartment-inspection') {
+    return document.getElementById('what-includes')
+  } else if (path.startsWith('/services/')) {
+    return document.getElementById('service-includes')
+  }
+  
+  return null
+}
+
+// Проверка что пользователь доскроллил до самого конца страницы
+const isFooterFullyVisible = () => {
+  const footer = document.querySelector('footer')
+  if (!footer) return false
+  
+  // Проверяем что пользователь достиг конца страницы
+  const windowHeight = window.innerHeight
+  const documentHeight = document.documentElement.scrollHeight
+  const scrollTop = window.scrollY
+  
+  // Пользователь в конце страницы если осталось меньше 100px до конца
+  return (scrollTop + windowHeight) >= (documentHeight - 100)
+}
+
 // Обработка прокрутки для всех страниц
 const handleScroll = () => {
-  const scrolled = window.scrollY >= 842
+  const currentScrollY = window.scrollY
+  const scrolled = currentScrollY >= 842
   isScrolled.value = scrolled
 
-  if (isSpecialPage && window.scrollY >= 100) {
+  if (isSpecialPage() && currentScrollY >= 100) {
     isScrolled.value = true
   }
 
@@ -53,6 +85,24 @@ const handleScroll = () => {
     : scrolled
       ? 'text-blue-600'
       : 'text-white'
+
+  // Логика скрытия/показа header
+  const footerFullyVisible = isFooterFullyVisible()
+  const scrollingUp = currentScrollY < lastScrollY.value
+  
+  // Для всех страниц одинаковая логика
+  if (footerFullyVisible) {
+    // Footer полностью виден - скрываем header
+    isHeaderHidden.value = true
+  } else if (scrollingUp) {
+    // Скролл вверх - показываем header
+    isHeaderHidden.value = false
+  } else {
+    // Скролл вниз но footer не виден - header остается видимым
+    isHeaderHidden.value = false
+  }
+
+  lastScrollY.value = currentScrollY
 }
 
 // Обработка изменения размера окна
@@ -77,6 +127,8 @@ onUnmounted(() => {
 watch(
   () => route.path,
   () => {
+    isHeaderHidden.value = false
+    lastScrollY.value = 0
     handleScroll()
   }
 )
@@ -90,7 +142,8 @@ watch(
         isScrolled
           ? 'fixed left-1/2 top-1 mt-2 h-14 -translate-x-1/2 rounded-2xl border-neutral-100/20 bg-neutral-200/80 text-black shadow-md'
           : 'absolute top-1 bg-none text-white',
-        'px-8 py-3 transition-[color,opacity,box-shadow] duration-300 ease-in-out max-sm:px-4',
+        'px-8 py-3 transition-all duration-300 ease-in-out max-sm:px-4',
+        isHeaderHidden ? '-translate-y-[120px]' : 'translate-y-0',
       ]"
     >
       <nav
