@@ -89,25 +89,13 @@
             <div class="flex gap-1 sm:gap-2">
               <button
                 @click="scrollLeft"
-                :disabled="!canScrollLeft"
-                :class="[
-                  'flex items-center justify-center rounded-lg px-4 py-2 transition-colors sm:rounded-xl',
-                  canScrollLeft
-                    ? 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300'
-                    : 'bg-blue-200/30 text-neutral-100/50',
-                ]"
+                class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 sm:rounded-xl"
               >
                 <ArrowLeft class="size-4 text-text-dark-primary sm:size-6" />
               </button>
               <button
                 @click="scrollRight"
-                :disabled="!canScrollRight"
-                :class="[
-                  'flex items-center justify-center rounded-lg px-4 py-2 transition-colors max-sm:px-1 sm:rounded-xl',
-                  canScrollRight
-                    ? 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300'
-                    : 'bg-blue-200/30 text-neutral-100/50',
-                ]"
+                class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
               >
                 <ArrowRight class="size-4 sm:size-6" />
               </button>
@@ -189,12 +177,29 @@ const updateScrollState = () => {
 
 const scrollLeft = () => {
   if (!sliderContainer.value) return
-  sliderContainer.value.scrollBy({ left: -464, behavior: 'smooth' })
+  
+  const { scrollLeft, scrollWidth, clientWidth } = sliderContainer.value
+  
+  if (scrollLeft <= 2) {
+    // Переход в конец
+    sliderContainer.value.scrollTo({ left: scrollWidth - clientWidth, behavior: 'smooth' })
+  } else {
+    sliderContainer.value.scrollBy({ left: -464, behavior: 'smooth' })
+  }
 }
 
 const scrollRight = () => {
   if (!sliderContainer.value) return
-  sliderContainer.value.scrollBy({ left: 464, behavior: 'smooth' })
+  
+  const { scrollLeft, scrollWidth, clientWidth } = sliderContainer.value
+  const maxScrollLeft = scrollWidth - clientWidth
+  
+  if (scrollLeft >= maxScrollLeft - 2) {
+    // Возврат в начало
+    sliderContainer.value.scrollTo({ left: 0, behavior: 'smooth' })
+  } else {
+    sliderContainer.value.scrollBy({ left: 464, behavior: 'smooth' })
+  }
 }
 
 onMounted(() => {

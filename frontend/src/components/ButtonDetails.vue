@@ -160,17 +160,17 @@ const onClick = (event) => {
 }
 
 .btn-details:active .btn-details__arrow--default {
-  transform: translate(calc(-50% + 18px), calc(-50% - 2px)) scale(0.86);
+  transform: translate(calc(-50% - 18px), -50%) scale(0.7);
   opacity: 0;
 }
 
 .btn-details:active .btn-details__arrow--hover {
-  transform: translate(calc(-50% + 8px), -50%) scale(0.92);
+  transform: translate(calc(-50% + 22px), -50%) scale(0.8);
   opacity: 0;
 }
 
 .btn-details:active .btn-details__arrow--active {
-  transform: translate(-50%, -50%) scaleX(1);
+  transform: translate(calc(-50% + 22px), -50%) scaleX(1);
   opacity: 1;
 }
 

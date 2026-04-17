@@ -10,25 +10,13 @@
       <div class="flex gap-1 sm:gap-2">
         <button
           @click="prevSlide"
-          :disabled="isFirstSlide"
-          :class="[
-            'flex items-center justify-center rounded-lg px-4 py-2 transition-colors sm:rounded-xl',
-            isFirstSlide
-              ? 'bg-blue-200/30 text-neutral-100/50'
-              : 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300',
-          ]"
+          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 sm:rounded-xl"
         >
           <ArrowLeft class="size-4 text-text-dark-primary sm:size-6" />
         </button>
         <button
           @click="nextSlide"
-          :disabled="isLastSlide"
-          :class="[
-            'flex items-center justify-center rounded-lg px-4 py-2 transition-colors max-sm:px-1 sm:rounded-xl',
-            isLastSlide
-              ? 'bg-blue-200/30 text-neutral-100/50'
-              : 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300',
-          ]"
+          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
         >
           <ArrowRight class="size-4 sm:size-6" />
         </button>
@@ -162,10 +150,16 @@ const cardsPerView = computed(() => {
   return 2.5
 })
 
+const maxSlideIndex = computed(() => {
+  // Максимальный индекс: количество карточек минус количество видимых
+  // Это гарантирует, что последняя карточка видна полностью без пустого места
+  const visibleCards = Math.floor(cardsPerView.value)
+  return Math.max(0, reviews.length - visibleCards)
+})
+
 const isFirstSlide = computed(() => currentSlide.value === 0)
 const isLastSlide = computed(() => {
-  const maxSlides = Math.max(0, reviews.length - Math.floor(cardsPerView.value))
-  return currentSlide.value >= maxSlides
+  return currentSlide.value >= maxSlideIndex.value
 })
 
 // Обработка ошибок загрузки изображений
@@ -175,26 +169,37 @@ const handleImageError = (event) => {
 
 // Функции навигации
 const nextSlide = () => {
-  if (!isLastSlide.value) {
+  if (isLastSlide.value) {
+    // Возврат в начало
+    currentSlide.value = 0
+    updateTranslateX()
+  } else {
     currentSlide.value++
     updateTranslateX()
   }
 }
 
 const prevSlide = () => {
-  if (!isFirstSlide.value) {
+  if (isFirstSlide.value) {
+    // Переход в конец
+    currentSlide.value = maxSlideIndex.value
+    updateTranslateX()
+  } else {
     currentSlide.value--
     updateTranslateX()
   }
 }
 
 const goToSlide = (index) => {
-  currentSlide.value = index
+  currentSlide.value = Math.min(index, maxSlideIndex.value)
   updateTranslateX()
 }
 
 const updateTranslateX = () => {
-  translateX.value = currentSlide.value * (cardWidth.value + cardGap.value)
+  // Ограничиваем translateX, чтобы не было пустого места
+  const maxTranslate = (reviews.length - cardsPerView.value) * (cardWidth.value + cardGap.value)
+  const calculatedTranslate = currentSlide.value * (cardWidth.value + cardGap.value)
+  translateX.value = Math.min(calculatedTranslate, Math.max(0, maxTranslate))
 }
 
 // Обработка изменения размера экрана
