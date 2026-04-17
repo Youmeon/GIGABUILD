@@ -41,7 +41,7 @@ const getTriggerSection = () => {
   } else if (path === '/apartment-inspection') {
     return document.getElementById('what-includes')
   } else if (path.startsWith('/services/')) {
-    return document.getElementById('service-includes')
+    return document.getElementById('service-trigger')
   }
   
   return null
@@ -65,7 +65,31 @@ const isFooterFullyVisible = () => {
 const handleScroll = () => {
   const currentScrollY = window.scrollY
   const scrolled = currentScrollY >= 842
-  isScrolled.value = scrolled
+  
+  // Логика скрытия/показа header
+  const footerFullyVisible = isFooterFullyVisible()
+  const scrollingUp = currentScrollY < lastScrollY.value
+  const triggerSection = getTriggerSection()
+  
+  // Проверяем достигла ли триггерная секция верха экрана
+  let triggerReached = false
+  if (triggerSection) {
+    const rect = triggerSection.getBoundingClientRect()
+    // Для DetailService проверяем когда верх элемента достиг верха экрана
+    if (route.path.startsWith('/services/')) {
+      triggerReached = rect.top <= 0
+    } else {
+      // Для других страниц - когда верх достиг верха
+      triggerReached = rect.top <= 0
+    }
+  }
+  
+  // Для detailService header становится fixed когда триггер достигнут
+  if (route.path.startsWith('/services/') && triggerReached) {
+    isScrolled.value = true
+  } else {
+    isScrolled.value = scrolled
+  }
 
   if (isSpecialPage() && currentScrollY >= 100) {
     isScrolled.value = true
@@ -74,32 +98,42 @@ const handleScroll = () => {
   // Логотип: для специальных страниц всегда logoVar1, для обычных меняется
   dynamicLogoPath.value = isSpecialPage()
     ? logoVar1
-    : scrolled
+    : isScrolled.value
       ? logoVar1
       : logoVar2
   // Цвет текста ссылок мобильного меню
-  navTextColor.value = scrolled ? 'text-blue-600' : 'text-white'
+  navTextColor.value = isScrolled.value ? 'text-blue-600' : 'text-white'
   // Цвет текста ссылок десктопного меню
   desktopNavTextColor.value = isSpecialPage()
     ? 'text-blue-600'
-    : scrolled
+    : isScrolled.value
       ? 'text-blue-600'
       : 'text-white'
-
-  // Логика скрытия/показа header
-  const footerFullyVisible = isFooterFullyVisible()
-  const scrollingUp = currentScrollY < lastScrollY.value
   
-  // Для всех страниц одинаковая логика
-  if (footerFullyVisible) {
-    // Footer полностью виден - скрываем header
-    isHeaderHidden.value = true
-  } else if (scrollingUp) {
-    // Скролл вверх - показываем header
-    isHeaderHidden.value = false
+  // Для страниц с триггерной секцией
+  if (triggerSection) {
+    if (!triggerReached) {
+      // До триггера - header статичный (видимый)
+      isHeaderHidden.value = false
+    } else if (footerFullyVisible) {
+      // Footer виден - скрываем header
+      isHeaderHidden.value = true
+    } else if (scrollingUp) {
+      // Скролл вверх после триггера - показываем header
+      isHeaderHidden.value = false
+    } else {
+      // Скролл вниз после триггера - header остается видимым
+      isHeaderHidden.value = false
+    }
   } else {
-    // Скролл вниз но footer не виден - header остается видимым
-    isHeaderHidden.value = false
+    // Для страниц без триггера (например, /services)
+    if (footerFullyVisible) {
+      isHeaderHidden.value = true
+    } else if (scrollingUp) {
+      isHeaderHidden.value = false
+    } else {
+      isHeaderHidden.value = false
+    }
   }
 
   lastScrollY.value = currentScrollY

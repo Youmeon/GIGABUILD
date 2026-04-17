@@ -11,8 +11,11 @@
         <div class="mb-[-1px] h-[33px] flex-shrink-0 rounded-t-[32px] bg-neutral-200"></div>
       </div>
 
+      <!-- Триггер для header -->
+      <div id="service-trigger" class="h-0"></div>
+
       <!-- Секция с заголовком услуги -->
-      <div class="min-h-[45vh] px-8 py-16 bg-neutral-200">
+      <div id="service-content" class="min-h-[45vh] px-8 py-16 bg-neutral-200">
         <div class="mb-16">
           <router-link
             to="/services"
