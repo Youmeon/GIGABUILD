@@ -13,7 +13,7 @@
         >
           Записаться на приёмку
         </button>
-        <div class="absolute inset-x-0 bottom-0 h-[33px] bg-[#fafafc]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-[33px] bg-[#fafafc] border-radius-[33px]"></div>
       </div>
 
       <div class="px-8 py-16">
@@ -141,11 +141,11 @@
 </template>
 
 <script setup>
-import { ref, computed, inject, onMounted, nextTick, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-vue-next'
 import detailServicesData from '@/data/detail_services.json'
 import includePartData from '@/data/include_part_detail_service.json'
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-vue-next'
+import { computed, inject, nextTick, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import getImageUrl from '../utils/getImageURL'
 
 const route = useRoute()
