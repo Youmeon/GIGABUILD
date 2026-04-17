@@ -65,49 +65,8 @@
     <section
       className="bg-neutral-200 px-8 z-20 py-16 max-sm:py-2 w-full rounded-2xl relative translate-y-[825px] mt-[-16px] max-sm:translate-y-[640px]"
     >
-      <div class="flex gap-4 pb-16">
-        <div class="flex flex-1 flex-col justify-between">
-          <div>
-            <div
-              className="flex items-center gap-[4.5px] mb-6 tracking-[-4%] text-sm leading-[110%] align-middle"
-            >
-              <span
-                ><svg
-                  width="6"
-                  height="7"
-                  viewBox="0 0 6 7"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
-                </svg>
-              </span>
-              <span
-                className="uppercase text-text-dark-secondary max-sm:text-[0.7rem] max-sm:p-1 font-bold"
-                >Оборудование</span
-              >
-            </div>
-            <h2
-              className="font-semibold leading-[125%] text-5xl tracking-[-3%] mb-10"
-            >
-              Используемые инструменты
-            </h2>
-          </div>
-          <p
-            className="tracking-[-3%] pr-[68px] align-middle text-xl leading-[135%] font-normal text-text-dark-secondary"
-          >
-            Наши специалисты приезжают со своим набором поверенных и
-            сертифицированных инструментов — всё откалибровано и соответствует
-            стандартам, чтобы вы получили объективную и надёжную оценку
-          </p>
-        </div>
-        <div class="max-w-[912px]">
-          <img
-            src="@/assets/images/secondmer.jpg"
-            alt="Секундомер"
-            class="rounded-[32px]"
-          />
-        </div>
+      <div class="pb-16">
+        <ToolsBanner :tools="toolsData" />
       </div>
       <div class="flex flex-col gap-4 pb-16">
         <div
@@ -253,6 +212,8 @@
 <script setup>
 import heroImage from '@/assets/images/apart-insp.jpg'
 import InspectionSlider from '@/components/InspectionSlider.vue'
+import ToolsBanner from '@/components/ToolsBanner.vue'
+import toolsData from '@/data/acceptance-of-apartments-tools.json'
 import {inject} from 'vue'
 const openRequestModal = inject('openRequestModal')
 </script>
