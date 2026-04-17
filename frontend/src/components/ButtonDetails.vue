@@ -7,7 +7,7 @@
     :class="variantClass"
     @click="onClick"
   >
-    <span class="relative z-10">{{ label }}</span>
+    <span class="btn-details__label relative z-10">{{ label }}</span>
 
     <span class="btn-details__icon" aria-hidden="true">
       <svg
@@ -101,6 +101,10 @@ const onClick = (event) => {
 </script>
 
 <style scoped>
+.btn-details__label {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .btn-details__icon {
   position: relative;
   z-index: 10;
@@ -131,16 +135,17 @@ const onClick = (event) => {
 }
 
 .btn-details__arrow--hover {
-  transform: translate(calc(-50% - 16px), calc(-50% + 2px)) scale(0.86);
+  transform: translate(-50%, -50%) scale(0.86);
 }
 
 .btn-details__arrow--active {
-  transform: translate(calc(-50% - 22px), calc(-50% + 1px)) scaleX(0.52);
+  transform: translate(-50%, -50%) scaleX(0.52);
   transform-origin: center;
 }
 
+/* При hover */
 .btn-details:hover .btn-details__arrow--default {
-  transform: translate(calc(-50% + 16px), calc(-50% - 2px)) scale(0.86);
+  transform: translate(-50%, -50%) scale(0.86);
   opacity: 0;
 }
 
@@ -149,8 +154,27 @@ const onClick = (event) => {
   opacity: 1;
 }
 
+/* При active - стрелка расширяется от 24px до 46px (на 22px) */
+/* Половина расширения (11px) идет влево, половина вправо */
+.btn-details:active .btn-details__label {
+  transform: translateX(-11px);
+}
+
+.btn-details:active .btn-details__arrow--default {
+  opacity: 0;
+}
+
+.btn-details:active .btn-details__arrow--hover {
+  opacity: 0;
+}
+
+.btn-details:active .btn-details__arrow--active {
+  transform: translate(-50%, -50%) scaleX(1);
+  opacity: 1;
+}
+
 .btn-details:focus-visible:not(:active) .btn-details__arrow--default {
-  transform: translate(calc(-50% + 16px), calc(-50% - 2px)) scale(0.86);
+  transform: translate(-50%, -50%) scale(0.86);
   opacity: 0;
 }
 
@@ -159,24 +183,10 @@ const onClick = (event) => {
   opacity: 1;
 }
 
-.btn-details:active .btn-details__arrow--default {
-  transform: translate(calc(-50% - 18px), -50%) scale(0.7);
-  opacity: 0;
-}
-
-.btn-details:active .btn-details__arrow--hover {
-  transform: translate(calc(-50% + 22px), -50%) scale(0.8);
-  opacity: 0;
-}
-
-.btn-details:active .btn-details__arrow--active {
-  transform: translate(calc(-50% + 22px), -50%) scaleX(1);
-  opacity: 1;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .btn-details,
-  .btn-details__arrow {
+  .btn-details__arrow,
+  .btn-details__label {
     transition-duration: 0.01ms !important;
   }
 }

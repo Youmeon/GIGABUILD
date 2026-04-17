@@ -1,18 +1,18 @@
 <template>
   <router-link
     :to="`/services/${card.id}`"
-    class="group flex h-[506px] w-[448px] shrink-0 flex-col justify-between overflow-hidden rounded-[32px] bg-white p-[12px] pt-[32px] transition-all duration-300"
+    class="group flex h-[506px] w-[448px] shrink-0 flex-col gap-8 overflow-hidden rounded-[32px] bg-white p-[12px] pt-[32px] transition-all duration-300"
   >
-    <div class="px-5">
-      <div class="flex items-start justify-between">
-        <div class="flex-1">
+    <div class="ml-5 mr-[72px]">
+      <div class="flex items-start justify-between gap-6">
+        <div class="flex flex-1 flex-col gap-6">
           <h4
-            class="mb-4 text-[32px] font-medium leading-[125%] tracking-[-4%] text-[#262628]"
+            class="text-[32px] font-medium leading-[125%] tracking-[-1.27px] text-[#262628]"
           >
             {{ card.title }}
           </h4>
           <p
-            class="text-[20px] font-medium leading-[135%] tracking-[-3%] text-[#3b3b3c]"
+            class="text-[20px] font-medium leading-[135%] tracking-[-0.59px] text-[#3b3b3c]"
           >
             {{ card.description }}
           </p>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-6 overflow-hidden rounded-[24px]">
+    <div class="overflow-hidden rounded-[24px]">
       <img
         :src="getImageUrl(card.image)"
         :alt="card.title"
