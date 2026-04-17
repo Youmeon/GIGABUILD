@@ -156,22 +156,24 @@ const prevTool = () => {
 .tools-banner__gallery {
   max-width: 1280px;
   flex-grow: 1;
-  background-position: top left;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 352px;
   border-radius: 32px;
   min-height: 500px;
   transition: background-image 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 .tools-banner__gallery-overlay {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  background: linear-gradient(0deg, rgba(2, 2, 3, 0) 0%, rgba(2, 2, 3, 0.7) 75%);
+  background: linear-gradient(180deg, rgba(2, 2, 3, 0) 0%, rgba(2, 2, 3, 0.85) 100%);
   padding: 99px 32px 26px 34px;
   border-radius: 32px;
+  height: 100%;
 }
 
 .tools-banner__controls {

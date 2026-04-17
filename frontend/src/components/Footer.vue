@@ -29,12 +29,12 @@
       >
         <a
           href="tel:+79144110611"
-          class="flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100"
+          class="footer-link flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100"
           >8 (914) 441-06-11</a
         >
         <a
           href="tel:+74212247365"
-          class="flex-nowrap text-nowrap text-end font-semibold leading-[100%] tracking-[-3%] text-neutral-100"
+          class="footer-link footer-link--right flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100"
           >24-73-65</a
         >
       </div>
@@ -44,17 +44,25 @@
     >
       <div class="flex w-full flex-wrap justify-between md:gap-3">
         <div class="flex w-full items-center justify-between max-sm:gap-4">
-          <router-link to="/" class="flex-1">Главная</router-link>
-          <router-link to="/about" class="lg:flex-1">О нас</router-link>
+          <div class="flex-1">
+            <router-link to="/" class="footer-link">Главная</router-link>
+          </div>
+          <div class="lg:flex-1">
+            <router-link to="/about" class="footer-link">О нас</router-link>
+          </div>
           <span class="flex-1 text-end"
             >г. Хабаровск, ул. Карла Маркса, 62А</span
           >
         </div>
         <div class="flex w-full items-center justify-between max-sm:gap-4">
-          <router-link to="/apartment-inspection" class="flex-1"
-            >Приемка квартир</router-link
-          >
-          <router-link to="/service" class="lg:flex-1">Услуги</router-link>
+          <div class="flex-1">
+            <router-link to="/apartment-inspection" class="footer-link"
+              >Приемка квартир</router-link
+            >
+          </div>
+          <div class="lg:flex-1">
+            <router-link to="/services" class="footer-link">Услуги</router-link>
+          </div>
           <span class="flex-1 text-end">пн-вс 08:00—19:00</span>
         </div>
       </div>
@@ -88,3 +96,39 @@ const isSpecialPage = computed(() => {
   return route.path === '/' || route.path === '/apartment-inspection'
 })
 </script>
+
+<style scoped>
+.footer-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding-bottom: 2px;
+  width: fit-content;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.footer-link:not(:hover)::after {
+  left: auto;
+  right: 0;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.footer-link--right {
+  margin-left: auto;
+}
+</style>

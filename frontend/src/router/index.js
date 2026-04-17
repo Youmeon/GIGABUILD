@@ -24,6 +24,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Если есть сохраненная позиция (например, при навигации назад)
+    if (savedPosition) {
+      return savedPosition
+    }
+    // Всегда скроллим в начало страницы при переходе
+    return { top: 0, behavior: 'smooth' }
+  },
 })
 
 export default router
