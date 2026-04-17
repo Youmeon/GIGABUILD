@@ -22,7 +22,7 @@
           <div class="tools-banner__nav">
             <button
               @click="prevTool"
-              class="tools-banner__nav-btn tools-banner__nav-btn--prev"
+              class="tools-banner__nav-btn"
               aria-label="Предыдущий инструмент"
             >
               <ArrowLeft class="tools-banner__nav-icon" />
@@ -169,7 +169,7 @@ const prevTool = () => {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  background: linear-gradient(0deg, rgba(2, 2, 3, 0) 0%, #020203 75%);
+  background: linear-gradient(0deg, rgba(2, 2, 3, 0) 0%, rgba(2, 2, 3, 0.7) 75%);
   padding: 99px 32px 26px 34px;
   border-radius: 32px;
 }
@@ -213,10 +213,6 @@ const prevTool = () => {
 
 .tools-banner__nav-btn:hover {
   background-color: #eef0f9;
-}
-
-.tools-banner__nav-btn--prev {
-  transform: rotate(180deg);
 }
 
 .tools-banner__nav-icon {
