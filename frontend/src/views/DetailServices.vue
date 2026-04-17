@@ -86,46 +86,30 @@
             >
               {{ includeData?.title }}
             </h2>
-            <div class="flex gap-2">
+            <div class="flex gap-1 sm:gap-2">
               <button
                 @click="scrollLeft"
-                class="flex size-10 items-center justify-center rounded-xl bg-white/30 transition-colors hover:bg-white/40"
+                :disabled="!canScrollLeft"
+                :class="[
+                  'flex items-center justify-center rounded-lg px-4 py-2 transition-colors sm:rounded-xl',
+                  canScrollLeft
+                    ? 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300'
+                    : 'bg-blue-200/30 text-neutral-100/50',
+                ]"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 18L9 12L15 6"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <ArrowLeft class="size-4 text-text-dark-primary sm:size-6" />
               </button>
               <button
                 @click="scrollRight"
-                class="flex size-10 items-center justify-center rounded-xl bg-white transition-colors hover:bg-neutral-100"
+                :disabled="!canScrollRight"
+                :class="[
+                  'flex items-center justify-center rounded-lg px-4 py-2 transition-colors max-sm:px-1 sm:rounded-xl',
+                  canScrollRight
+                    ? 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300'
+                    : 'bg-blue-200/30 text-neutral-100/50',
+                ]"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9 18L15 12L9 6"
-                    stroke="#262628"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <ArrowRight class="size-4 sm:size-6" />
               </button>
             </div>
           </div>
@@ -133,6 +117,7 @@
 
         <div
           ref="sliderContainer"
+          @scroll="updateScrollState"
           class="flex gap-4 overflow-x-auto scroll-smooth pb-4"
         >
           <div
@@ -168,9 +153,9 @@
 </template>
 
 <script setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed, inject, onMounted, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { ArrowUpRight } from 'lucide-vue-next'
+import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-vue-next'
 import detailServicesData from '@/data/detail_services.json'
 import includePartData from '@/data/include_part_detail_service.json'
 import getImageUrl from '../utils/getImageURL'
@@ -178,6 +163,8 @@ import getImageUrl from '../utils/getImageURL'
 const route = useRoute()
 const openRequestModal = inject('openRequestModal')
 const sliderContainer = ref(null)
+const canScrollLeft = ref(false)
+const canScrollRight = ref(false)
 
 const currentService = computed(() => {
   const id = parseInt(route.params.id)
@@ -190,6 +177,16 @@ const includeData = computed(() => {
   return includePartData.find((i) => i.id === id)
 })
 
+const updateScrollState = () => {
+  if (!sliderContainer.value) return
+
+  const { scrollLeft, scrollWidth, clientWidth } = sliderContainer.value
+  const maxScrollLeft = scrollWidth - clientWidth
+
+  canScrollLeft.value = scrollLeft > 2
+  canScrollRight.value = scrollLeft < maxScrollLeft - 2
+}
+
 const scrollLeft = () => {
   if (!sliderContainer.value) return
   sliderContainer.value.scrollBy({ left: -464, behavior: 'smooth' })
@@ -199,6 +196,21 @@ const scrollRight = () => {
   if (!sliderContainer.value) return
   sliderContainer.value.scrollBy({ left: 464, behavior: 'smooth' })
 }
+
+onMounted(() => {
+  nextTick(() => {
+    updateScrollState()
+  })
+})
+
+watch(
+  () => route.params.id,
+  () => {
+    nextTick(() => {
+      updateScrollState()
+    })
+  }
+)
 </script>
 
 <style scoped>

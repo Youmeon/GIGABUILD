@@ -13,14 +13,11 @@
             Широкий профиль, гарантия качества и внимание к деталям!
           </p>
         </div>
-        <div
-          className="max-w-[18.3rem] bg-blue-600 text-neutral-100 rounded-2xl px-5 py-3 flex justify-center"
-        >
-          <router-link to="/apartment-inspection" className="flex gap-3">
-            Подробнее
-            <ArrowUpRight />
-          </router-link>
-        </div>
+        <ButtonDetails
+          to="/apartment-inspection"
+          variant="primary"
+          class="w-full max-w-[18.3rem]"
+        />
       </div>
     </section>
     <section
@@ -156,14 +153,11 @@
             Осмотр с помощью проф-оборудования, фото и видео-фиксация дефектов и
             оформление акта по СП, ГОСТ, ПУЭ.
           </p>
-          <div
-            className="max-w-[18.3rem] bg-neutral-100 text-blue-600 rounded-2xl px-5 py-3 flex justify-center"
-          >
-            <router-link to="/apartment-inspection" className="flex gap-3">
-              Подробнее
-              <ArrowUpRight />
-            </router-link>
-          </div>
+          <ButtonDetails
+            to="/apartment-inspection"
+            variant="secondary"
+            class="w-full max-w-[18.3rem]"
+          />
         </div>
       </div>
       <div class="grid grid-cols-3 gap-8">
@@ -204,8 +198,8 @@
 <script setup>
 import heroImage from '@/assets/images/img.jpg'
 import servicesData from '@/data/services.json'
-import { ArrowUpRight } from 'lucide-vue-next'
 import { ref } from 'vue'
+import ButtonDetails from '../components/ButtonDetails.vue'
 import SliderReviews from '../components/SliderReviews.vue'
 import CardService from '../components/CardService.vue'
 const cards = ref(servicesData)

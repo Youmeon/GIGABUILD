@@ -46,25 +46,18 @@
         <div
           class="bg flex h-[647px] flex-col justify-end rounded-2xl p-8 text-neutral-100"
         >
-          <h3
-            className="text-[2.5rem] font-medium leading-none tracking-[-3%] mb-3"
-          >
+          <h3 class="mb-3 text-[2.5rem] font-medium leading-none tracking-[-3%]">
             Приемка квартир
           </h3>
-          <p
-            className="leading-[150%] mb-9 text-neutral-100/80 text-[24px] align-middle tracking-[-3%]"
-          >
+          <p class="mb-9 text-[24px] leading-[150%] tracking-[-3%] text-neutral-100/80">
             Осмотр с помощью проф-оборудования, фото и видео-фиксация дефектов и
             оформление акта по СП, ГОСТ, ПУЭ.
           </p>
-          <div
-            className="max-w-[18.3rem] bg-neutral-100 text-blue-600 rounded-2xl px-5 py-3 flex justify-center"
-          >
-            <router-link to="/apartment-inspection" className="flex gap-3">
-              Подробнее
-              <ArrowUpRight />
-            </router-link>
-          </div>
+          <ButtonDetails
+            to="/apartment-inspection"
+            variant="secondary"
+            class="w-full max-w-[332px]"
+          />
         </div>
       </div>
       <div class="mt-10 grid grid-cols-3 gap-8">
@@ -77,6 +70,7 @@
 <script setup>
 import servicesData from '@/data/services.json'
 import { ref } from 'vue'
+import ButtonDetails from '../components/ButtonDetails.vue'
 import CardService from '../components/CardService.vue'
 const cards = ref(servicesData)
 </script>
