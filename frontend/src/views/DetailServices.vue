@@ -16,7 +16,7 @@
         <div class="mb-16">
           <router-link
             to="/services"
-            class="mb-8 inline-flex items-center gap-2 text-[20px] font-medium tracking-[-3%] text-blue-600"
+            class="back-link mb-8 inline-flex items-center gap-2 text-[20px] font-medium tracking-[-3%] text-blue-600"
           >
             <svg
               width="24"
@@ -215,6 +215,36 @@ watch(
 </script>
 
 <style scoped>
+.back-link {
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  padding-bottom: 2px;
+  width: fit-content;
+}
+
+.back-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.back-link:hover::after {
+  width: 100%;
+}
+
+.back-link:not(:hover)::after {
+  left: auto;
+  right: 0;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
 div::-webkit-scrollbar {
   height: 0;
 }
