@@ -1,22 +1,18 @@
 <template>
   <main class="bg-neutral-200">
-    <section v-if="currentService" class="mt-[136px]">
-      <div class="relative h-[500px] w-full">
-        <img
-          :src="getImageUrl(currentService.image)"
-          :alt="currentService.title"
-          class="size-full object-cover"
-        />
-        <button
-          @click="openRequestModal"
-          class="absolute bottom-[60px] left-8 rounded-2xl bg-white px-5 py-3 text-[20px] font-medium tracking-[-3%] text-blue-600 transition-colors hover:bg-neutral-100"
-        >
-          Записаться на приёмку
-        </button>
-        <div class="absolute inset-x-0 bottom-0 h-[33px] bg-[#fafafc] border-radius-[33px]"></div>
+    <section v-if="currentService" class="relative">
+      <!-- Баннер с картинкой -->
+      <div 
+        class="relative flex flex-col overflow-hidden pt-[468px]"
+        :style="{ 
+          background: `linear-gradient(0deg, rgba(2, 2, 3, 0) 60%, rgba(2, 2, 3, 0.4) 100%), url(${getImageUrl(currentService.image)}) top center / cover no-repeat`
+        }"
+      >
+        <div class="mb-[-1px] h-[33px] flex-shrink-0 rounded-t-[32px] bg-neutral-200"></div>
       </div>
 
-      <div class="px-8 py-16">
+      <!-- Секция с заголовком услуги -->
+      <div class="min-h-[45vh] px-8 py-16 bg-neutral-200">
         <div class="mb-16">
           <router-link
             to="/services"
