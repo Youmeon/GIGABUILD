@@ -7,7 +7,7 @@
       <div className="mt-[566px] max-sm:mt-[314px] max-sm:px-4 px-8">
         <div>
           <h1 className=" text-neutral-100 xl:text-[5rem] mb-1">
-            Приемка квартир в новостройке
+            Приемка квартир <br class="hidden max-[744px]:block" />в новостройке
           </h1>
           <p className="text-neutral-100/80 mb-10 xl:mt-8">
             Широкий профиль, гарантия качества и внимание к деталям!
@@ -225,5 +225,120 @@ const cards = ref(servicesData)
   background-image: url(../assets/images/schempomoch.png);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Media queries для 744px */
+@media screen and (max-width: 744px) {
+  /* Hero секция */
+  section:first-of-type {
+    height: 52.625rem !important;
+    padding-bottom: 4rem !important;
+  }
+  
+  section:first-of-type > div {
+    margin-top: 474px !important;
+    padding-left: 1.25rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  section:first-of-type h1 {
+    font-size: 5rem !important;
+    line-height: 0.95 !important;
+    letter-spacing: -3.17px !important;
+  }
+  
+  section:first-of-type p {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.71px !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Секция "О компании" */
+  section:nth-of-type(2) {
+    padding-top: 2rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    gap: 4rem;
+  }
+  
+  section:nth-of-type(2) > div:first-child {
+    flex-direction: column !important;
+    gap: 1.625rem !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:first-child {
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:first-child > div:first-child {
+    margin-bottom: 3rem !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:first-child h2 {
+    text-align: left !important;
+    max-width: 420px;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:last-child {
+    display: flex !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:last-child p {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.71px !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:last-child p:last-child {
+    display: block !important;
+  }
+  
+  /* Карточки статистики */
+  section:nth-of-type(2) > div:last-child {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding-bottom: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:last-child > div {
+    padding: 2.1875rem 2rem !important;
+  }
+  
+  section:nth-of-type(2) > div:last-child > div p:first-child {
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  section:nth-of-type(2) > div:last-child > div p:last-child {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Секция "Услуги" - карточки в 2 столбца */
+  section:nth-of-type(3) > div:last-child {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.625rem !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  section:first-of-type > div {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+  
+  section:nth-of-type(2) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 </style>

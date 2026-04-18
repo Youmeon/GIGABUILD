@@ -1,18 +1,18 @@
 <template>
   <router-link
     :to="`/services/${card.id}`"
-    class="group flex h-[506px] w-[448px] shrink-0 flex-col justify-between overflow-hidden rounded-[32px] bg-white p-[12px] pt-[32px] transition-all duration-300"
+    class="group flex h-[506px] w-[448px] shrink-0 flex-col justify-between overflow-hidden rounded-[32px] bg-white p-[12px] pt-[32px] transition-all duration-300 max-[744px]:h-auto max-[744px]:w-full max-[744px]:gap-8"
   >
-    <div class="px-5">
+    <div class="px-5 max-[744px]:px-3">
       <div class="flex items-start justify-between">
         <div class="flex-1">
           <h4
-            class="mb-4 text-[32px] font-medium leading-[125%] tracking-[-4%] text-[#262628]"
+            class="mb-4 text-[32px] font-medium leading-[125%] tracking-[-4%] text-[#262628] max-[744px]:text-[24px] max-[744px]:mb-3"
           >
             {{ card.title }}
           </h4>
           <p
-            class="text-[20px] font-medium leading-[135%] tracking-[-3%] text-[#3b3b3c]"
+            class="text-[20px] font-medium leading-[135%] tracking-[-3%] text-[#3b3b3c] max-[744px]:text-[16px]"
           >
             {{ card.description }}
           </p>
@@ -37,11 +37,11 @@
         </div>
       </div>
     </div>
-    <div class="mt-6 overflow-hidden rounded-[24px]">
+    <div class="mt-6 overflow-hidden rounded-[24px] max-[744px]:mt-0">
       <img
         :src="getImageUrl(card.image)"
         :alt="card.title"
-        class="h-[245px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        class="h-[245px] w-full object-cover transition-transform duration-300 group-hover:scale-105 max-[744px]:h-[180px]"
       />
     </div>
   </router-link>

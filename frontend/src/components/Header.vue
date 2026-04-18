@@ -30,6 +30,12 @@ const desktopNavTextColor = ref(
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+  // Блокируем/разблокируем скролл
+  if (isMenuOpen.value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
 }
 
 // Получить триггерную секцию для текущей страницы
@@ -155,6 +161,8 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('resize', handleResize) // Очистка слушателя resize
+  // Убираем блокировку скролла при размонтировании
+  document.body.style.overflow = ''
 })
 
 // Отслеживание смены маршрута
@@ -169,31 +177,33 @@ watch(
 </script>
 
 <template>
-  <div class="container mx-auto flex items-center justify-center text-blue-600">
+  <div class="container mx-auto flex items-center justify-center text-blue-600 max-[744px]:w-full max-[744px]:max-w-full max-[744px]:px-0">
     <header
       :class="[
-        'z-[80] flex w-full items-center gap-2.5',
+        'flex w-full items-center gap-2.5',
         isScrolled
           ? 'fixed left-1/2 top-1 mt-2 h-14 -translate-x-1/2 rounded-2xl border-neutral-100/20 bg-neutral-200/80 text-black shadow-md'
-          : 'absolute top-1 bg-none text-white',
+          : 'absolute top-1 text-white',
+        isMenuOpen ? 'max-[744px]:!bg-white' : 'bg-none',
         'px-8 py-3 transition-all duration-300 ease-in-out max-sm:px-4',
         isHeaderHidden ? '-translate-y-[120px]' : 'translate-y-0',
+        isMenuOpen ? 'z-[200]' : 'z-[80]',
       ]"
     >
       <nav
-        class="mx-auto flex w-full max-w-7xl items-center justify-between gap-2.5"
+        class="mx-auto flex w-full max-w-7xl items-center justify-between gap-2.5 max-[744px]:mx-0 max-[744px]:max-w-full"
       >
         <!-- Логотип -->
         <router-link to="/" class="max-w-[9.82rem] pb-[0.01rem] no-underline">
           <img
-            :src="isSmallScreen ? miniLogo : dynamicLogoPath"
+            :src="isMenuOpen ? logoVar1 : dynamicLogoPath"
             alt="Company Logo"
-            :class="isSmallScreen ? 'max-w-[32px] h-auto' : 'h-10'"
+            class="h-10"
           />
         </router-link>
 
         <!-- Навигация для десктопа -->
-        <ul class="mx-auto hidden gap-2.5 md:flex">
+        <ul class="mx-auto hidden gap-2.5 md:flex max-[744px]:hidden">
           <li v-for="(item, index) in navItems" :key="item.to">
             <router-link
               :to="item.to"
@@ -214,8 +224,10 @@ watch(
         <!-- Кнопка бургер-меню -->
         <button
           :class="[
-            'mx-4 rounded-xl px-4 py-1 text-2xl hover:bg-blue-300/20 focus:bg-blue-200/20 max-sm:mx-2 md:hidden',
-            isSpecialPage() || isScrolled ? 'text-blue-600' : 'text-white',
+            'rounded-xl px-4 py-1 text-2xl transition-all duration-300 ease-out mx-4 max-sm:mx-2 md:hidden',
+            'max-[744px]:bg-blue-600 max-[744px]:text-white max-[744px]:hover:bg-blue-500',
+            !isMenuOpen && (isSpecialPage() || isScrolled) ? 'text-blue-600' : '',
+            !isMenuOpen && !isSpecialPage() && !isScrolled ? 'text-white' : '',
           ]"
           @click="toggleMenu"
           aria-label="Toggle menu"
@@ -229,26 +241,35 @@ watch(
         <div
           v-if="isMenuOpen"
           :class="[
-            'fixed right-5 top-20 w-max text-nowrap rounded-xl p-4 md:hidden',
-            isScrolled ? 'bg-white text-black' : 'bg-blue-600/80 text-white',
+            'fixed left-0 top-0 w-screen h-screen bg-white flex flex-col justify-center z-[100]',
+            'max-[744px]:px-4 max-[744px]:pt-[72px]',
+            'md:hidden md:w-max md:right-5 md:top-20 md:h-auto md:rounded-xl md:p-4 md:z-50 md:bg-blue-600/80',
           ]"
         >
-          <ul class="flex flex-col gap-2.5">
+          <ul class="flex flex-col gap-3 max-w-[570px] w-full mx-auto">
             <li v-for="(item, index) in navItems" :key="item.to">
               <router-link
                 :to="item.to"
                 :class="[
-                  'flex h-10 items-center rounded-xl px-5 py-2 text-center transition-all duration-300 ease-out max-sm:h-8 max-sm:px-4 max-sm:py-1 max-sm:text-sm',
+                  'flex h-10 items-center justify-center rounded-xl px-5 py-2 text-center transition-all duration-300 ease-out',
+                  'text-base font-medium',
                   index === 0
-                    ? 'bg-neutral-100 text-blue-600 hover:bg-blue-500 hover:text-neutral-100 focus:bg-blue-400 focus:text-neutral-100'
-                    : 'bg-neutral-100/20 hover:bg-blue-300/20 focus:bg-blue-200/20',
-                  index !== 0 ? navTextColor : '',
+                    ? 'bg-white text-blue-600 hover:bg-blue-500 hover:text-neutral-100 focus:bg-blue-400 focus:text-neutral-100'
+                    : 'bg-transparent text-blue-600 hover:bg-blue-300/20 focus:bg-blue-200/20',
                 ]"
                 active-class="underline"
                 @click="toggleMenu"
               >
                 {{ item.text }}
               </router-link>
+            </li>
+            <li>
+              <button
+                @click="openRequestModal(); toggleMenu()"
+                class="flex h-10 w-full items-center justify-center rounded-xl px-5 py-2 text-center transition-all duration-300 ease-out text-base font-medium bg-blue-600 text-white hover:bg-blue-500 focus:bg-blue-400"
+              >
+                Оставить заявку
+              </button>
             </li>
           </ul>
         </div>
@@ -257,7 +278,7 @@ watch(
       <!-- Кнопка «Оставить заявку» (для десктопа) -->
       <button
         @click="openRequestModal"
-        class="h-10 text-nowrap rounded-xl bg-blue-600 px-5 py-2 font-sans text-base text-background-neutral-100 transition-all duration-300 ease-out hover:bg-blue-500 focus:bg-blue-400 md:block"
+        class="h-10 text-nowrap rounded-xl bg-blue-600 px-5 py-2 font-sans text-base text-background-neutral-100 transition-all duration-300 ease-out hover:bg-blue-500 focus:bg-blue-400 md:block max-[744px]:hidden"
       >
         Оставить заявку
       </button>
@@ -271,5 +292,42 @@ header {
     color 0.3s ease,
     opacity 0.3s ease,
     box-shadow 0.3s ease;
+}
+
+/* Media query для 744px */
+@media screen and (max-width: 744px) {
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  header {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  
+  header nav {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  /* Логотип виден при открытом меню */
+  header img {
+    position: relative !important;
+    z-index: 250 !important;
+  }
+  
+  /* Кнопка бургера видна */
+  header button {
+    position: relative !important;
+    z-index: 250 !important;
+  }
 }
 </style>
