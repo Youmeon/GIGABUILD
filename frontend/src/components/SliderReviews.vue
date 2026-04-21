@@ -1,12 +1,14 @@
 <template>
   <div class="flex min-w-0 w-full max-w-full flex-col overflow-x-hidden">
-    <div class="mb-6 flex items-center justify-between sm:mb-10">
+    <div class="mb-6 flex items-end justify-between sm:mb-10">
       <h2
         class="max-w-[200px] text-[20px] leading-[125%] tracking-[-3%] text-neutral-100 sm:max-w-none sm:text-[32px] lg:text-[48px]"
       >
-        Что говорят наши клиенты
+        Что говорят
+        <br />
+        наши клиенты
       </h2>
-      <div v-if="!isGridLayout" class="flex gap-1 sm:gap-2">
+      <div v-if="!isGridLayout" class="flex gap-1 self-end sm:gap-2">
         <button
           type="button"
           @click="scrollPrev"
@@ -304,6 +306,31 @@ button {
   .review-card__text {
     font-size: clamp(0.875rem, 1.7vw, 1rem) !important;
     line-height: 1.45 !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 744px) {
+  .reviews-scroll {
+    gap: 16px;
+    overflow-x: hidden;
+  }
+
+  .review-card--scroll {
+    width: calc((100% - 16px) / 2);
+    max-height: 30rem;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    gap: 1.5rem;
+  }
+
+  .review-card__name {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .review-card__text {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
   }
 }
 </style>

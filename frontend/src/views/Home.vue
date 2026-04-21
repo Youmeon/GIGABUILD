@@ -319,6 +319,17 @@ const cards = ref(servicesData)
   section:nth-of-type(2) > div:last-child > div p:last-child {
     font-size: 1.25rem !important;
   }
+
+  /* Секция "Отзывы" */
+  section:nth-of-type(4) {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 2rem 1.25rem 2.5rem !important;
+  }
+
+  section:nth-of-type(4) > div:first-child {
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 @media screen and (max-width: 640px) {
