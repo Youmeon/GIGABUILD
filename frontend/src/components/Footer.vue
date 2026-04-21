@@ -47,7 +47,7 @@
           <div class="flex-1 max-[744px]:flex-none">
             <router-link to="/" class="footer-link max-[744px]:text-[20px]">Главная</router-link>
           </div>
-          <div class="lg:flex-1 max-[744px]:flex-none max-[744px]:mt-[3px]">
+          <div class="flex-1 max-[744px]:flex-none">
             <router-link to="/apartment-inspection" class="footer-link max-[744px]:text-[20px]"
               >Приемка квартир</router-link
             >
@@ -60,7 +60,7 @@
           <div class="flex-1 max-[744px]:flex-none">
             <router-link to="/about" class="footer-link max-[744px]:text-[20px]">О нас</router-link>
           </div>
-          <div class="lg:flex-1 max-[744px]:flex-none max-[744px]:mt-[3px]">
+          <div class="flex-1 max-[744px]:flex-none max-[744px]:mt-[3px]">
             <router-link to="/services" class="footer-link max-[744px]:text-[20px]">Услуги</router-link>
           </div>
           <span class="flex-1 text-end max-[744px]:hidden">пн-вс 08:00—19:00</span>
@@ -78,7 +78,7 @@
       </div>
       
       <div
-        class="flex w-full justify-between max-sm:mt-4 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-[744px]:mt-[24px] max-[744px]:flex-row max-[744px]:items-end max-[744px]:gap-4 max-[744px]:pt-1 max-[744px]:text-[16px] max-[744px]:leading-[1.45] max-[744px]:tracking-[-0.48px] max-[744px]:opacity-50"
+        class="flex w-full justify-between items-end max-sm:mt-4 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-[744px]:mt-[24px] max-[744px]:flex-row max-[744px]:items-end max-[744px]:gap-4 max-[744px]:pt-1 max-[744px]:text-[16px] max-[744px]:leading-[1.45] max-[744px]:tracking-[-0.48px] max-[744px]:opacity-50"
       >
         <router-link to="/" class="flex-1 max-[744px]:flex max-[744px]:justify-start max-[744px]:self-end">
           <img
@@ -88,7 +88,7 @@
           />
         </router-link>
         <span class="flex-1 text-center max-[744px]:self-end">ООО "СК Дионис" © 2025</span>
-        <router-link to="#" class="flex-1 text-end max-[744px]:self-end max-[744px]:text-right max-[744px]:whitespace-nowrap"
+        <router-link to="#" class="flex-1 text-end max-[744px]:self-end max-[744px]:text-right"
           >Политика конфиденциальности</router-link
         >
       </div>
