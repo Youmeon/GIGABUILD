@@ -78,17 +78,17 @@
       </div>
       
       <div
-        class="flex w-full justify-between max-sm:mt-4 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-[744px]:relative max-[744px]:mt-[13px] max-[744px]:flex-col max-[744px]:items-center max-[744px]:gap-[13px] max-[744px]:text-[16px] max-[744px]:leading-[1.45] max-[744px]:tracking-[-0.48px] max-[744px]:opacity-50"
+        class="flex w-full justify-between max-sm:mt-4 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-[744px]:mt-[24px] max-[744px]:flex-row max-[744px]:items-end max-[744px]:gap-4 max-[744px]:pt-1 max-[744px]:text-[16px] max-[744px]:leading-[1.45] max-[744px]:tracking-[-0.48px] max-[744px]:opacity-50"
       >
-        <router-link to="/" class="flex-1 max-[744px]:absolute max-[744px]:bottom-0 max-[744px]:left-0 max-[744px]:flex-none">
+        <router-link to="/" class="flex-1 max-[744px]:flex max-[744px]:justify-start max-[744px]:self-end">
           <img
             src="../assets/images/logo-var2.svg"
             alt="logo"
             class="size-fit max-[744px]:w-[157px] max-[744px]:h-[28px]"
           />
         </router-link>
-        <span class="flex-1 max-[744px]:flex-none max-[744px]:text-center">ООО "СК Дионис" © 2025</span>
-        <router-link to="#" class="flex-1 text-end max-[744px]:flex-none max-[744px]:text-center"
+        <span class="flex-1 text-center max-[744px]:self-end">ООО "СК Дионис" © 2025</span>
+        <router-link to="#" class="flex-1 text-end max-[744px]:self-end max-[744px]:text-right max-[744px]:whitespace-nowrap"
           >Политика конфиденциальности</router-link
         >
       </div>
