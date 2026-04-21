@@ -6,10 +6,10 @@
     }"
   >
     <div
-      class="flex items-baseline justify-between max-lg:flex-col max-lg:items-center max-lg:text-center max-[744px]:flex-col max-[744px]:items-start max-[744px]:gap-16"
+      class="flex items-baseline justify-between max-[744px]:flex-col max-[744px]:items-start max-[744px]:gap-16"
     >
       <div
-        class="flex max-w-[516px] flex-col gap-10 max-lg:mb-4 max-lg:items-center max-lg:justify-center max-lg:gap-2 lg:mb-[50px] xl:mb-[215px] max-[744px]:max-w-full max-[744px]:gap-10 max-[744px]:items-start max-[744px]:text-left"
+        class="flex max-w-[516px] flex-col gap-10 lg:mb-[50px] xl:mb-[215px] max-[744px]:max-w-full max-[744px]:gap-10 max-[744px]:items-start max-[744px]:text-left"
       >
         <h2
           class="text-5xl font-semibold leading-[125%] tracking-[-3%] text-neutral-100 max-sm:text-2xl max-[744px]:text-5xl max-[744px]:leading-normal max-[744px]:tracking-[-1.43px] max-[744px]:text-left"
@@ -19,13 +19,13 @@
         </h2>
         <button
           @click = "openRequestModal"
-          class="max-w-[384px] rounded-2xl bg-neutral-800 transition-all duration-300 ease-out px-8 py-5 text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-neutral-100 max-lg:px-4 max-lg:py-3 max-sm:text-[16px] hover:bg-neutral-700 max-[744px]:w-full max-[744px]:max-w-[448px] max-[744px]:py-5 max-[744px]:px-8 max-[744px]:text-[20px] max-[744px]:tracking-[-0.59px]"
+          class="max-w-[384px] rounded-2xl bg-neutral-800 transition-all duration-300 ease-out px-8 py-5 text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-neutral-100 max-sm:text-[16px] hover:bg-neutral-700 max-[744px]:w-full max-[744px]:max-w-[448px] max-[744px]:py-5 max-[744px]:px-8 max-[744px]:text-[20px] max-[744px]:tracking-[-0.59px]"
         >
           Оставить заявку
         </button>
       </div>
       <div
-        class="flex flex-col flex-nowrap gap-[10px] text-[48px] max-lg:items-center max-sm:text-2xl max-[744px]:gap-[5px] max-[744px]:items-start max-[744px]:w-full"
+        class="flex flex-col flex-nowrap gap-[10px] text-[48px] max-sm:text-2xl max-[744px]:gap-[5px] max-[744px]:items-start max-[744px]:w-full"
       >
         <a
           href="tel:+79144110611"
@@ -141,6 +141,55 @@ const isSpecialPage = computed(() => {
 
 .footer-link--right {
   margin-left: auto;
+}
+
+/* Уменьшаем расстояние между баннером и footer для 825px-1023px */
+@media screen and (min-width: 825px) and (max-width: 1023px) {
+  footer {
+    padding-top: 2rem !important;
+  }
+  
+  footer > div:first-child > div:first-child {
+    margin-bottom: 2rem !important;
+  }
+}
+
+/* Плавный переход для номера телефона 745px-824px */
+@media screen and (min-width: 745px) and (max-width: 824px) {
+  footer > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4rem !important;
+  }
+  
+  footer > div:first-child > div:first-child {
+    margin-bottom: 0 !important;
+  }
+  
+  footer > div:first-child > div:first-child button {
+    width: 100% !important;
+    max-width: 448px !important;
+  }
+  
+  footer > div:first-child > div:last-child {
+    align-items: flex-start !important;
+  }
+  
+  footer > div:nth-child(2) {
+    margin-top: 68px !important;
+  }
+  
+  .footer-phone::after {
+    display: none !important;
+  }
+  
+  .footer-phone:hover::after {
+    display: none !important;
+  }
+  
+  .footer-link--right {
+    margin-left: 0 !important;
+  }
 }
 
 /* Убираем подчёркивание для телефонов на 744px */

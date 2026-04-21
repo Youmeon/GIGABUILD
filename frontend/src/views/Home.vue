@@ -167,7 +167,7 @@
       </div>
     </section>
     <section
-      className="bg-blue-600 px-8 py-16 max-sm:py-2 max-sm:h-[510px] h-[730px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl"
+      className="bg-blue-600 px-8 py-16 max-sm:py-2 h-[730px] max-[744px]:h-[510px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl"
     >
       <div>
         <div
@@ -227,6 +227,30 @@ const cards = ref(servicesData)
   background-image: url(../assets/images/schempomoch.png);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Media queries для 825px-1023px - уменьшаем расстояние до footer */
+@media screen and (min-width: 825px) and (max-width: 1023px) {
+  /* Секция "Отзывы" - уменьшаем высоту */
+  section:nth-of-type(4) {
+    height: 600px !important;
+  }
+}
+
+/* Media queries для 745px-824px - плавный переход */
+@media screen and (min-width: 745px) and (max-width: 824px) {
+  /* Секция "Отзывы" - плавное уменьшение высоты */
+  section:nth-of-type(4) {
+    height: 600px !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Media queries для 745px-767px */
+@media screen and (min-width: 745px) and (max-width: 767px) {
+  section:nth-of-type(2) > div:first-child > div:last-child p:last-child {
+    display: block !important;
+  }
 }
 
 /* Media queries для 744px и меньше */
