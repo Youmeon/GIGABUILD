@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="`/services/${card.id}`"
-    class="group flex h-[506px] w-[448px] shrink-0 flex-col justify-between overflow-hidden rounded-[32px] bg-white p-[12px] pt-[32px] transition-all duration-300 max-[744px]:h-auto max-[744px]:w-full max-[744px]:gap-8"
+    class="group flex h-auto w-full flex-col justify-between overflow-hidden rounded-[32px] bg-white p-[12px] pt-[32px] transition-all duration-300 min-[1329px]:h-[506px] min-[1329px]:w-[448px] max-[744px]:gap-8"
   >
     <div class="px-5 max-[744px]:px-3">
       <div class="flex items-start justify-between">

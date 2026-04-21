@@ -60,7 +60,9 @@
           />
         </div>
       </div>
-      <div class="mt-10 grid grid-cols-3 gap-8">
+      <div
+        class="mt-10 grid grid-cols-3 justify-items-center gap-8 max-[1328px]:grid-cols-2 max-[1328px]:justify-items-stretch max-[744px]:gap-[0.625rem]"
+      >
         <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
     </section>

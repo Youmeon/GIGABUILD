@@ -160,7 +160,9 @@
           />
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-8">
+      <div
+        class="grid grid-cols-3 justify-items-center gap-8 max-[1328px]:grid-cols-2 max-[1328px]:justify-items-stretch max-[744px]:gap-[0.625rem]"
+      >
         <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
     </section>
@@ -316,12 +318,6 @@ const cards = ref(servicesData)
   
   section:nth-of-type(2) > div:last-child > div p:last-child {
     font-size: 1.25rem !important;
-  }
-  
-  /* Секция "Услуги" - карточки в 2 столбца */
-  section:nth-of-type(3) > div:last-child {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.625rem !important;
   }
 }
 
