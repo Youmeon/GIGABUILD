@@ -4,20 +4,20 @@
       className="w-full h-[52.625rem] max-sm:h-full absolute top-0 left-0 bg-center bg-cover pb-16 max-sm:px-4"
       :style="{ backgroundImage: 'url(' + heroImage + ')' }"
     >
-      <div className="mt-[566px] max-sm:mt-[314px] max-sm:px-4 px-8">
-        <div>
-          <h1 className=" text-neutral-100 xl:text-[5rem] mb-1">
+      <div className="absolute bottom-16 left-0 right-0 max-sm:bottom-16 max-sm:px-4 px-8">
+        <div className="flex flex-col">
+          <h1 className="text-neutral-100 text-[5rem] leading-[0.95] mb-1">
             Приемка квартир <br class="hidden max-[744px]:block" />в новостройке
           </h1>
-          <p className="text-neutral-100/80 mb-10 xl:mt-8">
+          <p className="text-neutral-100/80 text-[1.5rem] leading-[1.5] mb-10 xl:mt-8">
             Широкий профиль, гарантия качества и внимание к деталям!
           </p>
+          <ButtonDetails
+            to="/apartment-inspection"
+            variant="primary"
+            class="w-full max-w-[18.3rem]"
+          />
         </div>
-        <ButtonDetails
-          to="/apartment-inspection"
-          variant="primary"
-          class="w-full max-w-[18.3rem]"
-        />
       </div>
     </section>
     <section
@@ -229,7 +229,7 @@ const cards = ref(servicesData)
   background-repeat: no-repeat;
 }
 
-/* Media queries для 744px */
+/* Media queries для 744px и меньше */
 @media screen and (max-width: 744px) {
   /* Hero секция */
   section:first-of-type {
@@ -238,19 +238,19 @@ const cards = ref(servicesData)
   }
   
   section:first-of-type > div {
-    margin-top: 474px !important;
     padding-left: 1.25rem !important;
     padding-right: 2rem !important;
+    bottom: 4rem !important;
   }
   
   section:first-of-type h1 {
-    font-size: 5rem !important;
+    font-size: clamp(2rem, 8vw, 5rem) !important;
     line-height: 0.95 !important;
     letter-spacing: -3.17px !important;
   }
   
   section:first-of-type p {
-    font-size: 1.5rem !important;
+    font-size: clamp(1rem, 3vw, 1.5rem) !important;
     line-height: 1.5 !important;
     letter-spacing: -0.71px !important;
     margin-bottom: 2rem !important;
@@ -334,8 +334,7 @@ const cards = ref(servicesData)
 
 @media screen and (max-width: 640px) {
   section:first-of-type > div {
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
+    bottom: 4rem !important;
   }
   
   section:nth-of-type(2) {

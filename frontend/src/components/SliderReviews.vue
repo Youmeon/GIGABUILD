@@ -5,7 +5,6 @@
         class="max-w-[200px] text-[20px] leading-[125%] tracking-[-3%] text-neutral-100 sm:max-w-none sm:text-[32px] lg:text-[48px]"
       >
         Что говорят
-        <br />
         наши клиенты
       </h2>
       <div v-if="!isGridLayout" class="flex gap-1 self-end sm:gap-2">
@@ -97,20 +96,6 @@
           </p>
         </div>
       </div>
-    </div>
-
-    <div v-if="isMobile && !isGridLayout" class="mt-4 flex justify-center gap-2">
-      <button
-        v-for="(_, index) in reviews"
-        :key="index"
-        type="button"
-        :aria-label="`Отзыв ${index + 1}`"
-        @click="goToSlide(index)"
-        :class="[
-          'size-2 rounded-full transition-all',
-          currentSlide === index ? 'bg-neutral-100' : 'bg-neutral-100/30',
-        ]"
-      />
     </div>
   </div>
 </template>
