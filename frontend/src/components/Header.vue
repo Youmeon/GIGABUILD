@@ -3,7 +3,6 @@ import { inject, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import logoVar1 from '../assets/images/logo-var1.svg'
 import logoVar2 from '../assets/images/logo-var2.svg'
-import miniLogo from '../assets/images/mini-logo.svg' // Добавлен импорт мини-логотипа
 import navItems from '../data/nav.json'
 
 // Инжектируем функцию открытия модального окна
@@ -306,7 +305,7 @@ header {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
     position: fixed !important;
-    top: 0 !important;
+    top: 0.5rem !important;
     left: 0 !important;
     width: 100% !important;
     transform: none !important;
