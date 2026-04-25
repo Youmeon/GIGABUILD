@@ -1,7 +1,7 @@
 <template>
   <main>
     <section
-      className="w-full h-[52.625rem] max-sm:h-full absolute top-0 left-0 bg-center bg-cover pb-16 max-sm:px-4"
+      className="w-full h-[52.625rem] absolute top-0 left-0 bg-center bg-cover pb-16 max-sm:px-4"
       :style="{ backgroundImage: 'url(' + heroImage + ')' }"
     >
       <div className="absolute bottom-16 left-0 right-0 max-sm:bottom-16 max-sm:px-4 px-8">
@@ -270,13 +270,13 @@ const cards = ref(servicesData)
   section:first-of-type h1 {
     font-size: clamp(2rem, 8vw, 5rem) !important;
     line-height: 0.95 !important;
-    letter-spacing: -3.17px !important;
+    letter-spacing: -1.17px !important; /* Увеличиваем с -3.17px до -1.17px (на 2px) */
   }
   
   section:first-of-type p {
     font-size: clamp(1rem, 3vw, 1.5rem) !important;
     line-height: 1.5 !important;
-    letter-spacing: -0.71px !important;
+    letter-spacing: -0.71px !important; /* Возвращаем исходное значение */
     margin-bottom: 2rem !important;
   }
   
@@ -357,18 +357,75 @@ const cards = ref(servicesData)
 }
 
 @media screen and (max-width: 640px) {
+  /* Hero секция - оставляем как на 744px */
+  section:first-of-type {
+    height: 52.625rem !important;
+  }
+  
   section:first-of-type > div {
-    bottom: 4rem !important;
+    bottom: 11.5rem !important; /* Опускаем на 0.5rem (синхронно с секцией "О компании") */
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
   
+  /* Секция "О компании" - корректируем translate-y и добавляем padding-bottom */
   section:nth-of-type(2) {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 2.8125rem !important; /* Добавляем нижний отступ для карточек */
+    transform: translateY(711px) !important; /* Опускаем ещё на 8px (было 719px) */
+    border-bottom-left-radius: 0 !important; /* Убираем закругление снизу слева */
+    border-bottom-right-radius: 0 !important; /* Убираем закругление снизу справа */
   }
   
-  section:nth-of-type(2) > div:first-child {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  /* Карточки статистики - убираем flex и justify-between для выравнивания по левому краю */
+  section:nth-of-type(2) > div:last-child > div:nth-child(2) p:first-child,
+  section:nth-of-type(2) > div:last-child > div:nth-child(3) p:first-child {
+    display: block !important; /* Переопределяем flex на block */
+  }
+  
+  /* Секция "Услуги" - корректируем translate-y чтобы не перекрывать карточки */
+  section:nth-of-type(3) {
+    transform: translateY(711px) !important; /* Синхронизируем с секцией "О компании" */
+  }
+}
+
+/* Фиксация размера шрифта hero секции начиная с 450px */
+@media screen and (max-width: 450px) {
+  section:first-of-type h1 {
+    font-size: 2.5rem !important; /* Фиксируем размер (40px) */
+  }
+  
+  section:first-of-type p {
+    font-size: 1.25rem !important; /* Фиксируем размер (20px) */
+  }
+  
+  /* Кнопка "Подробнее" - растягиваем на всю ширину, но не меняем выравнивание текста */
+  section:first-of-type button,
+  section:first-of-type a[class*="btn"] {
+    max-width: 100% !important; /* Убираем ограничение ширины */
+    width: 100% !important; /* Растягиваем на всю ширину */
+  }
+}
+
+/* Секция "Услуги" - плавное уменьшение заголовка от 640px до 375px */
+@media screen and (max-width: 640px) {
+  section:nth-of-type(3) h2 {
+    font-size: clamp(2.5rem, 6.67vw, 3rem) !important; /* От 40px (375px) до 48px (640px) */
+  }
+  
+  /* Карточка "Приемка квартир" - плавное уменьшение текста */
+  section:nth-of-type(3) .priemka h3 {
+    font-size: clamp(1.75rem, 4.67vw, 2.5rem) !important; /* От 28px (375px) до 40px (640px) */
+  }
+  
+  section:nth-of-type(3) .priemka p {
+    font-size: clamp(1rem, 2.67vw, 1.25rem) !important; /* От 16px (375px) до 20px (640px) */
+  }
+  
+  /* Изменяем позиционирование фона - центрируем изображение */
+  section:nth-of-type(3) .priemka {
+    background-position: center center !important;
   }
 }
 </style>
