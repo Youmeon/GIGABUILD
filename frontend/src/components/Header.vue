@@ -193,7 +193,7 @@ watch(
         class="mx-auto flex w-full max-w-7xl items-center justify-between gap-2.5 max-[744px]:mx-0 max-[744px]:max-w-full"
       >
         <!-- Логотип -->
-        <router-link to="/" class="max-w-[9.82rem] pb-[0.01rem] no-underline">
+        <router-link to="/" class="max-w-[9.82rem] pb-[0.01rem] no-underline z-[1000]">
           <img
             :src="isMenuOpen ? logoVar1 : dynamicLogoPath"
             alt="Company Logo"
@@ -202,7 +202,7 @@ watch(
         </router-link>
 
         <!-- Навигация для десктопа -->
-        <ul class="mx-auto hidden gap-2.5 md:flex max-[744px]:hidden">
+        <ul class="mx-auto hidden gap-2.5 lg:flex max-[744px]:hidden">
           <li v-for="(item, index) in navItems" :key="item.to">
             <router-link
               :to="item.to"
@@ -223,8 +223,8 @@ watch(
         <!-- Кнопка бургер-меню -->
         <button
           :class="[
-            'rounded-xl px-4 py-1 text-2xl transition-all duration-300 ease-out mx-4 max-sm:mx-2 md:hidden',
-            'max-[744px]:bg-blue-600 max-[744px]:text-white max-[744px]:hover:bg-blue-500',
+            'rounded-xl px-4 py-1 text-2xl transition-all z-[1000] duration-300 ease-out max-sm:mx-2 min-[1024px]:hidden',
+            'max-[1024px]:bg-blue-600 max-[1024px]:text-white max-[1024px]:hover:bg-blue-500',
             !isMenuOpen && (isSpecialPage() || isScrolled) ? 'text-blue-600' : '',
             !isMenuOpen && !isSpecialPage() && !isScrolled ? 'text-white' : '',
           ]"
@@ -240,9 +240,9 @@ watch(
         <div
           v-if="isMenuOpen"
           :class="[
-            'fixed left-0 top-0 w-screen h-screen bg-white flex flex-col justify-center z-[100]',
-            'max-[744px]:px-4 max-[744px]:pt-[72px]',
-            'md:hidden md:w-max md:right-5 md:top-20 md:h-auto md:rounded-xl md:p-4 md:z-50 md:bg-blue-600/80',
+            'fixed left-0 -top-1 w-screen h-screen bg-white flex flex-col justify-center z-[100]',
+            'max-[1024px]:px-4 max-[1024px]:pt-[72px]',
+            'min-[1024px]:hidden min-[1024px]:w-max min-[1024px]:right-5 min-[1024px]:top-20 min-[1024px]:h-auto min-[1024px]:rounded-xl min-[1024px]:p-4 md:z-50 min-[1024px]:bg-blue-600/80',
           ]"
         >
           <ul class="flex flex-col gap-3 max-w-[570px] w-full mx-auto">
@@ -277,7 +277,7 @@ watch(
       <!-- Кнопка «Оставить заявку» (для десктопа) -->
       <button
         @click="openRequestModal"
-        class="h-10 text-nowrap rounded-xl bg-blue-600 px-5 py-2 font-sans text-base text-background-neutral-100 transition-all duration-300 ease-out hover:bg-blue-500 focus:bg-blue-400 md:block max-[744px]:hidden"
+        class="h-10 text-nowrap rounded-xl bg-blue-600 px-5 py-2 font-sans text-base text-background-neutral-100 transition-all duration-300 ease-out hover:bg-blue-500 focus:bg-blue-400 max-[1024px]:hidden"
       >
         Оставить заявку
       </button>
@@ -292,41 +292,6 @@ header {
     opacity 0.3s ease,
     box-shadow 0.3s ease;
 }
+ 
 
-/* Media query для 744px */
-@media screen and (max-width: 744px) {
-  .container {
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  
-  header {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-    position: fixed !important;
-    top: 0.5rem !important;
-    left: 0 !important;
-    width: 100% !important;
-    transform: none !important;
-    margin: 0 !important;
-  }
-  
-  header nav {
-    margin: 0 !important;
-    max-width: 100% !important;
-  }
-  
-  /* Логотип виден при открытом меню */
-  header img {
-    position: relative !important;
-    z-index: 250 !important;
-  }
-  
-  /* Кнопка бургера видна */
-  header button {
-    position: relative !important;
-    z-index: 250 !important;
-  }
-}
 </style>
