@@ -428,4 +428,54 @@ const cards = ref(servicesData)
     background-position: center center !important;
   }
 }
+
+/* Корректировка отступа секции "Отзывы" для 641px-744px */
+@media screen and (min-width: 641px) and (max-width: 744px) {
+  section:nth-of-type(4) {
+    transform: translateY(800px) !important;
+  }
+}
+
+/* Корректировка отступа секции "Отзывы" для диапазона 611px-640px */
+@media screen and (min-width: 611px) and (max-width: 640px) {
+  section:nth-of-type(4) {
+    transform: translateY(750px) !important;
+  }
+}
+
+/* Карточки услуг - один столбец и плавное уменьшение текста с 610px */
+@media screen and (max-width: 610px) {
+  /* Сетка карточек - один столбец */
+  section:nth-of-type(3) > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Плавное уменьшение текста в карточках услуг */
+  section:nth-of-type(3) a h4 {
+    font-size: clamp(1.75rem, 7.47vw, 2rem) !important;
+  }
+  
+  section:nth-of-type(3) a p {
+    font-size: clamp(1rem, 4.27vw, 1.25rem) !important;
+  }
+  
+  /* Секция "Отзывы" - базовый отступ для одного столбца */
+  section:nth-of-type(4) {
+    transform: translateY(850px) !important;
+  }
+}
+
+/* Уменьшаем отступ для 501px-610px */
+@media screen and (min-width: 501px) and (max-width: 610px) {
+  section:nth-of-type(4) {
+    transform: translateY(780px) !important;
+  }
+}
+
+/* Уменьшаем отступ для 500px и ниже */
+@media screen and (max-width: 500px) {
+  section:nth-of-type(4) {
+    transform: translateY(750px) !important;
+  }
+}
 </style>
