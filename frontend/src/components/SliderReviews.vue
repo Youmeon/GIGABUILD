@@ -1,49 +1,39 @@
 <template>
   <div class="flex min-w-0 w-full max-w-full flex-col overflow-x-hidden">
-    <div class="mb-6 flex items-end justify-between sm:mb-10">
+    <div class="mb-6 flex items-end justify-between max-[744px]:mb-4 min-[745px]:mb-10">
       <h2
-        class="max-w-[200px] text-[20px] leading-[125%] tracking-[-3%] text-neutral-100 sm:max-w-none sm:text-[32px] lg:text-[48px]"
+        class="max-w-[200px] text-[20px] leading-[125%] tracking-[-3%] text-neutral-100 max-[744px]:max-w-none max-[744px]:text-[clamp(1.25rem,4vw,2rem)] min-[745px]:max-w-none min-[745px]:text-[32px] lg:text-[48px]"
       >
         Что говорят
         наши клиенты
       </h2>
-      <div v-if="!isGridLayout" class="flex gap-1 self-end sm:gap-2">
+      <div class="flex shrink-0 gap-2 self-end">
         <button
           type="button"
           @click="scrollPrev"
-          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 sm:rounded-xl"
+          class="review-nav-btn flex items-center justify-center rounded-xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
         >
-          <ArrowLeft class="size-4 text-text-dark-primary sm:size-6" />
+          <ArrowLeft class="size-6 text-text-dark-primary" />
         </button>
         <button
           type="button"
           @click="scrollNext"
-          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
+          class="review-nav-btn flex items-center justify-center rounded-xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
         >
-          <ArrowRight class="size-4 sm:size-6" />
+          <ArrowRight class="size-6" />
         </button>
       </div>
     </div>
 
     <div
       ref="sliderContainer"
-      :class="[
-        'reviews-scroll w-full min-w-0 max-w-full gap-3 pb-4 sm:gap-4',
-        isGridLayout
-          ? 'grid grid-cols-2 overflow-y-auto overflow-x-hidden'
-          : 'flex touch-pan-x overflow-x-auto overflow-y-hidden scroll-smooth max-[744px]:snap-x max-[744px]:snap-mandatory',
-      ]"
+      class="reviews-scroll flex w-full min-w-0 max-w-full touch-pan-x gap-3 overflow-x-auto overflow-y-hidden scroll-smooth pb-4 max-[744px]:snap-x max-[744px]:snap-mandatory min-[745px]:gap-4"
       @scroll.passive="updateScrollState"
     >
       <div
         v-for="review in reviews"
         :key="review.id"
-        :class="[
-          'review-card flex min-w-0 max-w-full flex-col gap-4 rounded-xl bg-neutral-100 p-4 min-[745px]:max-h-[30rem] sm:gap-6 sm:rounded-2xl sm:p-6 lg:p-8',
-          isGridLayout
-            ? 'review-card--grid w-full'
-            : 'review-card--scroll w-[min(564px,100%,calc(100vw-4rem))] flex-none max-[744px]:snap-start',
-        ]"
+        class="review-card review-card--scroll flex min-w-0 max-w-full w-[min(564px,100%,calc(100vw-4rem))] flex-none flex-col gap-4 rounded-xl bg-neutral-100 p-4 min-[745px]:max-h-[30rem] min-[745px]:gap-6 min-[745px]:rounded-2xl min-[745px]:p-6 lg:p-8 max-[744px]:snap-start"
       >
         <div class="review-card__header flex items-center justify-start gap-3 sm:gap-4">
           <div
@@ -111,23 +101,10 @@ const reviews = reactive(reviewsData)
 const sliderContainer = ref(null)
 const screenWidth = ref(0)
 const currentSlide = ref(0)
-const isGridLayout = ref(false)
 
-const isMobile = computed(() => screenWidth.value < 640)
-
-const updateLayoutMode = () => {
-  const root = sliderContainer.value
-  if (!root) return
-
-  // Практика показала, что на узких ширинах горизонтальный режим может визуально
-  // "наслаиваться" из-за ограничений родителя. Поэтому используем простой, стабильный
-  // порог по реальной ширине контейнера: если контейнер слишком узкий — уходим в 2 колонки.
-  const containerWidth = root.getBoundingClientRect().width
-  isGridLayout.value = containerWidth < 520
-}
+const isMobile = computed(() => screenWidth.value <= 744)
 
 const getScrollStep = () => {
-  if (isGridLayout.value) return 0
   const root = sliderContainer.value
   if (!root) return 0
   const card = root.querySelector('.review-card')
@@ -138,7 +115,6 @@ const getScrollStep = () => {
 }
 
 const updateScrollState = () => {
-  if (isGridLayout.value) return
   const el = sliderContainer.value
   if (!el || !reviews.length) return
   const step = getScrollStep()
@@ -148,7 +124,6 @@ const updateScrollState = () => {
 }
 
 const scrollNext = () => {
-  if (isGridLayout.value) return
   const el = sliderContainer.value
   if (!el) return
   const { scrollLeft, scrollWidth, clientWidth } = el
@@ -163,7 +138,6 @@ const scrollNext = () => {
 }
 
 const scrollPrev = () => {
-  if (isGridLayout.value) return
   const el = sliderContainer.value
   if (!el) return
   const { scrollLeft, scrollWidth, clientWidth } = el
@@ -178,7 +152,6 @@ const scrollPrev = () => {
 }
 
 const goToSlide = (index) => {
-  if (isGridLayout.value) return
   const el = sliderContainer.value
   if (!el) return
   const step = getScrollStep()
@@ -191,34 +164,17 @@ const goToSlide = (index) => {
 
 const handleResize = () => {
   screenWidth.value = window.innerWidth
-  nextTick(() => {
-    updateLayoutMode()
-    updateScrollState()
-  })
+  nextTick(updateScrollState)
 }
-
-let resizeObserver = null
 
 onMounted(() => {
   screenWidth.value = window.innerWidth
   window.addEventListener('resize', handleResize)
-  nextTick(() => {
-    updateLayoutMode()
-    updateScrollState()
-    const el = sliderContainer.value
-    if (el && typeof ResizeObserver !== 'undefined') {
-      resizeObserver = new ResizeObserver(() => {
-        updateLayoutMode()
-        updateScrollState()
-      })
-      resizeObserver.observe(el)
-    }
-  })
+  nextTick(updateScrollState)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
-  resizeObserver?.disconnect()
 })
 
 const handleImageError = (event) => {
@@ -234,14 +190,22 @@ const handleImageError = (event) => {
   text-overflow: ellipsis;
 }
 
-button {
-  transition: all 0.2s ease-in-out;
+.review-nav-btn {
+  width: 62px;
+  height: 40px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease-in-out;
 }
 
-@media (max-width: 639px) {
-  button {
-    min-height: 36px;
-    min-width: 36px;
+@media (max-width: 744px) {
+  .review-nav-btn {
+    width: clamp(2.5rem, 10vw, 3.875rem);
+    height: clamp(2.25rem, 6.5vw, 2.5rem);
+  }
+
+  .review-nav-btn :is(svg) {
+    width: clamp(1rem, 3.5vw, 1.5rem);
+    height: clamp(1rem, 3.5vw, 1.5rem);
   }
 }
 
@@ -297,7 +261,7 @@ button {
 @media (min-width: 641px) and (max-width: 744px) {
   .reviews-scroll {
     gap: 16px;
-    overflow-x: hidden;
+    overflow-x: auto;
   }
 
   .review-card--scroll {
@@ -316,6 +280,13 @@ button {
   .review-card__text {
     font-size: 1rem !important;
     line-height: 1.5 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .review-card--scroll {
+    width: clamp(16rem, calc(100vw - 3rem), 21.4375rem);
+    max-height: clamp(18rem, 52vw, 21.75rem);
   }
 }
 </style>

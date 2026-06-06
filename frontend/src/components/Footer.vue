@@ -1,8 +1,8 @@
 <template>
   <footer
     :class="{
-      'translate-y-[830px] max-sm:translate-y-[650px]': isSpecialPage,
-      'relative z-30 mt-[-30px] max-h-full w-full rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[28px] pt-16 max-sm:py-2': true,
+      'home-footer-stack translate-y-[830px] max-sm:translate-y-[650px]': isSpecialPage,
+      'relative z-30 mt-[-30px] max-h-full w-full rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[28px] pt-16 max-sm:py-2 max-[744px]:mt-[-16px] max-[744px]:rounded-t-none': true,
     }"
   >
     <div
@@ -205,6 +205,25 @@ const isSpecialPage = computed(() => {
   /* Убираем margin-left: auto для второго телефона */
   .footer-link--right {
     margin-left: 0 !important;
+  }
+}
+
+/* Синхронизация позиции футера с секцией отзывов на главной */
+@media screen and (min-width: 641px) and (max-width: 744px) {
+  footer.home-footer-stack {
+    transform: translateY(800px) !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  footer.home-footer-stack {
+    transform: translateY(clamp(650px, calc(650px + (100vw - 375px) * 0.566), 800px)) !important;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  footer.home-footer-stack {
+    transform: translateY(clamp(750px, calc(700px + (100vw - 375px) * 0.35), 820px)) !important;
   }
 }
 </style>

@@ -184,7 +184,7 @@ watch(
           ? 'fixed left-1/2 top-1 mt-2 h-14 -translate-x-1/2 rounded-2xl border-neutral-100/20 bg-neutral-200/80 text-black shadow-md'
           : 'absolute top-1 text-white',
         isMenuOpen ? 'max-[744px]:!bg-white' : 'bg-none',
-        'px-8 py-3 transition-all duration-300 ease-in-out max-sm:px-4',
+        'px-8 py-3 transition-all duration-300 ease-in-out max-[744px]:px-[clamp(1.25rem,4vw,2rem)]',
         isHeaderHidden ? '-translate-y-[120px]' : 'translate-y-0',
         isMenuOpen ? 'z-[200]' : 'z-[80]',
       ]"
@@ -223,7 +223,7 @@ watch(
         <!-- Кнопка бургер-меню -->
         <button
           :class="[
-            'rounded-xl px-4 py-1 text-2xl transition-all z-[1000] duration-300 ease-out max-sm:mx-2 min-[1024px]:hidden',
+            'rounded-xl px-4 py-1 text-2xl transition-all z-[1000] duration-300 ease-out min-[1024px]:hidden',
             'max-[1024px]:bg-blue-600 max-[1024px]:text-white max-[1024px]:hover:bg-blue-500',
             !isMenuOpen && (isSpecialPage() || isScrolled) ? 'text-blue-600' : '',
             !isMenuOpen && !isSpecialPage() && !isScrolled ? 'text-white' : '',
@@ -240,9 +240,9 @@ watch(
         <div
           v-if="isMenuOpen"
           :class="[
-            'fixed left-0 -top-1 w-screen h-screen bg-white flex flex-col justify-center z-[100]',
+            'fixed inset-0 z-[100] flex min-h-[100dvh] flex-col justify-center bg-white',
             'max-[1024px]:px-4 max-[1024px]:pt-[72px]',
-            'min-[1024px]:hidden min-[1024px]:w-max min-[1024px]:right-5 min-[1024px]:top-20 min-[1024px]:h-auto min-[1024px]:rounded-xl min-[1024px]:p-4 md:z-50 min-[1024px]:bg-blue-600/80',
+            'min-[1024px]:hidden min-[1024px]:inset-auto min-[1024px]:right-5 min-[1024px]:top-20 min-[1024px]:h-auto min-[1024px]:min-h-0 min-[1024px]:w-max min-[1024px]:rounded-xl min-[1024px]:p-4 md:z-50 min-[1024px]:bg-blue-600/80',
           ]"
         >
           <ul class="flex flex-col gap-3 max-w-[570px] w-full mx-auto">

@@ -167,7 +167,8 @@
       </div>
     </section>
     <section
-      className="bg-blue-600 px-8 py-16 max-sm:py-2 h-[730px] max-[744px]:h-[510px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl"
+      class="home-reviews"
+      className="bg-blue-600 px-8 py-16 max-sm:py-2 h-[730px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl max-[744px]:rounded-b-none"
     >
       <div>
         <div
@@ -345,13 +346,13 @@ const cards = ref(servicesData)
   }
 
   /* Секция "Отзывы" */
-  section:nth-of-type(4) {
+  .home-reviews {
     height: auto !important;
     min-height: 0 !important;
-    padding: 2rem 1.25rem 2.5rem !important;
+    padding: 2rem 1.25rem 0 !important;
   }
 
-  section:nth-of-type(4) > div:first-child {
+  .home-reviews > div:first-child {
     margin-bottom: 1.5rem !important;
   }
 }
@@ -429,53 +430,36 @@ const cards = ref(servicesData)
   }
 }
 
-/* Корректировка отступа секции "Отзывы" для 641px-744px */
+/* Синхронизация секции "Отзывы" с футером: 641px–744px */
 @media screen and (min-width: 641px) and (max-width: 744px) {
-  section:nth-of-type(4) {
+  .home-reviews {
     transform: translateY(800px) !important;
   }
 }
 
-/* Корректировка отступа секции "Отзывы" для диапазона 611px-640px */
-@media screen and (min-width: 611px) and (max-width: 640px) {
-  section:nth-of-type(4) {
-    transform: translateY(750px) !important;
+/* Плавный переход 376px–640px — синхронно с секциями 2/3 на 711px */
+@media screen and (max-width: 640px) {
+  .home-reviews {
+    transform: translateY(clamp(650px, calc(650px + (100vw - 375px) * 0.566), 800px)) !important;
   }
 }
 
-/* Карточки услуг - один столбец и плавное уменьшение текста с 610px */
+/* Карточки услуг — один столбец и плавное уменьшение текста с 610px */
 @media screen and (max-width: 610px) {
-  /* Сетка карточек - один столбец */
   section:nth-of-type(3) > div:last-child {
     grid-template-columns: 1fr !important;
   }
-  
-  /* Плавное уменьшение текста в карточках услуг */
+
   section:nth-of-type(3) a h4 {
     font-size: clamp(1.75rem, 7.47vw, 2rem) !important;
   }
-  
+
   section:nth-of-type(3) a p {
     font-size: clamp(1rem, 4.27vw, 1.25rem) !important;
   }
-  
-  /* Секция "Отзывы" - базовый отступ для одного столбца */
-  section:nth-of-type(4) {
-    transform: translateY(850px) !important;
-  }
-}
 
-/* Уменьшаем отступ для 501px-610px */
-@media screen and (min-width: 501px) and (max-width: 610px) {
-  section:nth-of-type(4) {
-    transform: translateY(780px) !important;
-  }
-}
-
-/* Уменьшаем отступ для 500px и ниже */
-@media screen and (max-width: 500px) {
-  section:nth-of-type(4) {
-    transform: translateY(750px) !important;
+  .home-reviews {
+    transform: translateY(clamp(750px, calc(700px + (100vw - 375px) * 0.35), 820px)) !important;
   }
 }
 </style>
