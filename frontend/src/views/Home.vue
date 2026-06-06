@@ -1,25 +1,22 @@
 <template>
   <main>
     <section
-      className="w-full h-[52.625rem] max-sm:h-full absolute top-0 left-0 bg-center bg-cover pb-16 max-sm:px-4"
+      className="w-full h-[52.625rem] absolute top-0 left-0 bg-center bg-cover pb-16 max-sm:px-4"
       :style="{ backgroundImage: 'url(' + heroImage + ')' }"
     >
-      <div className="mt-[566px] max-sm:mt-[314px] max-sm:px-4 px-8">
-        <div>
-          <h1 className=" text-neutral-100 xl:text-[5rem] mb-1">
-            Приемка квартир в новостройке
+      <div className="absolute bottom-16 left-0 right-0 max-sm:bottom-16 max-sm:px-4 px-8">
+        <div className="flex flex-col">
+          <h1 className="text-neutral-100 text-[5rem] leading-[0.95] mb-1">
+            Приемка квартир <br class="hidden max-[744px]:block" />в новостройке
           </h1>
-          <p className="text-neutral-100/80 mb-10 xl:mt-8">
+          <p className="text-neutral-100/80 text-[1.5rem] leading-[1.5] mb-10 xl:mt-8">
             Широкий профиль, гарантия качества и внимание к деталям!
           </p>
-        </div>
-        <div
-          className="max-w-[18.3rem] bg-blue-600 text-neutral-100 rounded-2xl px-5 py-3 flex justify-center"
-        >
-          <router-link to="/apartment-inspection" className="flex gap-3">
-            Подробнее
-            <ArrowUpRight />
-          </router-link>
+          <ButtonDetails
+            to="/apartment-inspection"
+            variant="primary"
+            class="w-full max-w-[18.3rem]"
+          />
         </div>
       </div>
     </section>
@@ -156,51 +153,22 @@
             Осмотр с помощью проф-оборудования, фото и видео-фиксация дефектов и
             оформление акта по СП, ГОСТ, ПУЭ.
           </p>
-          <div
-            className="max-w-[18.3rem] bg-neutral-100 text-blue-600 rounded-2xl px-5 py-3 flex justify-center"
-          >
-            <router-link to="/apartment-inspection" className="flex gap-3">
-              Подробнее
-              <ArrowUpRight />
-            </router-link>
-          </div>
+          <ButtonDetails
+            to="/apartment-inspection"
+            variant="secondary"
+            class="w-full max-w-[18.3rem]"
+          />
         </div>
       </div>
       <div
-        class="flex w-full items-stretch gap-8 max-sm:flex-wrap max-sm:gap-4 sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center lg:flex-wrap lg:justify-around xl:flex-nowrap xl:justify-center"
+        class="grid grid-cols-3 justify-items-center gap-8 max-[1328px]:grid-cols-2 max-[1328px]:justify-items-stretch max-[744px]:gap-[0.625rem]"
       >
-        <div
-          v-for="card in cards"
-          :key="card.id"
-          className="max-w-[28rem] max-sm:w-full max-sm:items-center flex flex-col justify-between rounded-2xl pb-3 px-3 shadow-[0_0_40px_0_rgba(59,130,246,0.05)] bg-white"
-        >
-          <div
-            className="flex items-start gap-4 pt-8 max-sm:pt-4 max-w-[384px] max-sm:justify-center px-5 max-sm:px-2"
-          >
-            <div>
-              <h4
-                className="text-neutral-800 pb-6 max-sm:pb-3 text-[2rem] font-normal leading-[125%] tracking-[-4%]"
-              >
-                {{ card.title }}
-              </h4>
-              <p className="pb-8 text-neutral-700">{{ card.description }}</p>
-            </div>
-            <div className="mt-3 max-sm:px-1">
-              <ArrowUpRight />
-            </div>
-          </div>
-          <div className="w-[26.5rem] max-sm:w-[20rem] h-[15.3125rem]">
-            <img
-              :src="getImageUrl(card.image)"
-              alt="card image"
-              className=" rounded-2xl"
-            />
-          </div>
-        </div>
+        <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
     </section>
     <section
-      className="bg-blue-600 px-8 py-16 max-sm:py-2 max-sm:h-[510px] h-[730px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl"
+      class="home-reviews"
+      className="bg-blue-600 px-8 py-16 max-sm:py-2 h-[730px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl max-[744px]:rounded-b-none"
     >
       <div>
         <div
@@ -233,10 +201,10 @@
 <script setup>
 import heroImage from '@/assets/images/img.jpg'
 import servicesData from '@/data/services.json'
-import { ArrowUpRight } from 'lucide-vue-next'
 import { ref } from 'vue'
+import ButtonDetails from '../components/ButtonDetails.vue'
 import SliderReviews from '../components/SliderReviews.vue'
-import getImageUrl from '../utils/getImageURL'
+import CardService from '../components/CardService.vue'
 const cards = ref(servicesData)
 </script>
 
@@ -260,5 +228,238 @@ const cards = ref(servicesData)
   background-image: url(../assets/images/schempomoch.png);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Media queries для 825px-1023px - уменьшаем расстояние до footer */
+@media screen and (min-width: 825px) and (max-width: 1023px) {
+  /* Секция "Отзывы" - уменьшаем высоту */
+  section:nth-of-type(4) {
+    height: 600px !important;
+  }
+}
+
+/* Media queries для 745px-824px - плавный переход */
+@media screen and (min-width: 745px) and (max-width: 824px) {
+  /* Секция "Отзывы" - плавное уменьшение высоты */
+  section:nth-of-type(4) {
+    height: 600px !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Media queries для 745px-767px */
+@media screen and (min-width: 745px) and (max-width: 767px) {
+  section:nth-of-type(2) > div:first-child > div:last-child p:last-child {
+    display: block !important;
+  }
+}
+
+/* Media queries для 744px и меньше */
+@media screen and (max-width: 744px) {
+  /* Hero секция */
+  section:first-of-type {
+    height: 52.625rem !important;
+    padding-bottom: 4rem !important;
+  }
+  
+  section:first-of-type > div {
+    padding-left: 1.25rem !important;
+    padding-right: 2rem !important;
+    bottom: 4rem !important;
+  }
+  
+  section:first-of-type h1 {
+    font-size: clamp(2rem, 8vw, 5rem) !important;
+    line-height: 0.95 !important;
+    letter-spacing: -1.17px !important; /* Увеличиваем с -3.17px до -1.17px (на 2px) */
+  }
+  
+  section:first-of-type p {
+    font-size: clamp(1rem, 3vw, 1.5rem) !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.71px !important; /* Возвращаем исходное значение */
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Секция "О компании" */
+  section:nth-of-type(2) {
+    padding-top: 2rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    gap: 4rem;
+  }
+  
+  section:nth-of-type(2) > div:first-child {
+    flex-direction: column !important;
+    gap: 1.625rem !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:first-child {
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:first-child > div:first-child {
+    margin-bottom: 3rem !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:first-child h2 {
+    text-align: left !important;
+    max-width: 420px;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:last-child {
+    display: flex !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:last-child p {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.71px !important;
+  }
+  
+  section:nth-of-type(2) > div:first-child > div:last-child p:last-child {
+    display: block !important;
+  }
+  
+  /* Карточки статистики */
+  section:nth-of-type(2) > div:last-child {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding-bottom: 0 !important;
+  }
+  
+  section:nth-of-type(2) > div:last-child > div {
+    padding: 2.1875rem 2rem !important;
+  }
+  
+  section:nth-of-type(2) > div:last-child > div p:first-child {
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  section:nth-of-type(2) > div:last-child > div p:last-child {
+    font-size: 1.25rem !important;
+  }
+
+  /* Секция "Отзывы" */
+  .home-reviews {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 2rem 1.25rem 0 !important;
+  }
+
+  .home-reviews > div:first-child {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  /* Hero секция - оставляем как на 744px */
+  section:first-of-type {
+    height: 52.625rem !important;
+  }
+  
+  section:first-of-type > div {
+    bottom: 11.5rem !important; /* Опускаем на 0.5rem (синхронно с секцией "О компании") */
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  
+  /* Секция "О компании" - корректируем translate-y и добавляем padding-bottom */
+  section:nth-of-type(2) {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 2.8125rem !important; /* Добавляем нижний отступ для карточек */
+    transform: translateY(711px) !important; /* Опускаем ещё на 8px (было 719px) */
+    border-bottom-left-radius: 0 !important; /* Убираем закругление снизу слева */
+    border-bottom-right-radius: 0 !important; /* Убираем закругление снизу справа */
+  }
+  
+  /* Карточки статистики - убираем flex и justify-between для выравнивания по левому краю */
+  section:nth-of-type(2) > div:last-child > div:nth-child(2) p:first-child,
+  section:nth-of-type(2) > div:last-child > div:nth-child(3) p:first-child {
+    display: block !important; /* Переопределяем flex на block */
+  }
+  
+  /* Секция "Услуги" - корректируем translate-y чтобы не перекрывать карточки */
+  section:nth-of-type(3) {
+    transform: translateY(711px) !important; /* Синхронизируем с секцией "О компании" */
+  }
+}
+
+/* Фиксация размера шрифта hero секции начиная с 450px */
+@media screen and (max-width: 450px) {
+  section:first-of-type h1 {
+    font-size: 2.5rem !important; /* Фиксируем размер (40px) */
+  }
+  
+  section:first-of-type p {
+    font-size: 1.25rem !important; /* Фиксируем размер (20px) */
+  }
+  
+  /* Кнопка "Подробнее" - растягиваем на всю ширину, но не меняем выравнивание текста */
+  section:first-of-type button,
+  section:first-of-type a[class*="btn"] {
+    max-width: 100% !important; /* Убираем ограничение ширины */
+    width: 100% !important; /* Растягиваем на всю ширину */
+  }
+}
+
+/* Секция "Услуги" - плавное уменьшение заголовка от 640px до 375px */
+@media screen and (max-width: 640px) {
+  section:nth-of-type(3) h2 {
+    font-size: clamp(2.5rem, 6.67vw, 3rem) !important; /* От 40px (375px) до 48px (640px) */
+  }
+  
+  /* Карточка "Приемка квартир" - плавное уменьшение текста */
+  section:nth-of-type(3) .priemka h3 {
+    font-size: clamp(1.75rem, 4.67vw, 2.5rem) !important; /* От 28px (375px) до 40px (640px) */
+  }
+  
+  section:nth-of-type(3) .priemka p {
+    font-size: clamp(1rem, 2.67vw, 1.25rem) !important; /* От 16px (375px) до 20px (640px) */
+  }
+  
+  /* Изменяем позиционирование фона - центрируем изображение */
+  section:nth-of-type(3) .priemka {
+    background-position: center center !important;
+  }
+}
+
+/* Синхронизация секции "Отзывы" с футером: 641px–744px */
+@media screen and (min-width: 641px) and (max-width: 744px) {
+  .home-reviews {
+    transform: translateY(800px) !important;
+  }
+}
+
+/* Плавный переход 376px–640px — синхронно с секциями 2/3 на 711px */
+@media screen and (max-width: 640px) {
+  .home-reviews {
+    transform: translateY(clamp(650px, calc(650px + (100vw - 375px) * 0.566), 800px)) !important;
+  }
+}
+
+/* Карточки услуг — один столбец и плавное уменьшение текста с 610px */
+@media screen and (max-width: 610px) {
+  section:nth-of-type(3) > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  section:nth-of-type(3) a h4 {
+    font-size: clamp(1.75rem, 7.47vw, 2rem) !important;
+  }
+
+  section:nth-of-type(3) a p {
+    font-size: clamp(1rem, 4.27vw, 1.25rem) !important;
+  }
+
+  .home-reviews {
+    transform: translateY(clamp(750px, calc(700px + (100vw - 375px) * 0.35), 820px)) !important;
+  }
 }
 </style>

@@ -4,25 +4,8 @@
       <div
         class="mb-[80px] flex items-center justify-start gap-[132px] max-md:mb-8 max-md:flex-col max-md:items-start max-md:gap-4"
       >
-        <div
-          class="flex w-[332px] items-center justify-start gap-[4.5px] text-center"
-        >
-          <span>
-            <svg
-              width="6"
-              height="7"
-              viewBox="0 0 6 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
-            </svg>
-          </span>
-          <span
-            class="font-bold uppercase text-text-dark-secondary max-sm:p-1 max-sm:text-[0.7rem]"
-          >
-            О нас
-          </span>
+        <div class="w-[332px]">
+          <!-- Надпись "О нас" теперь в sticky контейнере ниже -->
         </div>
         <h1
           class="align-middle text-[80px] font-medium leading-[115%] tracking-[-4%] text-text-dark-primary max-lg:text-[5rem] max-md:text-[2.5rem] max-sm:text-[2rem]"
@@ -31,14 +14,32 @@
         </h1>
       </div>
       <div class="flex gap-[132px] max-md:flex-col max-md:gap-8">
-        <div class="max-md:order-2">
+        <div class="sticky bottom-[20px] self-end h-fit w-[332px] -mt-[160px] max-md:static max-md:order-2 max-md:w-full max-md:mt-0">
+          <div class="flex items-center justify-start gap-[4.5px] text-center mb-[80px] max-md:mb-8">
+            <span>
+              <svg
+                width="6"
+                height="7"
+                viewBox="0 0 6 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
+              </svg>
+            </span>
+            <span
+              class="font-bold uppercase text-text-dark-secondary max-sm:p-1 max-sm:text-[0.7rem]"
+            >
+              О нас
+            </span>
+          </div>
           <img
             :src="textureImage"
             alt=""
             class="max-w-[332px] max-md:w-full max-md:max-w-none"
           />
         </div>
-        <div class="max-md:order-1">
+        <div class="flex-1 max-md:order-1">
           <div class="mb-[64px] flex flex-col gap-4 max-md:mb-8">
             <div
               class="flex flex-col gap-4 max-sm:flex max-sm:items-center max-sm:justify-start max-sm:gap-4"

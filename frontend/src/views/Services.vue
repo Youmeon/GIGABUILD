@@ -46,55 +46,24 @@
         <div
           class="bg flex h-[647px] flex-col justify-end rounded-2xl p-8 text-neutral-100"
         >
-          <h3
-            className="text-[2.5rem] font-medium leading-none tracking-[-3%] mb-3"
-          >
+          <h3 class="mb-3 text-[2.5rem] font-medium leading-none tracking-[-3%]">
             Приемка квартир
           </h3>
-          <p
-            className="leading-[150%] mb-9 text-neutral-100/80 text-[24px] align-middle tracking-[-3%]"
-          >
+          <p class="mb-9 text-[24px] leading-[150%] tracking-[-3%] text-neutral-100/80">
             Осмотр с помощью проф-оборудования, фото и видео-фиксация дефектов и
             оформление акта по СП, ГОСТ, ПУЭ.
           </p>
-          <div
-            className="max-w-[18.3rem] bg-neutral-100 text-blue-600 rounded-2xl px-5 py-3 flex justify-center"
-          >
-            <router-link to="/apartment-inspection" className="flex gap-3">
-              Подробнее
-              <ArrowUpRight />
-            </router-link>
-          </div>
+          <ButtonDetails
+            to="/apartment-inspection"
+            variant="secondary"
+            class="w-full max-w-[332px]"
+          />
         </div>
       </div>
       <div
-        class="mt-10 flex w-full items-stretch gap-8 max-sm:flex-wrap max-sm:gap-4 sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center lg:flex-wrap lg:justify-around xl:flex-nowrap xl:justify-center"
+        class="mt-10 grid grid-cols-3 justify-items-center gap-8 max-[1328px]:grid-cols-2 max-[1328px]:justify-items-stretch max-[744px]:gap-[0.625rem]"
       >
-        <div
-          v-for="card in cards"
-          :key="card.id"
-          className="max-w-[28rem] max-sm:w-full max-sm:items-center flex flex-col justify-between rounded-2xl pb-3 px-3 shadow-[0_0_40px_0_rgba(59,130,246,0.05)] bg-white"
-        >
-          <div
-            className="flex items-start gap-4 pt-8 max-sm:pt-4 max-w-[384px] max-sm:justify-center px-5 max-sm:px-2"
-          >
-            <div>
-              <h4
-                className="text-neutral-800 pb-6 max-sm:pb-3 text-[2rem] font-normal leading-[125%] tracking-[-4%]"
-              >
-                {{ card.title }}
-              </h4>
-              <p className="pb-8 text-neutral-700">{{ card.description }}</p>
-            </div>
-          </div>
-          <div className="w-[26.5rem] max-sm:w-[20rem] h-[15.3125rem]">
-            <img
-              :src="getImageUrl(card.image)"
-              alt="card image"
-              className=" rounded-2xl"
-            />
-          </div>
-        </div>
+        <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
     </section>
   </main>
@@ -102,9 +71,9 @@
 
 <script setup>
 import servicesData from '@/data/services.json'
-import { ArrowUpRight } from 'lucide-vue-next'
 import { ref } from 'vue'
-import getImageUrl from '../utils/getImageURL'
+import ButtonDetails from '../components/ButtonDetails.vue'
+import CardService from '../components/CardService.vue'
 const cards = ref(servicesData)
 </script>
 

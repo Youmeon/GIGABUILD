@@ -10,25 +10,13 @@
       <div class="flex gap-1 sm:gap-2">
         <button
           @click="prevSlide"
-          :disabled="isFirstSlide"
-          :class="[
-            'flex items-center justify-center rounded-lg px-4 py-2 transition-colors max-sm:px-1 sm:rounded-xl',
-            isFirstSlide
-              ? 'bg-blue-200/30 text-neutral-100/50'
-              : 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300',
-          ]"
+          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
         >
           <ArrowLeft class="size-4 text-text-dark-primary sm:size-6" />
         </button>
         <button
           @click="nextSlide"
-          :disabled="isLastSlide"
-          :class="[
-            'flex items-center justify-center rounded-lg px-4 py-2 transition-colors max-sm:px-1 sm:rounded-xl',
-            isLastSlide
-              ? 'bg-blue-200/30 text-neutral-100/50'
-              : 'bg-neutral-200 text-text-dark-primary hover:bg-neutral-300',
-          ]"
+          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
         >
           <ArrowRight class="size-4 sm:size-6" />
         </button>
@@ -106,20 +94,41 @@ const CARD_GAP = 16
 // Определяем мобильное устройство
 const isMobile = computed(() => screenWidth.value < 640)
 
+// Вычисляем сколько карточек видно на экране
+const visibleCards = computed(() => {
+  const containerWidth = screenWidth.value
+  // Примерно сколько карточек помещается
+  return Math.floor(containerWidth / (CARD_WIDTH + CARD_GAP))
+})
+
+// Максимальный индекс слайда (чтобы не было пустого места)
+const maxSlideIndex = computed(() => {
+  const visible = Math.max(1, visibleCards.value)
+  return Math.max(0, items.length - visible)
+})
+
 // Навигационные состояния
 const isFirstSlide = computed(() => currentSlide.value === 0)
-const isLastSlide = computed(() => currentSlide.value >= items.length - 1)
+const isLastSlide = computed(() => currentSlide.value >= maxSlideIndex.value)
 
 // Функции навигации
 const nextSlide = () => {
-  if (!isLastSlide.value) {
+  if (isLastSlide.value) {
+    // Возврат в начало
+    currentSlide.value = 0
+    updateTranslateX()
+  } else {
     currentSlide.value++
     updateTranslateX()
   }
 }
 
 const prevSlide = () => {
-  if (!isFirstSlide.value) {
+  if (isFirstSlide.value) {
+    // Переход в конец
+    currentSlide.value = maxSlideIndex.value
+    updateTranslateX()
+  } else {
     currentSlide.value--
     updateTranslateX()
   }

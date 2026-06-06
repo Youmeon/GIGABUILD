@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Секундомер электронный",
+    "image": "acceptance-of-apartments-banner-electronic-stopwatch1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Крановые весы",
+    "image": "acceptance-of-apartments-banner-crane-clock2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Цифровой мультиметр",
+    "image": "acceptance-of-apartments-banner-digital-multimeter3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Дифференциальный манометр",
+    "image": "acceptance-of-apartments-banner-differentiated-pressure-gauge4.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Моновакуумметр",
+    "image": "acceptance-of-apartments-banner-vacuum-pressure-gauge5.jpg"
+  },
+	{
+		"id": 6,
+		"title": "Трубка напорная",
+		"image": "acceptance-of-apartments-banner-pressure-tube6.jpg"
+	},
+	{
+		"id": 7,
+		"title": "Цифровой осциллограф",
+		"image": "acceptance-of-apartments-banner-digital-oscilloscope7.jpg"
+	},
+	{
+		"id": 8,
+		"title": "Барометр",
+		"image": "acceptance-of-apartments-banner-barometer8.jpg"
+	},
+	{
+		"id": 9,
+		"title": "Манометр",
+		"image": "acceptance-of-apartments-banner-pressure-gauge9.jpg"
+	}
+]
