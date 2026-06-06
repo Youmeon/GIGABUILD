@@ -217,13 +217,7 @@ const isSpecialPage = computed(() => {
 
 @media screen and (max-width: 640px) {
   footer.home-footer-stack {
-    transform: translateY(clamp(650px, calc(650px + (100vw - 375px) * 0.566), 800px)) !important;
-  }
-}
-
-@media screen and (max-width: 610px) {
-  footer.home-footer-stack {
-    transform: translateY(clamp(750px, calc(700px + (100vw - 375px) * 0.35), 820px)) !important;
+    transform: translateY(clamp(710px, calc(710px + (100vw - 375px) * 0.34), 800px)) !important;
   }
 }
 </style>

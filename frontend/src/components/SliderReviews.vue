@@ -220,12 +220,13 @@ const handleImageError = (event) => {
 }
 
 @media (max-width: 744px) {
-  /* Плавное "диагональное" уменьшение — только в режиме горизонтального скролла */
   .review-card--scroll {
-    width: clamp(16rem, calc(100vw - 4rem), 28rem);
-    max-height: clamp(18.5rem, 50vw, 21.875rem);
-    gap: clamp(0.875rem, 1.6vw, 1rem);
-    padding: clamp(0.875rem, 1.8vw, 1.25rem);
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    min-height: 220px;
+    gap: clamp(0.875rem, 2vw, 1rem);
+    padding: clamp(1rem, 3vw, 1.25rem);
     border-radius: clamp(1rem, 2vw, 1.5rem);
   }
 
@@ -280,13 +281,6 @@ const handleImageError = (event) => {
   .review-card__text {
     font-size: 1rem !important;
     line-height: 1.5 !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .review-card--scroll {
-    width: clamp(16rem, calc(100vw - 3rem), 21.4375rem);
-    max-height: clamp(18rem, 52vw, 21.75rem);
   }
 }
 </style>

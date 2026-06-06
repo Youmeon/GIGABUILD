@@ -203,8 +203,8 @@ import heroImage from '@/assets/images/img.jpg'
 import servicesData from '@/data/services.json'
 import { ref } from 'vue'
 import ButtonDetails from '../components/ButtonDetails.vue'
-import SliderReviews from '../components/SliderReviews.vue'
 import CardService from '../components/CardService.vue'
+import SliderReviews from '../components/SliderReviews.vue'
 const cards = ref(servicesData)
 </script>
 
@@ -429,7 +429,6 @@ const cards = ref(servicesData)
     background-position: center center !important;
   }
 }
-
 /* Синхронизация секции "Отзывы" с футером: 641px–744px */
 @media screen and (min-width: 641px) and (max-width: 744px) {
   .home-reviews {
@@ -437,10 +436,10 @@ const cards = ref(servicesData)
   }
 }
 
-/* Плавный переход 376px–640px — синхронно с секциями 2/3 на 711px */
+/* Плавный переход 391px–640px */
 @media screen and (max-width: 640px) {
   .home-reviews {
-    transform: translateY(clamp(650px, calc(650px + (100vw - 375px) * 0.566), 800px)) !important;
+    transform: translateY(clamp(710px, calc(710px + (100vw - 375px) * 0.34), 800px)) !important;
   }
 }
 
@@ -458,8 +457,6 @@ const cards = ref(servicesData)
     font-size: clamp(1rem, 4.27vw, 1.25rem) !important;
   }
 
-  .home-reviews {
-    transform: translateY(clamp(750px, calc(700px + (100vw - 375px) * 0.35), 820px)) !important;
-  }
+  /* убираем переопределение .home-reviews здесь — не нужно */
 }
 </style>
