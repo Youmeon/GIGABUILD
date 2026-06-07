@@ -28,13 +28,13 @@
         class="flex flex-col flex-nowrap gap-[10px] text-[48px] max-sm:text-2xl max-[744px]:gap-[5px] max-[744px]:items-start max-[744px]:w-full"
       >
         <a
-          href="tel:+79144110611"
-          class="footer-link footer-phone flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100 max-[744px]:text-5xl max-[744px]:leading-normal max-[744px]:tracking-[-1.43px] max-[744px]:pl-[3px] max-[744px]:pb-[3px] max-[744px]:font-semibold max-[744px]:border-b-0"
+           href="tel:+79144110611"
+          class="footer-link footer-phone flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100 max-[744px]:text-5xl max-[384px]:text-[2rem] max-[744px]:leading-normal max-[744px]:tracking-[-1.43px] max-[744px]:pl-[3px] max-[744px]:pb-[3px] max-[744px]:font-semibold max-[744px]:border-b-0"
           >8 (914) 441-06-11</a
         >
         <a
           href="tel:+74212247365"
-          class="footer-link footer-link--right footer-phone flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100 max-[744px]:text-5xl max-[744px]:leading-normal max-[744px]:tracking-[-1.43px] max-[744px]:pl-[3px] max-[744px]:pb-[3px] max-[744px]:ml-0 max-[744px]:font-semibold max-[744px]:border-b-0"
+          class="footer-link footer-link--right footer-phone flex-nowrap text-nowrap font-semibold leading-[100%] tracking-[-3%] text-neutral-100 max-[744px]:text-5xl max-[384px]:text-[2rem] max-[744px]:leading-normal max-[744px]:tracking-[-1.43px] max-[744px]:pl-[3px] max-[744px]:pb-[3px] max-[744px]:ml-0 max-[744px]:font-semibold max-[744px]:border-b-0"
           >24-73-65</a
         >
       </div>
@@ -217,7 +217,7 @@ const isSpecialPage = computed(() => {
 
 @media screen and (max-width: 640px) {
   footer.home-footer-stack {
-    transform: translateY(clamp(710px, calc(710px + (100vw - 375px) * 0.34), 800px)) !important;
+    transform: translateY(780px) !important;
   }
 }
 </style>

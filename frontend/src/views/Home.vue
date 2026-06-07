@@ -168,7 +168,7 @@
     </section>
     <section
       class="home-reviews"
-      className="bg-blue-600 px-8 py-16 max-sm:py-2 h-[730px] w-full relative translate-y-[830px] max-sm:translate-y-[650px] mt-[-16px] z-30 rounded-2xl max-[744px]:rounded-b-none"
+      className="bg-blue-600 px-8 py-16 max-sm:py-2 h-[730px] w-full relative translate-y-[830px] mt-[-16px] z-30 rounded-2xl max-[744px]:rounded-b-none"
     >
       <div>
         <div
@@ -349,7 +349,7 @@ const cards = ref(servicesData)
   .home-reviews {
     height: auto !important;
     min-height: 0 !important;
-    padding: 2rem 1.25rem 0 !important;
+    padding: 2rem 1.25rem 2rem !important;
   }
 
   .home-reviews > div:first-child {
@@ -436,10 +436,10 @@ const cards = ref(servicesData)
   }
 }
 
-/* Плавный переход 391px–640px */
+/* 391px–640px */
 @media screen and (max-width: 640px) {
   .home-reviews {
-    transform: translateY(clamp(710px, calc(710px + (100vw - 375px) * 0.34), 800px)) !important;
+    transform: translateY(711px) !important;
   }
 }
 
