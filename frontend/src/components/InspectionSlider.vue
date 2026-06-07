@@ -1,24 +1,24 @@
 <template>
-  <div class="flex flex-col">
+ <div class="flex flex-col">
     <div class="mb-6 flex items-center justify-between sm:mb-10">
       <h3
-        class="max-w-[200px] text-[20px] font-semibold leading-[125%] tracking-[-3%] text-neutral-100 sm:max-w-none sm:text-[32px] lg:text-[48px]"
+        class="max-w-[200px] text-[20px] font-semibold leading-[125%] tracking-[-3%] text-neutral-100 max-[640px]:max-w-none max-[640px]:text-[2rem] sm:max-w-none sm:text-[32px] lg:text-[48px]"
       >
         В ходе осмотра проверяем
       </h3>
-      <!-- Кнопки навигации -->
-      <div class="flex gap-1 sm:gap-2">
+      <!-- Кнопки навигации — только десктоп -->
+      <div class="flex gap-1 sm:gap-2 max-[640px]:hidden">
         <button
           @click="prevSlide"
-          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
+          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 sm:rounded-xl"
         >
-          <ArrowLeft class="size-4 text-text-dark-primary sm:size-6" />
+          <ArrowLeft class="size-6 text-text-dark-primary" />
         </button>
         <button
           @click="nextSlide"
-          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 max-sm:px-1 sm:rounded-xl"
+          class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 sm:rounded-xl"
         >
-          <ArrowRight class="size-4 sm:size-6" />
+          <ArrowRight class="size-6" />
         </button>
       </div>
     </div>
@@ -58,8 +58,8 @@
       </div>
     </div>
 
-    <!-- Индикаторы для мобильных устройств -->
-    <div v-if="isMobile" class="mt-4 flex justify-center gap-2">
+     <!-- Индикаторы для мобильных устройств скрыты -->
+    <!-- <div v-if="isMobile" class="mt-4 flex justify-center gap-2">
       <div
         v-for="(_, index) in inspectionItems.length"
         :key="index"
@@ -69,6 +69,22 @@
           currentSlide === index - 1 ? 'bg-neutral-100' : 'bg-neutral-100/30',
         ]"
       />
+    </div> -->
+
+    <!-- Кнопки навигации — только мобильные, под слайдером -->
+    <div class="hidden max-[640px]:flex gap-3 mt-5 w-full">
+      <button
+        @click="prevSlide"
+        class="insp-nav-btn-mobile flex items-center justify-center rounded-2xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
+      >
+        <ArrowLeft class="size-6" />
+      </button>
+      <button
+        @click="nextSlide"
+        class="insp-nav-btn-mobile flex items-center justify-center rounded-2xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
+      >
+        <ArrowRight class="size-6" />
+      </button>
     </div>
   </div>
 </template>
@@ -197,5 +213,10 @@ button {
     min-height: 36px;
     min-width: 36px;
   }
+}
+
+.insp-nav-btn-mobile {
+  flex: 1;
+  height: 3rem;
 }
 </style>
