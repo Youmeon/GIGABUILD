@@ -13,7 +13,7 @@
           О компании
         </h1>
       </div>
-      <div class="flex gap-[132px] max-md:flex-col max-md:gap-8">
+      <div class="flex gap-[132px] max-md:flex-col max-md:gap-8 max-md:flex-col-reverse">
         <div class="sticky bottom-[20px] self-end h-fit w-[332px] -mt-[160px] max-md:static max-md:order-2 max-md:w-full max-md:mt-0">
           <div class="flex items-center justify-start gap-[4.5px] text-center mb-[80px] max-md:mb-8">
             <span>
@@ -36,13 +36,13 @@
           <img
             :src="textureImage"
             alt=""
-            class="max-w-[332px] max-md:w-full max-md:max-w-none"
+            class="max-w-[332px] max-md:w-full max-md:max-w-none max-md:rounded-xl max-md:object-cover max-md:max-h-[191px]"
           />
         </div>
         <div class="flex-1 max-md:order-1">
           <div class="mb-[64px] flex flex-col gap-4 max-md:mb-8">
             <div
-              class="flex flex-col gap-4 max-sm:flex max-sm:items-center max-sm:justify-start max-sm:gap-4"
+              class="flex flex-col gap-4 max-sm:flex max-sm:justify-start max-sm:gap-4"
             >
               <img
                 :src="iconShortly"
@@ -68,7 +68,7 @@
           </div>
           <div class="mb-[64px] flex flex-col gap-4 max-md:mb-8">
             <div
-              class="flex flex-col gap-4 max-sm:flex max-sm:items-center max-sm:justify-start max-sm:gap-4"
+              class="flex flex-col gap-4 max-sm:flex max-sm:justify-start max-sm:gap-4"
             >
               <img
                 :src="iconCommand"
@@ -93,7 +93,7 @@
           </div>
           <div class="mb-[64px] flex flex-col gap-4 max-md:mb-8">
             <div
-              class="flex flex-col gap-4 max-sm:flex max-sm:items-center max-sm:justify-start max-sm:gap-4"
+              class="flex flex-col gap-4 max-sm:flex max-sm:justify-start max-sm:gap-4"
             >
               <img
                 :src="iconTech"
@@ -120,7 +120,7 @@
       </div>
     </section>
     <section
-      class="mb-[10px] mt-8 rounded-2xl bg-blue-600 px-8 py-16 text-white max-sm:px-4 max-sm:py-8"
+      class="mb-[10px] mt-8 rounded-2xl bg-blue-600 px-8 py-16 text-white max-md:px-4 max-md:py-8"
     >
       <div class="mb-10 max-sm:mb-6">
         <div class="mb-6 flex items-center gap-1 max-sm:mb-4">
@@ -141,7 +141,7 @@
           >
         </div>
         <h2
-          class="text-5xl leading-tight tracking-tight max-sm:text-center max-sm:text-3xl"
+          class="text-5xl leading-tight tracking-tight max-sm:text-3xl"
         >
           Мы осуществляем
         </h2>
@@ -348,7 +348,7 @@
         </div>
       </div>
     </section>
-    <article class="mt-[-32px] rounded-2xl bg-neutral-200 px-8 py-20">
+    <article class="mt-[-32px] rounded-2xl bg-neutral-200 px-8 py-20 max-md:px-4 max-md:py-10">
       <div class="mb-10 flex flex-col gap-6">
         <div class="flex items-center justify-start gap-[4.5px] text-center">
           <span>
@@ -377,7 +377,7 @@
       <div class="flex flex-col gap-4">
         <a
           href="#"
-          class="flex gap-8 rounded-[32px] bg-neutral-100 px-8 py-[34.2px]"
+          class="flex gap-8 rounded-[32px] bg-neutral-100 px-8 py-[34.2px] max-md:flex-col max-md:gap-4"
         >
           <img
             src="@/assets/images/pdf.jpg"
@@ -400,14 +400,14 @@
         </a>
         <a
           href="#"
-          class="flex gap-8 rounded-[32px] bg-neutral-100 px-8 py-[34.2px]"
+          class="flex gap-8 rounded-[32px] bg-neutral-100 px-8 py-[34.2px] max-md:flex-col max-md:gap-4"
         >
           <img
             src="@/assets/images/pdf.jpg"
             alt="icon"
             class="mb-1 size-20 rounded-xl"
           />
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 max-md:flex-col max-md:gap-4">
             <h4
               class="text-3xl font-medium leading-tight tracking-tight text-gray-800 max-sm:text-2xl"
             >
