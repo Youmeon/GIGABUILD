@@ -2,12 +2,12 @@
   <div class="flex min-w-0 w-full max-w-full flex-col overflow-x-hidden">
     <div class="mb-6 flex items-end justify-between max-[744px]:mb-4 min-[745px]:mb-10">
       <h2
-        class="max-w-[200px] text-[20px] leading-[125%] tracking-[-3%] text-neutral-100 max-[744px]:max-w-none max-[744px]:text-[clamp(1.25rem,4vw,2rem)] min-[745px]:max-w-none min-[745px]:text-[32px] lg:text-[48px]"
+        class="max-w-[200px] text-[20px] leading-[125%] tracking-[-3%] text-neutral-100 max-[640px]:max-w-none max-[640px]:text-[2rem] max-[744px]:max-w-none max-[744px]:text-[clamp(1.25rem,4vw,2rem)] min-[745px]:max-w-none min-[745px]:text-[32px] lg:text-[48px]"
       >
         Что говорят
         наши клиенты
       </h2>
-      <div class="flex shrink-0 gap-2 self-end">
+      <div class="flex shrink-0 gap-2 self-end max-[640px]:hidden">
         <button
           type="button"
           @click="scrollPrev"
@@ -24,7 +24,7 @@
         </button>
       </div>
     </div>
-
+    
     <div
       ref="sliderContainer"
       class="reviews-scroll flex w-full min-w-0 max-w-full touch-pan-x gap-3 overflow-x-auto overflow-y-hidden scroll-smooth pb-4 max-[744px]:snap-x max-[744px]:snap-mandatory min-[745px]:gap-4"
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class="flex-1 overflow-hidden">
+        <div class="flex-1">
           <p
             :class="[
               'review-card__text w-full leading-[140%] tracking-[-2%] text-text-dark-primary sm:leading-[150%]',
@@ -86,6 +86,24 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <!-- Кнопки навигации для мобильных — под слайдером -->
+    <div class="hidden max-[640px]:flex gap-3 mt-[20px] w-full">
+      <button
+        type="button"
+        @click="scrollPrev"
+        class="review-nav-btn-mobile flex items-center justify-center rounded-2xl bg-white text-text-dark-primary transition-colors"
+      >
+        <ArrowLeft class="size-6" />
+      </button>
+      <button
+        type="button"
+        @click="scrollNext"
+        class="review-nav-btn-mobile flex items-center justify-center rounded-2xl bg-white text-text-dark-primary transition-colors"
+      >
+        <ArrowRight class="size-6" />
+      </button>
     </div>
   </div>
 </template>
@@ -219,28 +237,29 @@ const handleImageError = (event) => {
   display: none;
 }
 
-@media (max-width: 744px) {
-  /* Плавное "диагональное" уменьшение — только в режиме горизонтального скролла */
+@media (max-width: 640px) {
   .review-card--scroll {
-    width: clamp(16rem, calc(100vw - 4rem), 28rem);
-    max-height: clamp(18.5rem, 50vw, 21.875rem);
-    gap: clamp(0.875rem, 1.6vw, 1rem);
-    padding: clamp(0.875rem, 1.8vw, 1.25rem);
-    border-radius: clamp(1rem, 2vw, 1.5rem);
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    min-height: 220px;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
   .review-card__header {
-    gap: clamp(0.75rem, 1.5vw, 1rem);
+    gap: 0.75rem;
   }
 
   .review-card__avatar {
-    width: clamp(2.75rem, 6vw, 4rem);
-    height: clamp(2.75rem, 6vw, 4rem);
+    width: 3rem;
+    height: 3rem;
   }
 
   .review-card__name {
-    margin-bottom: clamp(0.375rem, 1vw, 0.75rem);
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
   }
 
   .review-card__stars {
@@ -248,13 +267,13 @@ const handleImageError = (event) => {
   }
 
   .review-card__star {
-    width: clamp(1rem, 2vw, 1.25rem);
-    height: clamp(1rem, 2.1vw, 1.3125rem);
+    width: 1rem;
+    height: 1rem;
   }
 
   .review-card__text {
-    font-size: clamp(0.875rem, 1.7vw, 1rem) !important;
-    line-height: 1.45 !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -283,10 +302,16 @@ const handleImageError = (event) => {
   }
 }
 
+
+
 @media (max-width: 640px) {
-  .review-card--scroll {
-    width: clamp(16rem, calc(100vw - 3rem), 21.4375rem);
-    max-height: clamp(18rem, 52vw, 21.75rem);
+  .reviews-scroll {
+    margin-bottom: 1rem;
   }
+}
+
+.review-nav-btn-mobile {
+  flex: 1;
+  height: 3rem;
 }
 </style>

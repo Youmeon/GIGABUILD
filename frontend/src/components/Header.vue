@@ -186,7 +186,7 @@ watch(
         isMenuOpen ? 'max-[744px]:!bg-white' : 'bg-none',
         'px-8 py-3 transition-all duration-300 ease-in-out max-[744px]:px-[clamp(1.25rem,4vw,2rem)]',
         isHeaderHidden ? '-translate-y-[120px]' : 'translate-y-0',
-        isMenuOpen ? 'z-[200]' : 'z-[80]',
+        isMenuOpen ? 'z-[300]' : 'z-[80]',
       ]"
     >
       <nav
@@ -236,14 +236,16 @@ watch(
       </nav>
 
       <!-- Мобильное меню -->
+      <Teleport to="body">
       <transition name="slide">
         <div
           v-if="isMenuOpen"
           :class="[
-            'fixed inset-0 z-[100] flex min-h-[100dvh] flex-col justify-center bg-white',
-            'max-[1024px]:px-4 max-[1024px]:pt-[72px]',
-            'min-[1024px]:hidden min-[1024px]:inset-auto min-[1024px]:right-5 min-[1024px]:top-20 min-[1024px]:h-auto min-[1024px]:min-h-0 min-[1024px]:w-max min-[1024px]:rounded-xl min-[1024px]:p-4 md:z-50 min-[1024px]:bg-blue-600/80',
+          'fixed inset-0 z-[100] flex min-h-[100dvh] flex-col justify-center bg-white',
+          'max-[1024px]:px-4 max-[1024px]:pt-[72px]',
+          'min-[1024px]:hidden min-[1024px]:inset-auto min-[1024px]:right-5 min-[1024px]:top-20 min-[1024px]:h-auto min-[1024px]:min-h-0 min-[1024px]:w-max min-[1024px]:rounded-xl min-[1024px]:p-4 md:z-50 min-[1024px]:bg-blue-600/80',
           ]"
+          style="top: 0;"
         >
           <ul class="flex flex-col gap-3 max-w-[570px] w-full mx-auto">
             <li v-for="(item, index) in navItems" :key="item.to">
@@ -273,6 +275,7 @@ watch(
           </ul>
         </div>
       </transition>
+      </Teleport>
 
       <!-- Кнопка «Оставить заявку» (для десктопа) -->
       <button
@@ -292,6 +295,14 @@ header {
     opacity 0.3s ease,
     box-shadow 0.3s ease;
 }
- 
+
+@media screen and (max-width: 1023px) {
+  .fixed.inset-0.bg-white {
+    background-color: white;
+  }
+}
+:deep(.container) {
+  padding: 0;
+}
 
 </style>

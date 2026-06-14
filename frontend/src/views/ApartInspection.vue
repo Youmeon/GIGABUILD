@@ -1,32 +1,34 @@
 <template>
   <main>
-    <section
-      className="w-full h-[52.625rem] max-sm:h-full absolute top-0 left-0 bg-center bg-cover pb-16 max-sm:px-4"
+     <section
+      class="w-full h-[52.625rem] absolute top-0 left-0 bg-center bg-cover"
       :style="{ backgroundImage: 'url(' + heroImage + ')' }"
     >
-      <div className="mt-[566px] max-sm:mt-[314px] max-sm:px-4 px-8">
-        <div class="mb-20">
-          <h1 className=" text-neutral-100 xl:text-[5rem]">Приемка квартир</h1>
-        </div>
-        <div className="rounded-2xl">
+      <div class="absolute bottom-16 left-0 right-0 px-8">
+        <div class="flex flex-col">
+          <h1 class="text-neutral-100 text-[5rem] leading-[0.95] mb-8">
+            Приемка квартир
+          </h1>
           <router-link
-            @click = 'openRequestModal'
+            @click="openRequestModal"
             to="#"
-            class="size-full rounded-2xl bg-neutral-100 px-[55px] py-[18px] text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-blue-600 transition-all duration-300 ease-out hover:bg-blue-500 hover:text-neutral-100 focus:bg-blue-400 focus:text-neutral-100 max-lg:px-4 max-lg:py-3 max-sm:text-[16px]"
+            class="inline-block w-fit rounded-2xl bg-neutral-100 px-[55px] py-[18px] text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-blue-600 transition-all duration-300 ease-out hover:bg-blue-500 hover:text-neutral-100 focus:bg-blue-400 focus:text-neutral-100"
           >
             Записаться на приёмку
           </router-link>
         </div>
       </div>
     </section>
-    <section
-      className="bg-blue-600 pb-28 max-sm:h-[953px] h-full px-8 z-[6] py-16 max-sm:py-3 w-full rounded-2xl relative translate-y-[835px] mt-[-16px] max-sm:translate-y-[648px]"
+
+ <section
+      class="bg-blue-600 pb-28 h-full px-8 z-[6] py-16 w-full rounded-2xl relative translate-y-[835px] mt-[-16px] max-[744px]:translate-y-[826px]"
+
     >
       <div
-        className="flex-col mb-[64px] justify-between max-w-[850px] flex gap-10 max-md:flex-col max-sm:gap-0 max-sm:px-4 text-neutral-100 max-sm:py-0"
+        class="flex-col mb-[64px] justify-between max-w-[850px] flex gap-10 text-neutral-100"
       >
-        <div className="flex mb-6 max-sm:mb-4 flex-col max-sm:max-w-full">
-          <div className="mb-6 max-sm:mb-4 flex items-center gap-[4.5px]">
+        <div class="flex mb-6 flex-col">
+          <div class="mb-6 flex items-center gap-[4.5px]">
             <span
               ><svg
                 width="6"
@@ -38,19 +40,19 @@
                 <circle cx="3" cy="3.5" r="3" fill="white" fill-opacity="0.8" />
               </svg>
             </span>
-            <span
-              className="uppercase text-neutral-100/80 max-sm:text-[0.7rem] max-sm:p-1 font-bold"
+  <span
+              class="uppercase text-neutral-100/80 font-bold"
               >Об услуге</span
             >
           </div>
           <h2
-            className="leading-[125%] text-[48px] tracking-[-3%] max-sm:text-[28px] max-sm:text-center"
+            class="leading-[125%] text-[48px] tracking-[-3%]"
           >
             Что входит в приёмку квартиры?
           </h2>
         </div>
-        <div className="flex flex-col gap-4 max-sm:hidden text-neutral-100/80">
-          <p className="leading-[150%] text-[24px] align-middle tracking-[-3%]">
+        <div class="flex flex-col gap-4 text-neutral-100/80">
+          <p class="leading-[150%] text-[24px] align-middle tracking-[-3%]">
             Согласуем удобное время, приедем и проведём тщательный осмотр по
             стандартам СП, ГОСТ и ПУЭ. Зафиксируем все выявленные недостатки, в
             том числе на фото и видео, а в конце передадим вам подробный акт
@@ -63,33 +65,23 @@
       <!-- add slider! -->
     </section>
     <section
-      className="bg-neutral-200 px-8 z-20 py-16 max-sm:py-2 w-full rounded-2xl relative translate-y-[825px] mt-[-16px] max-sm:translate-y-[640px]"
+      class="bg-neutral-200 px-8 z-20 py-16 w-full rounded-2xl relative translate-y-[825px] mt-[-16px]"
     >
       <div class="pb-16">
         <ToolsBanner :tools="toolsData" />
       </div>
       <div class="flex flex-col gap-4 pb-16">
         <div
-          className="flex items-center gap-[4.5px] mb-6 tracking-[-4%] text-sm leading-[110%] align-middle"
+          class="flex items-center gap-[4.5px] mb-6 tracking-[-4%] text-sm leading-[110%] align-middle"
         >
+          <span>...</span>
           <span
-            ><svg
-              width="6"
-              height="7"
-              viewBox="0 0 6 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
-            </svg>
-          </span>
-          <span
-            className="uppercase text-text-dark-secondary max-sm:text-[0.7rem] max-sm:p-1 font-bold"
+            class="uppercase text-text-dark-secondary font-bold"
             >Тарифы</span
           >
         </div>
         <h2
-          className="font-semibold leading-[125%] text-5xl tracking-[-3%] mb-10"
+          class="font-semibold leading-[125%] text-5xl tracking-[-3%] mb-10"
         >
           Сколько стоит приёмка квартиры
         </h2>
@@ -214,29 +206,128 @@ import heroImage from '@/assets/images/apart-insp.jpg'
 import InspectionSlider from '@/components/InspectionSlider.vue'
 import ToolsBanner from '@/components/ToolsBanner.vue'
 import toolsData from '@/data/acceptance-of-apartments-tools.json'
-import {inject} from 'vue'
+import { inject } from 'vue'
 const openRequestModal = inject('openRequestModal')
 </script>
-
 <style scoped>
-.bg {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-position: center;
-  background-size: cover;
-  z-index: -5;
+/* 744px — плавно от десктопа */
+@media screen and (max-width: 744px) {
+    section:first-of-type a {
+    font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    width: fit-content !important;
+  }
+
+  section:first-of-type h1 {
+    margin-bottom: clamp(1.25rem, 2.7vw, 2rem) !important;
+  }
+
+  section:first-of-type > div {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    bottom: clamp(4rem, 8vw, 4rem) !important;
+  }
+
+  section:first-of-type a {
+    font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Секция 2 */
+  section:nth-of-type(2) h2 {
+    font-size: clamp(2rem, 5.6vw, 3rem) !important;
+    text-align: left !important;
+  }
+
+  section:nth-of-type(2) > div:first-child > div:first-child > div:first-child {
+    margin-bottom: clamp(1.5rem, 3.2vw, 3rem) !important;
+  }
+
+  section:nth-of-type(2) > div:first-child {
+    gap: clamp(2rem, 3.5vw, 2.5rem) !important;
+    margin-bottom: clamp(3rem, 5.4vw, 4rem) !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  section:nth-of-type(2) > div:first-child > div:last-child p {
+    font-size: clamp(1.25rem, 2.7vw, 1.5rem) !important;
+  }
 }
 
-.relative {
-  position: relative;
+/* 640px и ниже */
+@media screen and (max-width: 640px) {
+  section:first-of-type h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+  }
+
+ section:first-of-type > div {
+    bottom: 4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  section:first-of-type {
+    position: absolute !important;
+    height: 52.625rem !important;
+  }
+  section:first-of-type a {
+    width: fit-content !important;
+    display: inline-block !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  section:nth-of-type(2) {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 3rem !important;
+    transform: translateY(clamp(580px, calc(580px + (100vw - 375px) * 0.52), 720px)) !important;
+  }
+
+  section:nth-of-type(3) {
+    transform: translateY(clamp(572px, calc(572px + (100vw - 375px) * 0.52), 712px)) !important;
+  }
+
+  section:nth-of-type(2) h2 {
+    font-size: clamp(2rem, 5.6vw, 3rem) !important;
+    text-align: left !important;
+  }
+
+  section:nth-of-type(2) > div:first-child > div:first-child > div:first-child {
+    margin-bottom: clamp(1.5rem, 4vw, 3rem) !important;
+  }
+
+  section:nth-of-type(2) > div:first-child {
+    gap: clamp(2rem, 3.5vw, 2.5rem) !important;
+    margin-bottom: clamp(2rem, 4.8vw, 3rem) !important;
+    padding-left: 0 !important;
+  }
+
+  section:nth-of-type(2) > div:first-child > div:last-child p {
+    font-size: clamp(1.25rem, 2.7vw, 1.5rem) !important;
+  }
 }
 
-.priemka {
-  background-image: url(../assets/images/schempomoch.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+/* 641px–744px — синхронизация секций */
+@media screen and (min-width: 641px) and (max-width: 744px) {
+  section:nth-of-type(2) {
+    transform: translateY(826px) !important;
+  }
+
+  section:nth-of-type(3) {
+    transform: translateY(818px) !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  section:nth-of-type(2) {
+    transform: translateY(826px) !important;
+  }
+
+  section:nth-of-type(3) {
+    transform: translateY(818px) !important;
+  }
 }
 </style>
