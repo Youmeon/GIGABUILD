@@ -45,13 +45,31 @@
           ></div>
         </div>
       </div>
+ </div>
+
+    <!-- Кнопки навигации под галереей — только мобильные -->
+    <div class="tools-mobile-nav hidden">
+      <button
+        @click="prevTool"
+        class="tools-mobile-nav__btn flex items-center justify-center rounded-2xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
+        aria-label="Предыдущий инструмент"
+      >
+        <ArrowLeft class="size-6" />
+      </button>
+      <button
+        @click="nextTool"
+        class="tools-mobile-nav__btn flex items-center justify-center rounded-2xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
+        aria-label="Следующий инструмент"
+      >
+        <ArrowRight class="size-6" />
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
+import { computed, ref } from 'vue'
 import getImageUrl from '../utils/getImageURL'
 
 const props = defineProps({
@@ -237,23 +255,23 @@ const prevTool = () => {
   transition: width 0.3s ease;
 }
 
-/* Responsive */
-@media (max-width: 1162px) {
+@media (min-width: 641px) and (max-width: 1162px) {
   .tools-banner {
     flex-direction: column;
-    align-items: center;
-    gap: 92px;
+    align-items: flex-start;
+    gap: 24px;
   }
   
   .tools-banner__text-container {
     width: 100%;
-    max-width: 448px;
-    align-items: center;
+    max-width: 100%;
+    align-items: flex-start;
+    gap: 24px;
   }
   
   .tools-banner__title,
   .tools-banner__description {
-    text-align: center;
+    text-align: left;
   }
   
   .tools-banner__gallery {
@@ -261,38 +279,92 @@ const prevTool = () => {
   }
 }
 
-@media (max-width: 632px) {
-  .tools-banner__controls {
+@media (max-width: 640px) {
+  .tools-banner {
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    gap: 24px;
   }
-  
+
+  .tools-banner__text-container {
+    width: 100%;
+    max-width: 100%;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .tools-banner__title {
+    font-size: clamp(2rem, 5.6vw, 3rem);
+    text-align: left;
+  }
+
+  .tools-banner__description {
+    font-size: clamp(1rem, 2.7vw, 1.25rem);
+    text-align: left;
+    max-width: 100%;
+  }
+
   .tools-banner__tool-name {
+    font-size: clamp(2rem, 5.6vw, 3rem);
     margin: 0;
-    text-align: center;
+    text-align: left;
   }
-  
-  .tools-banner__gallery-overlay {
-    padding: 99px 16px 26px 16px;
+
+  .tools-banner__controls {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tools-banner__nav {
+    display: none;
   }
 }
 
-@media (max-width: 576px) {
-  .tools-banner__text-container {
-    gap: 80px;
+.tools-mobile-nav {
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.tools-mobile-nav__btn {
+  flex: 1;
+  height: 3rem;
+}
+
+@media (max-width: 640px) {
+  .tools-mobile-nav {
+    display: flex !important;
   }
-  
+}
+@media (max-width: 744px) {
   .tools-banner__title {
-    font-size: 32px;
+    font-size: clamp(2rem, 5.6vw, 3rem);
   }
-  
-  .tools-banner__description {
-    font-size: 18px;
-  }
-  
+
   .tools-banner__tool-name {
-    font-size: 28px;
+    font-size: clamp(2rem, 5.6vw, 3rem);
+  }
+}
+@media (max-width: 744px) {
+  .tools-banner__gallery {
+    min-height: unset !important;
+    aspect-ratio: 704 / 419;
+    width: 100%;
+    padding-top: 0 !important;
+  }
+
+  .tools-banner__gallery-overlay {
+    height: 100%;
+    padding: 0 1rem 1.5rem 1rem;
+    justify-content: flex-end;
+  }
+
+  .tools-banner__tool-name {
+    font-size: clamp(2rem, 5.6vw, 3rem);
+  }
+
+  .tools-banner__title {
+    font-size: clamp(2rem, 5.6vw, 3rem);
   }
 }
 </style>

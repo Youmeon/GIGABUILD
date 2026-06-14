@@ -90,7 +90,7 @@
             class="flex justify-center gap-4 p-4 text-center max-md:flex-col max-sm:gap-2"
           >
             <!-- Левая карточка (Tariff 1) -->
-            <div
+             <div
               class="flex flex-1 flex-col justify-between rounded-[32px] border-blue-600 bg-neutral-100 p-4 text-center shadow-sm"
             >
               <div class="px-4 pt-4">
@@ -98,8 +98,8 @@
                   class="mx-auto mb-10 flex max-w-fit items-center justify-center rounded-xl border-2 border-blue-300/20 px-4 py-2 text-center"
                 >
                   <span class="mr-2 size-2 rounded-full bg-gray-500"></span>
-                  <span
-                    class="text-[16px] font-normal leading-[135%] tracking-[-3%] text-gray-500"
+<span
+                    class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%] text-gray-500"
                     >Тариф 1</span
                   >
                 </div>
@@ -152,8 +152,8 @@
                   <span
                     class="mr-2 size-2 rounded-full bg-neutral-200/80"
                   ></span>
-                  <span
-                    class="text-[16px] font-normal leading-[135%] tracking-[-3%] text-neutral-200/80"
+                    <span
+                    class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%] text-neutral-200/80"
                     >Тариф 2</span
                   >
                 </div>
@@ -328,6 +328,37 @@ const openRequestModal = inject('openRequestModal')
 
   section:nth-of-type(3) {
     transform: translateY(818px) !important;
+  }
+}
+@media (max-width: 744px) {
+  /* Заголовок "Сколько стоит приёмка квартиры" */
+  section:nth-of-type(3) .flex.flex-col.gap-4 > h2 {
+    font-size: clamp(2rem, 5.6vw, 3rem) !important;
+  }
+
+  /* Площадь квартиры */
+  section:nth-of-type(3) .flex.flex-1.flex-col h2 {
+    font-size: clamp(1.25rem, 3.7vw, 2rem) !important;
+  }
+
+  /* До 40 м² — только span внутри div.mb-8 */
+  section:nth-of-type(3) .flex.flex-1.flex-col .mb-8 span {
+    font-size: clamp(2rem, 5.6vw, 3rem) !important;
+  }
+
+  /* Тариф 1 / Тариф 2 — фиксируем 16px */
+  section:nth-of-type(3) .tariff-label {
+    font-size: 1rem !important;
+  }
+
+  /* Описание тарифа и стоимость лейбл */
+  section:nth-of-type(3) .flex.flex-1.flex-col p {
+    font-size: clamp(1rem, 2.7vw, 1.25rem) !important;
+  }
+
+  /* Цена (4000 руб / 100 руб м²) */
+  section:nth-of-type(3) .flex.flex-1.flex-col .mb-8 p:last-child {
+    font-size: clamp(2rem, 5.6vw, 3rem) !important;
   }
 }
 </style>
