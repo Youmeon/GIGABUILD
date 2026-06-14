@@ -1,7 +1,7 @@
 <template>
   <main>
-     <section
-      class="w-full h-[52.625rem] absolute top-0 left-0 bg-center bg-cover"
+    <section
+      class="w-full h-[52.625rem] absolute top-0 left-0 bg-center bg-cover max-[744px]:h-[100dvh]"
       :style="{ backgroundImage: 'url(' + heroImage + ')' }"
     >
       <div class="absolute bottom-16 left-0 right-0 px-8">
@@ -270,7 +270,7 @@ const openRequestModal = inject('openRequestModal')
   }
   section:first-of-type {
     position: absolute !important;
-    height: 52.625rem !important;
+    height: 100dvh !important;
   }
   section:first-of-type a {
     width: fit-content !important;
@@ -283,11 +283,11 @@ const openRequestModal = inject('openRequestModal')
     padding-left: 1rem !important;
     padding-right: 1rem !important;
     padding-bottom: 3rem !important;
-    transform: translateY(clamp(580px, calc(580px + (100vw - 375px) * 0.52), 720px)) !important;
+    transform: translateY(100dvh) !important;
   }
 
   section:nth-of-type(3) {
-    transform: translateY(clamp(572px, calc(572px + (100vw - 375px) * 0.52), 712px)) !important;
+    transform: translateY(calc(100dvh - 8px)) !important;
   }
 
   section:nth-of-type(2) h2 {
@@ -313,23 +313,14 @@ const openRequestModal = inject('openRequestModal')
 /* 641px–744px — синхронизация секций */
 @media screen and (min-width: 641px) and (max-width: 744px) {
   section:nth-of-type(2) {
-    transform: translateY(826px) !important;
+    transform: translateY(100dvh) !important;
   }
 
   section:nth-of-type(3) {
-    transform: translateY(818px) !important;
+    transform: translateY(calc(100dvh - 8px)) !important;
   }
 }
 
-@media screen and (max-width: 640px) {
-  section:nth-of-type(2) {
-    transform: translateY(826px) !important;
-  }
-
-  section:nth-of-type(3) {
-    transform: translateY(818px) !important;
-  }
-}
 @media (max-width: 744px) {
   /* Заголовок "Сколько стоит приёмка квартиры" */
   section:nth-of-type(3) .flex.flex-col.gap-4 > h2 {
