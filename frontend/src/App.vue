@@ -1,7 +1,6 @@
 <script setup>
 import { provide, ref } from 'vue'
 import Footer from './components/Footer.vue'
-import HelperAI from './components/HelperAI.vue'
 import RequestModal from './components/RequestModal.vue'
 import Header from '/src/components/Header.vue'
 

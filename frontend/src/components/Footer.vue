@@ -2,11 +2,11 @@
   <footer
     :class="{
       'home-footer-stack translate-y-[830px] max-sm:translate-y-[650px]': isSpecialPage,
-      'relative z-30 mt-[-30px] max-h-full w-full rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[28px] pt-16 max-sm:py-2 max-[744px]:mt-[-16px] max-[744px]:rounded-t-none': true,
+      'relative z-30 mt-[-30px] max-h-full w-full rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[28px] pt-16 max-sm:py-2 max-[744px]:mt-[-16px] max-md:px-4': true,
     }"
   >
     <div
-      class="flex items-baseline justify-between max-[744px]:flex-col max-[744px]:items-start max-[744px]:gap-16"
+      class="flex items-baseline justify-between max-[744px]:flex-col max-[744px]:items-start max-[744px]:gap-16 max-md:mt-10"
     >
       <div
         class="flex max-w-[516px] flex-col gap-10 lg:mb-[50px] xl:mb-[215px] max-[744px]:max-w-full max-[744px]:gap-10 max-[744px]:items-start max-[744px]:text-left"
@@ -68,9 +68,9 @@
       </div>
       
       <!-- Контакты для 744px справа -->
-      <div class="hidden max-[744px]:flex max-[744px]:flex-col max-[744px]:gap-4 max-[744px]:w-[339px] max-[744px]:shrink-0">
+      <div class="hidden max-[744px]:flex max-[744px]:flex-col max-[744px]:gap-4 max-[744px]:w-[339px]">
         <span class="max-[744px]:text-[20px] max-[744px]:leading-[1.35] max-[744px]:tracking-[-0.59px] max-[744px]:text-right max-[744px]:font-medium">
-          г. Хабаровск, ул. Карла Маркса, 62А
+          г. Хабаровск, <br class='min-md:hidden'/> ул. Карла Маркса, 62А
         </span>
         <span class="max-[744px]:text-[20px] max-[744px]:leading-[1.35] max-[744px]:tracking-[-0.59px] max-[744px]:text-right max-[744px]:font-medium max-[744px]:opacity-50">
           пн-вс 08:00—19:00

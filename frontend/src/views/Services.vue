@@ -61,7 +61,7 @@
         </div>
       </div>
       <div
-        class="mt-10 grid grid-cols-3 justify-items-center gap-8 max-[1328px]:grid-cols-2 max-[1328px]:justify-items-stretch max-[744px]:gap-[0.625rem]"
+        class="mt-10 grid grid-cols-3 justify-items-center gap-8 max-[1328px]:grid-cols-2 max-[1328px]:justify-items-stretch max-[744px]:gap-[0.625rem] max-md:grid-cols-2 max-sm:grid-cols-1"
       >
         <CardService v-for="card in cards" :key="card.id" :card="card" />
       </div>
