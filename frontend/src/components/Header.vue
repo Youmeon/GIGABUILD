@@ -5,8 +5,9 @@ import logoVar1 from '../assets/images/logo-var1.svg'
 import logoVar2 from '../assets/images/logo-var2.svg'
 import navItems from '../data/nav.json'
 
-// Инжектируем функцию открытия модального окна
+// Инжектируем функцию открытия модального окна и его состояние
 const openRequestModal = inject('openRequestModal')
+const isModalOpen = inject('isModalOpen')
 
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
@@ -178,6 +179,7 @@ watch(
 <template>
   <div class="container mx-auto flex items-center justify-center text-blue-600 max-[744px]:w-full max-[744px]:max-w-full max-[744px]:px-0">
     <header
+      v-show="!isModalOpen"
       :class="[
         'flex w-full items-center gap-2.5',
         isScrolled

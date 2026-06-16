@@ -5,13 +5,21 @@ import RequestModal from './components/RequestModal.vue'
 import Header from '/src/components/Header.vue'
 
 const modalRef = ref(null)
+const isModalOpen = ref(false)
 
 const openRequestModal = () => {
   modalRef.value?.openModal()
+  isModalOpen.value = true
 }
 
-// Предоставляем функцию открытия модального окна всем дочерним компонентам
+const closeRequestModal = () => {
+  isModalOpen.value = false
+}
+
+// Предоставляем функцию открытия модального окна и состояние всем дочерним компонентам
 provide('openRequestModal', openRequestModal)
+provide('isModalOpen', isModalOpen)
+provide('closeRequestModal', closeRequestModal)
 </script>
 
 <template>

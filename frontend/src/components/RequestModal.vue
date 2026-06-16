@@ -1,9 +1,10 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, inject } from 'vue'
 import axios from 'axios'
 
 const isModalOpen = ref(false)
 const isSubmitting = ref(false)
+const closeRequestModal = inject('closeRequestModal')
 
 const form = reactive({
   name: '',
@@ -23,6 +24,7 @@ const openModal = () => {
 
 const closeModal = () => {
   isModalOpen.value = false
+  closeRequestModal()
   resetForm()
 }
 
