@@ -135,6 +135,7 @@
                 </div>
               </div>
               <button
+                @click="openRequestModal"
                 class="w-full rounded-[16px] bg-blue-600 py-[18px] align-middle font-normal leading-none tracking-[-3%] text-white hover:bg-blue-700"
               >
                 Заказать приёмку
@@ -189,6 +190,7 @@
                 </div>
               </div>
               <button
+                @click="openRequestModal"
                 class="w-full rounded-[16px] bg-neutral-100 py-[18px] align-middle font-normal leading-none tracking-[-3%] text-blue-600"
               >
                 Заказать приёмку
