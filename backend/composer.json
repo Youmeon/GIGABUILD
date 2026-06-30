@@ -1,0 +1,22 @@
+{
+    "name": "gigabuild/backend",
+    "description": "GIGABUILD REST API",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "youmeon",
+            "email": "leavetobefree777@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^7.1"
+    }
+}

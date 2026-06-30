@@ -1,6 +1,6 @@
 <script setup>
-import { reactive, ref, inject } from 'vue'
 import axios from 'axios'
+import { inject, reactive, ref } from 'vue'
 
 const isModalOpen = ref(false)
 const isSubmitting = ref(false)
