@@ -13,7 +13,7 @@
           О компании
         </h1>
       </div>
-      <div class="flex gap-[132px] max-md:flex-col max-md:gap-8 max-md:flex-col-reverse">
+      <div class="flex gap-[132px] max-md:flex-col-reverse max-md:gap-8">
         <div class="sticky bottom-[20px] self-end h-fit w-[332px] -mt-[160px] max-md:static max-md:order-2 max-md:w-full max-md:mt-0">
           <div class="flex items-center justify-start gap-[4.5px] text-center mb-[80px] max-md:mb-8">
             <span>
@@ -425,6 +425,7 @@
       </div>
     </article>
   </main>
+  <main class="bg-neutral-200 text-text-dark-primary mb-[30px] max-[744px]:mb-[58px]"></main>
 </template>
 
 <script setup>
