@@ -39,13 +39,13 @@
             Назад
           </router-link>
           <h1
-            class="mb-8 text-[80px] font-medium leading-[115%] tracking-[-4%] text-neutral-800"
+            class="service-main-title mb-8 text-[80px] font-medium leading-[115%] tracking-[-4%] text-neutral-800"
           >
             {{ currentService.title }}
           </h1>
           <div class="rounded-[32px] bg-white p-8">
             <p
-              class="text-[24px] font-medium leading-[150%] tracking-[-3%] text-[#3b3b3c]"
+              class="service-description text-[24px] font-medium leading-[150%] tracking-[-3%] text-[#3b3b3c]"
             >
               {{ currentService.description }}
             </p>
@@ -81,7 +81,7 @@
           </div>
           <div class="flex items-center justify-between">
             <h2
-              class="text-[48px] font-semibold leading-[125%] tracking-[-3%] text-white"
+              class="service-section-title text-[48px] font-semibold leading-[125%] tracking-[-3%] text-white"
             >
               {{ includeData?.title }}
             </h2>
@@ -113,7 +113,7 @@
             class="w-[448px] shrink-0 rounded-[32px] bg-white p-8"
           >
             <p
-              class="text-[32px] font-medium leading-[125%] tracking-[-4%] text-neutral-800"
+              class="service-slider-text text-[32px] font-medium leading-[125%] tracking-[-4%] text-neutral-800"
             >
               {{ item }}
             </p>
@@ -250,5 +250,42 @@ watch(
 
 div::-webkit-scrollbar {
   height: 0;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 744px) {
+  .service-main-title {
+    font-size: clamp(40px, 6.25vw, 80px);
+  }
+  
+  .service-description {
+    font-size: clamp(16px, 2.5vw, 24px);
+  }
+  
+  .service-section-title {
+    font-size: clamp(32px, 5vw, 48px);
+  }
+  
+  .service-slider-text {
+    font-size: clamp(24px, 3.75vw, 32px);
+  }
+}
+
+@media (max-width: 375px) {
+  .service-main-title {
+    font-size: 40px;
+  }
+  
+  .service-description {
+    font-size: 16px;
+  }
+  
+  .service-section-title {
+    font-size: 32px;
+  }
+  
+  .service-slider-text {
+    font-size: 24px;
+  }
 }
 </style>
