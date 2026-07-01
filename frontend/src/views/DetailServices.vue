@@ -85,7 +85,7 @@
             >
               {{ includeData?.title }}
             </h2>
-            <div class="flex gap-1 sm:gap-2">
+            <div class="slider-arrows flex gap-1 sm:gap-2">
               <button
                 @click="scrollLeft"
                 class="flex items-center justify-center rounded-lg bg-neutral-200 px-4 py-2 text-text-dark-primary transition-colors hover:bg-neutral-300 sm:rounded-xl"
@@ -105,12 +105,12 @@
         <div
           ref="sliderContainer"
           @scroll="updateScrollState"
-          class="flex gap-4 overflow-x-auto scroll-smooth pb-4"
+          class="service-cards-container flex gap-4 overflow-x-auto scroll-smooth pb-4"
         >
           <div
             v-for="(item, index) in includeData?.items"
             :key="index"
-            class="w-[448px] shrink-0 rounded-[32px] bg-white p-8"
+            class="service-card w-[448px] shrink-0 rounded-[32px] bg-white p-8"
           >
             <p
               class="service-slider-text text-[32px] font-medium leading-[125%] tracking-[-4%] text-neutral-800"
@@ -268,6 +268,25 @@ div::-webkit-scrollbar {
   
   .service-slider-text {
     font-size: clamp(24px, 3.75vw, 32px);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Скрываем стрелочки */
+  .slider-arrows {
+    display: none;
+  }
+  
+  /* Карточки в столбик */
+  .service-cards-container {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+  
+  .service-card {
+    width: 100%;
+    flex-shrink: 1;
   }
 }
 
