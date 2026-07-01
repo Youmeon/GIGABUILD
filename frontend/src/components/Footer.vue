@@ -40,7 +40,7 @@
       </div>
     </div>
     <div
-      class="flex flex-wrap justify-between pb-4 text-[20px] text-neutral-100 max-sm:mt-4 max-sm:text-[12px] md:gap-[50px] xl:gap-[100px] max-[744px]:mt-[68px] max-[744px]:flex-row max-[744px]:justify-between max-[744px]:items-start"
+      class="flex flex-wrap justify-between pb-4 text-[20px] text-neutral-100 max-sm:mt-4 max-sm:text-[12px] md:gap-[50px] xl:gap-[100px] max-[744px]:mt-[68px] max-[744px]:justify-between max-[744px]:items-start max-[744px]:gap-y-6"
     >
       <div class="flex w-full flex-wrap justify-between md:gap-3 max-[744px]:w-auto max-[744px]:flex-col max-[744px]:gap-[13px]">
         <div class="flex w-full items-center justify-between max-sm:gap-4 max-[744px]:w-auto max-[744px]:flex-col max-[744px]:items-start max-[744px]:gap-[13px]">
@@ -66,9 +66,9 @@
           <span class="flex-1 text-end max-[744px]:hidden">пн-вс 08:00—19:00</span>
         </div>
       </div>
-      
+
       <!-- Контакты для 744px справа -->
-      <div class="hidden max-[744px]:flex max-[744px]:flex-col max-[744px]:gap-4 max-[744px]:w-[339px]">
+      <div class="hidden max-[744px]:flex max-[744px]:flex-col max-[744px]:gap-4 max-[744px]:w-full max-[744px]:max-w-[339px] max-[744px]:items-end max-[744px]:ml-auto">
         <span class="max-[744px]:text-[20px] max-[744px]:leading-[1.35] max-[744px]:tracking-[-0.59px] max-[744px]:text-right max-[744px]:font-medium">
           г. Хабаровск, <br class='min-md:hidden'/> ул. Карла Маркса, 62А
         </span>
@@ -76,7 +76,7 @@
           пн-вс 08:00—19:00
         </span>
       </div>
-      
+
       <div
         class="flex w-full justify-between items-end max-sm:mt-4 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-[744px]:mt-[24px] max-[744px]:flex-row max-[744px]:items-end max-[744px]:gap-4 max-[744px]:pt-1 max-[744px]:text-[16px] max-[744px]:leading-[1.45] max-[744px]:tracking-[-0.48px] max-[744px]:opacity-50"
       >
@@ -148,7 +148,7 @@ const isSpecialPage = computed(() => {
   footer {
     padding-top: 2rem !important;
   }
-  
+
   footer > div:first-child > div:first-child {
     margin-bottom: 2rem !important;
   }
@@ -161,32 +161,32 @@ const isSpecialPage = computed(() => {
     align-items: flex-start !important;
     gap: 4rem !important;
   }
-  
+
   footer > div:first-child > div:first-child {
     margin-bottom: 0 !important;
   }
-  
+
   footer > div:first-child > div:first-child button {
     width: 100% !important;
     max-width: 448px !important;
   }
-  
+
   footer > div:first-child > div:last-child {
     align-items: flex-start !important;
   }
-  
+
   footer > div:nth-child(2) {
     margin-top: 68px !important;
   }
-  
+
   .footer-phone::after {
     display: none !important;
   }
-  
+
   .footer-phone:hover::after {
     display: none !important;
   }
-  
+
   .footer-link--right {
     margin-left: 0 !important;
   }
@@ -197,11 +197,11 @@ const isSpecialPage = computed(() => {
   .footer-phone::after {
     display: none !important;
   }
-  
+
   .footer-phone:hover::after {
     display: none !important;
   }
-  
+
   /* Убираем margin-left: auto для второго телефона */
   .footer-link--right {
     margin-left: 0 !important;
