@@ -369,7 +369,7 @@
           </span>
         </div>
         <h1
-          class="align-middle text-[80px] font-medium leading-[115%] tracking-[-4%] text-text-dark-primary max-lg:text-[5rem] max-md:text-[2.5rem] max-sm:text-[2rem]"
+          class="certificate-title align-middle text-[80px] font-medium leading-[115%] tracking-[-4%] text-text-dark-primary max-lg:text-[5rem] max-md:text-[2.5rem] max-sm:text-[2rem]"
         >
           Свидетельство о допуске к строительным и проектировочным работам
         </h1>
@@ -439,3 +439,24 @@ const toggleServices = () => {
   showServices.value = !showServices.value
 }
 </script>
+
+<style scoped>
+/* Адаптивность для заголовка свидетельства */
+@media (min-width: 744px) and (max-width: 1440px) {
+  .certificate-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 744px) {
+  .certificate-title {
+    font-size: clamp(32px, 5vw, 48px);
+  }
+}
+
+@media (max-width: 375px) {
+  .certificate-title {
+    font-size: 32px;
+  }
+}
+</style>
