@@ -16,7 +16,7 @@
 
       <!-- Секция с заголовком услуги -->
       <div id="service-content" class="min-h-[45vh] px-8 py-16 bg-neutral-200">
-        <div class="mb-16">
+        <div class="mb-0 max-w-[1200px] mx-auto">
           <router-link
             to="/services"
             class="back-link mb-8 inline-flex items-center gap-2 text-[20px] font-medium tracking-[-3%] text-blue-600"
