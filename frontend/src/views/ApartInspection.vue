@@ -22,7 +22,6 @@
 
  <section
       class="bg-blue-600 pb-28 h-full px-8 z-[6] py-16 w-full rounded-2xl relative translate-y-[835px] mt-[-16px] max-[744px]:translate-y-[826px]"
-
     >
       <div
         class="flex-col mb-[64px] justify-between max-w-[850px] flex gap-10 text-neutral-100"
@@ -65,23 +64,32 @@
       <!-- add slider! -->
     </section>
     <section
-      class="bg-neutral-200 px-8 z-20 py-16 w-full rounded-2xl relative translate-y-[825px] mt-[-16px]"
+    class="bg-neutral-200 px-[clamp(1rem,5vw,2rem)] z-20 py-16 w-full rounded-2xl relative translate-y-[825px] mt-[-16px]"
     >
       <div class="pb-16">
         <ToolsBanner :tools="toolsData" />
       </div>
-      <div class="flex flex-col gap-4 pb-16">
+      <div class="flex flex-col gap-4 pb-4">
         <div
-          class="flex items-center gap-[4.5px] mb-6 tracking-[-4%] text-sm leading-[110%] align-middle"
+          class="flex items-center gap-[4.5px] mb-0 tracking-[-4%] text-sm leading-[110%] align-middle"
         >
-          <span>...</span>
+         <span>
+        <svg     
+        width="6"
+        height="7"
+        viewBox="0 0 6 7"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+     <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
+  </svg>
+</span>
           <span
             class="uppercase text-text-dark-secondary font-bold"
             >Тарифы</span
           >
         </div>
         <h2
-          class="font-semibold leading-[125%] text-5xl tracking-[-3%] mb-10"
+          class="font-semibold leading-[125%] text-5xl tracking-[-3%] mb-0"
         >
           Сколько стоит приёмка квартиры
         </h2>
@@ -289,7 +297,7 @@ const openRequestModal = inject('openRequestModal')
   }
 
   section:nth-of-type(3) {
-    transform: translateY(calc(100dvh - 8px)) !important;
+    transform: translateY(792px) !important;
   }
 
   section:nth-of-type(2) h2 {
@@ -319,7 +327,7 @@ const openRequestModal = inject('openRequestModal')
   }
 
   section:nth-of-type(3) {
-    transform: translateY(calc(100dvh - 8px)) !important;
+    transform: translateY(772px) !important;
   }
 }
 
