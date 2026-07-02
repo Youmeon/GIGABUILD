@@ -146,18 +146,9 @@
           Мы осуществляем
         </h2>
       </div>
-      <button
-        @click="toggleServices"
-        class="mb-6 rounded-lg bg-white px-4 py-2 font-medium text-blue-600 transition hover:bg-gray-200 md:hidden"
-      >
-        {{ showServices ? 'Свернуть список услуг' : 'Показать список услуг' }}
-      </button>
-      <div
-        :class="{ hidden: !showServices, block: showServices }"
-        class="flex flex-col gap-4 max-sm:gap-6 md:block"
-      >
+      <div class="flex flex-col gap-4 max-sm:gap-6">
         <div
-          class="flex flex-col gap-4 max-lg:flex-wrap max-sm:gap-6 md:flex-row"
+          class="flex flex-col gap-4 max-sm:gap-6 lg:flex-row"
         >
           <div class="flex flex-1 flex-col justify-between gap-4">
             <div
@@ -284,7 +275,7 @@
             </div>
           </div>
           <div
-            class="flex flex-1 flex-col justify-between gap-4 max-lg:visible max-lg:hidden"
+            class="flex flex-1 flex-col justify-between gap-4"
           >
             <div
               class="flex min-h-[302px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[200px] max-sm:p-4"
@@ -433,11 +424,6 @@ import textureImage from '@/assets/images/asidetexture.jpg'
 import iconCommand from '@/assets/images/icon-command.jpg'
 import iconShortly from '@/assets/images/icon-shortly.jpg'
 import iconTech from '@/assets/images/icon-tech.jpg'
-import { ref } from 'vue'
-const showServices = ref(false)
-const toggleServices = () => {
-  showServices.value = !showServices.value
-}
 </script>
 
 <style scoped>
@@ -457,6 +443,29 @@ const toggleServices = () => {
 @media (max-width: 375px) {
   .certificate-title {
     font-size: 32px;
+  }
+}
+
+/* Планшеты и мобильные (до 1023px) */
+@media (max-width: 1023px) {
+  /* уменьшаем расстояние между иконкой и заголовком */
+  .bg-white > img {
+    margin-bottom: 8px !important;
+  }
+
+  /* уменьшаем расстояние между заголовком и описанием */
+  .bg-white h4 {
+    margin-bottom: 8px;
+  }
+
+  /* убираем растягивание контента внутри карточек */
+  .bg-white {
+    justify-content: flex-start !important;
+  }
+
+  /* текст сразу после заголовка */
+  .bg-white p {
+    margin-top: 0;
   }
 }
 </style>
