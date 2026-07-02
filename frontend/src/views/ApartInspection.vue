@@ -1,7 +1,7 @@
 <template>
   <main>
     <section
-      class="w-full h-[52.625rem] absolute top-0 left-0 bg-center bg-cover max-[744px]:h-[100dvh]"
+      class="w-full h-[52.625rem] relative bg-center bg-cover max-[744px]:h-[100dvh]"
       :style="{ backgroundImage: 'url(' + heroImage + ')' }"
     >
       <div class="absolute bottom-16 left-0 right-0 px-8">
@@ -20,8 +20,8 @@
       </div>
     </section>
 
- <section
-      class="bg-blue-600 pb-28 h-full px-8 z-[6] py-16 w-full rounded-2xl relative translate-y-[835px] mt-[-16px] max-[744px]:translate-y-[826px]"
+    <section
+      class="bg-blue-600 pb-28 px-8 z-[6] py-16 w-full rounded-2xl relative -mt-6"
     >
       <div
         class="flex-col mb-[64px] justify-between max-w-[850px] flex gap-10 text-neutral-100"
@@ -39,7 +39,7 @@
                 <circle cx="3" cy="3.5" r="3" fill="white" fill-opacity="0.8" />
               </svg>
             </span>
-  <span
+            <span
               class="uppercase text-neutral-100/80 font-bold"
               >Об услуге</span
             >
@@ -64,7 +64,7 @@
       <!-- add slider! -->
     </section>
     <section
-    class="bg-neutral-200 px-[clamp(1rem,5vw,2rem)] z-20 py-16 w-full rounded-2xl relative translate-y-[825px] mt-[-16px]"
+      class="bg-neutral-200 px-[clamp(1rem,5vw,2rem)] z-20 py-16 w-full rounded-2xl relative -mt-6"
     >
       <div class="pb-16">
         <ToolsBanner :tools="toolsData" />
@@ -73,16 +73,17 @@
         <div
           class="flex items-center gap-[4.5px] mb-0 tracking-[-4%] text-sm leading-[110%] align-middle"
         >
-         <span>
-        <svg     
-        width="6"
-        height="7"
-        viewBox="0 0 6 7"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-     <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
-  </svg>
-</span>
+          <span>
+            <svg
+              width="6"
+              height="7"
+              viewBox="0 0 6 7"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
+            </svg>
+          </span>
           <span
             class="uppercase text-text-dark-secondary font-bold"
             >Тарифы</span
@@ -106,7 +107,7 @@
                   class="mx-auto mb-10 flex max-w-fit items-center justify-center rounded-xl border-2 border-blue-300/20 px-4 py-2 text-center"
                 >
                   <span class="mr-2 size-2 rounded-full bg-gray-500"></span>
-<span
+                  <span
                     class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%] text-gray-500"
                     >Тариф 1</span
                   >
@@ -161,7 +162,7 @@
                   <span
                     class="mr-2 size-2 rounded-full bg-neutral-200/80"
                   ></span>
-                    <span
+                  <span
                     class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%] text-neutral-200/80"
                     >Тариф 2</span
                   >
@@ -222,7 +223,7 @@ const openRequestModal = inject('openRequestModal')
 <style scoped>
 /* 744px — плавно от десктопа */
 @media screen and (max-width: 744px) {
-    section:first-of-type a {
+  section:first-of-type a {
     font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
@@ -237,12 +238,6 @@ const openRequestModal = inject('openRequestModal')
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
     bottom: clamp(4rem, 8vw, 4rem) !important;
-  }
-
-  section:first-of-type a {
-    font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
   }
 
   /* Секция 2 */
@@ -273,15 +268,12 @@ const openRequestModal = inject('openRequestModal')
     font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
   }
 
- section:first-of-type > div {
+  section:first-of-type > div {
     bottom: 4rem !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  section:first-of-type {
-    position: absolute !important;
-    height: 100dvh !important;
-  }
+
   section:first-of-type a {
     width: fit-content !important;
     display: inline-block !important;
@@ -293,11 +285,6 @@ const openRequestModal = inject('openRequestModal')
     padding-left: 1rem !important;
     padding-right: 1rem !important;
     padding-bottom: 3rem !important;
-    transform: translateY(100dvh) !important;
-  }
-
-  section:nth-of-type(3) {
-    transform: translateY(792px) !important;
   }
 
   section:nth-of-type(2) h2 {
@@ -317,17 +304,6 @@ const openRequestModal = inject('openRequestModal')
 
   section:nth-of-type(2) > div:first-child > div:last-child p {
     font-size: clamp(1.25rem, 2.7vw, 1.5rem) !important;
-  }
-}
-
-/* 641px–744px — синхронизация секций */
-@media screen and (min-width: 641px) and (max-width: 744px) {
-  section:nth-of-type(2) {
-    transform: translateY(100dvh) !important;
-  }
-
-  section:nth-of-type(3) {
-    transform: translateY(772px) !important;
   }
 }
 

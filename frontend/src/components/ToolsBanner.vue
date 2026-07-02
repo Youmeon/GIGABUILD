@@ -51,14 +51,14 @@
     <div class="tools-mobile-nav hidden">
       <button
         @click="prevTool"
-        class="tools-mobile-nav__btn flex items-center justify-center rounded-2xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
+        class="tools-mobile-nav__btn flex items-center justify-center rounded-[32px] bg-neutral-100 text-text-dark-primary shadow-sm transition-colors hover:bg-neutral-200"
         aria-label="Предыдущий инструмент"
       >
         <ArrowLeft class="size-6" />
       </button>
       <button
         @click="nextTool"
-        class="tools-mobile-nav__btn flex items-center justify-center rounded-2xl bg-neutral-200 text-text-dark-primary transition-colors hover:bg-neutral-300"
+        class="tools-mobile-nav__btn flex items-center justify-center rounded-[32px] bg-neutral-100 text-text-dark-primary shadow-sm transition-colors hover:bg-neutral-200"
         aria-label="Следующий инструмент"
       >
         <ArrowRight class="size-6" />
@@ -220,14 +220,16 @@ const prevTool = () => {
   width: 62px;
   height: 40px;
   flex-shrink: 0;
-  background-color: #fafafc;
+  background-color: #f5f5f5;
   padding: 8px 19px;
-  border-radius: 12px;
+  border-radius: 32px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   transition: all 0.2s ease;
 }
 

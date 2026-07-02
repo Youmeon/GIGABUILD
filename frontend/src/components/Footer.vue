@@ -2,7 +2,7 @@
   <footer
     :class="{
       'home-footer-stack translate-y-[830px] max-sm:translate-y-[650px]': isSpecialPage,
-      'relative z-30 mt-[-30px] max-h-full w-full rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[28px] pt-16 max-sm:py-2 max-[744px]:mt-[-58px] max-md:px-4': true,
+      'relative z-30 mt-[-30px] max-h-full w-full rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[28px] pt-16 max-sm:py-2 max-[744px]:mt-[-16px] max-md:px-4': true,
     }"
   >
     <div
@@ -104,7 +104,7 @@ const openRequestModal = inject('openRequestModal')
 
 const route = useRoute()
 const isSpecialPage = computed(() => {
-  return route.path === '/' || route.path === '/apartment-inspection'
+  return route.path === '/'
 })
 </script>
 
