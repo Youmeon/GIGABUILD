@@ -87,7 +87,7 @@
             class="size-fit max-[744px]:w-[157px] max-[744px]:h-[28px]"
           />
         </router-link>
-        <span class="flex-1 text-center max-[744px]:self-end">ООО "СК Дионис" © 2025</span>
+        <span class="flex-1 text-center max-[744px]:self-end">ООО "СК Дионис" © 2026</span>
         <router-link to="#" class="flex-1 text-end max-[744px]:self-end max-[744px]:text-right"
           >Политика конфиденциальности</router-link
         >
