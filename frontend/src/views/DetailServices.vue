@@ -148,7 +148,7 @@ import { useRoute } from 'vue-router'
 import getImageUrl from '../utils/getImageURL'
 
 const route = useRoute()
-const openRequestModal = inject('openRequestModal')
+const openContactModal = inject('openContactModal')
 const sliderContainer = ref(null)
 const canScrollLeft = ref(false)
 const canScrollRight = ref(false)

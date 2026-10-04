@@ -10,7 +10,7 @@
             Приемка квартир
           </h1>
           <router-link
-            @click="openRequestModal"
+            @click="openContactModal"
             to="#"
             class="inline-block w-fit rounded-2xl bg-neutral-100 px-[55px] py-[18px] text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-blue-600 transition-all duration-300 ease-out hover:bg-blue-500 hover:text-neutral-100 focus:bg-blue-400 focus:text-neutral-100"
           >
@@ -96,111 +96,79 @@
         </h2>
         <div>
           <div
-            class="flex justify-center gap-4 p-4 text-center max-md:flex-col max-sm:gap-2"
+            class="flex justify-center gap-4 p-4 text-center max-lg:flex-col max-sm:gap-2"
           >
-            <!-- Левая карточка (Tariff 1) -->
-             <div
-              class="flex flex-1 flex-col justify-between rounded-[32px] border-blue-600 bg-neutral-100 p-4 text-center shadow-sm"
-            >
-              <div class="px-4 pt-4">
-                <div
-                  class="mx-auto mb-10 flex max-w-fit items-center justify-center rounded-xl border-2 border-blue-300/20 px-4 py-2 text-center"
-                >
-                  <span class="mr-2 size-2 rounded-full bg-gray-500"></span>
-                  <span
-                    class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%] text-gray-500"
-                    >Тариф 1</span
-                  >
-                </div>
-                <div class="mb-8 text-center">
-                  <h2
-                    class="mb-1 text-center align-middle text-[32px] font-medium leading-[125%] tracking-[-4%] text-text-dark-primary"
-                  >
-                    Площадь квартиры
-                  </h2>
-                  <span
-                    class="text-center align-middle text-[48px] font-semibold leading-[125%] tracking-[-3%] text-blue-600"
-                    >До 40 м²</span
-                  >
-                </div>
-                <p
-                  class="mx-auto mb-[48px] max-w-[392px] text-center align-bottom text-[20px] font-normal leading-[150%] tracking-[-3%] text-gray-600"
-                >
-                  Оптимальное решение для студий<br />
-                  и небольших квартир. Полная проверка<br />
-                  за фиксированную цену
-                </p>
-                <div class="mb-8">
-                  <p
-                    class="mb-1 text-center align-bottom text-[20px] font-medium leading-[135%] tracking-[-3%] text-gray-600"
-                  >
-                    Стоимость
-                  </p>
-                  <p
-                    class="text-center align-middle text-[48px] font-semibold leading-[125%] tracking-[-3%] text-blue-600"
-                  >
-                    4 000 руб.
-                  </p>
-                </div>
-              </div>
-              <button
-                @click="openRequestModal"
-                class="w-full rounded-[16px] bg-blue-600 py-[18px] align-middle font-normal leading-none tracking-[-3%] text-white hover:bg-blue-700"
-              >
-                Заказать приёмку
-              </button>
-            </div>
-
-            <!-- Правая карточка (Tariff 2) -->
+            <!-- Карточки тарифов; выделенная (accent) — синяя -->
             <div
-              class="flex flex-1 flex-col justify-between rounded-[32px] bg-blue-600 p-4 text-center shadow-sm"
+              v-for="(tariff, index) in tariffs"
+              :key="tariff.title"
+              class="flex flex-1 flex-col justify-between rounded-[32px] p-4 text-center shadow-sm"
+              :class="tariff.accent ? 'bg-blue-600' : 'bg-neutral-100'"
             >
-              <div class="px-4 pt-4">
+              <div class="flex flex-1 flex-col px-4 pt-4">
                 <div
-                  class="mx-auto mb-10 flex max-w-fit items-center justify-center rounded-xl border border-solid border-blue-200/30 bg-blue-500 px-4 py-2 text-center"
+                  class="mx-auto mb-10 flex max-w-fit items-center justify-center rounded-xl px-4 py-2 text-center"
+                  :class="
+                    tariff.accent
+                      ? 'border border-solid border-blue-200/30 bg-blue-500'
+                      : 'border-2 border-blue-300/20'
+                  "
                 >
                   <span
-                    class="mr-2 size-2 rounded-full bg-neutral-200/80"
+                    class="mr-2 size-2 rounded-full"
+                    :class="tariff.accent ? 'bg-neutral-200/80' : 'bg-gray-500'"
                   ></span>
                   <span
-                    class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%] text-neutral-200/80"
-                    >Тариф 2</span
+                    class="tariff-label text-[16px] font-normal leading-[135%] tracking-[-3%]"
+                    :class="tariff.accent ? 'text-neutral-200/80' : 'text-gray-500'"
+                    >Тариф {{ index + 1 }}</span
                   >
                 </div>
-                <div class="mb-8 text-center text-neutral-100">
+                <div
+                  class="mb-8 text-center"
+                  :class="tariff.accent ? 'text-neutral-100' : ''"
+                >
                   <h2
-                    class="mb-1 text-center align-middle text-[32px] font-medium leading-[125%] tracking-[-4%]"
+                    class="mb-1 text-center align-middle text-[clamp(1.5rem,2.2vw,2rem)] font-medium leading-[125%] tracking-[-4%]"
+                    :class="tariff.accent ? '' : 'text-text-dark-primary'"
                   >
-                    Площадь квартиры
+                    {{ tariff.title }}
                   </h2>
                   <span
-                    class="text-center align-middle text-[48px] font-semibold leading-[125%] tracking-[-3%]"
-                    >До 40 м²</span
+                    class="text-center align-middle text-[clamp(2rem,3.3vw,3rem)] font-semibold leading-[125%] tracking-[-3%]"
+                    :class="tariff.accent ? '' : 'text-blue-600'"
+                    >{{ tariff.pricePerMeter }} руб. / м²</span
                   >
                 </div>
                 <p
-                  class="mx-auto mb-[48px] max-w-[392px] text-center align-bottom text-[20px] font-normal leading-[150%] tracking-[-3%] text-neutral-200/80"
+                  class="mx-auto mb-[48px] flex-1 max-w-[392px] text-center align-bottom text-[20px] font-normal leading-[150%] tracking-[-3%]"
+                  :class="tariff.accent ? 'text-neutral-200/80' : 'text-gray-600'"
                 >
-                  Подходит для просторных<br />
-                  квартир и апартаментов.<br />
-                  Стоимость зависит от метража
+                  {{ tariff.description }}
                 </p>
                 <div class="mb-8">
                   <p
-                    class="mb-1 text-center align-bottom text-[20px] font-medium leading-[135%] tracking-[-3%] text-neutral-200/80"
+                    class="mb-1 text-center align-bottom text-[20px] font-medium leading-[135%] tracking-[-3%]"
+                    :class="tariff.accent ? 'text-neutral-200/80' : 'text-gray-600'"
                   >
-                    Стоимость
+                    Минимальная стоимость
                   </p>
                   <p
-                    class="text-center align-middle text-[48px] font-semibold leading-[125%] tracking-[-3%] text-neutral-100"
+                    class="text-center align-middle text-[clamp(2rem,3.3vw,3rem)] font-semibold leading-[125%] tracking-[-3%]"
+                    :class="tariff.accent ? 'text-neutral-100' : 'text-blue-600'"
                   >
-                    100 руб. / м²
+                    {{ tariff.minPrice }} руб.
                   </p>
                 </div>
               </div>
               <button
-                @click="openRequestModal"
-                class="w-full rounded-[16px] bg-neutral-100 py-[18px] align-middle font-normal leading-none tracking-[-3%] text-blue-600"
+                @click="openContactModal"
+                class="w-full rounded-[16px] py-[18px] align-middle font-normal leading-none tracking-[-3%]"
+                :class="
+                  tariff.accent
+                    ? 'bg-neutral-100 text-blue-600'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                "
               >
                 Заказать приёмку
               </button>
@@ -218,7 +186,32 @@ import InspectionSlider from '@/components/InspectionSlider.vue'
 import ToolsBanner from '@/components/ToolsBanner.vue'
 import toolsData from '@/data/acceptance-of-apartments-tools.json'
 import { inject } from 'vue'
-const openRequestModal = inject('openRequestModal')
+const openContactModal = inject('openContactModal')
+
+const tariffs = [
+  {
+    title: 'Черновая отделка',
+    pricePerMeter: 100,
+    minPrice: '6 000',
+    description:
+      'Квартира без отделки: проверим стены, перекрытия, окна, двери и инженерные коммуникации',
+  },
+  {
+    title: 'Предчистовая отделка',
+    pricePerMeter: 120,
+    minPrice: '7 000',
+    description:
+      'Квартира подготовлена под ремонт: проверим штукатурку, стяжку, разводку электрики и сантехники',
+    accent: true,
+  },
+  {
+    title: 'Чистовая отделка',
+    pricePerMeter: 140,
+    minPrice: '7 000',
+    description:
+      'Квартира с готовым ремонтом: проверим покрытия, сантехнику, электрику, окна и двери',
+  },
+]
 </script>
 <style scoped>
 /* 744px — плавно от десктопа */
@@ -313,17 +306,17 @@ const openRequestModal = inject('openRequestModal')
     font-size: clamp(2rem, 5.6vw, 3rem) !important;
   }
 
-  /* Площадь квартиры */
+  /* Название тарифа (тип отделки) */
   section:nth-of-type(3) .flex.flex-1.flex-col h2 {
     font-size: clamp(1.25rem, 3.7vw, 2rem) !important;
   }
 
-  /* До 40 м² — только span внутри div.mb-8 */
+  /* Цена за м² — только span внутри div.mb-8 */
   section:nth-of-type(3) .flex.flex-1.flex-col .mb-8 span {
     font-size: clamp(2rem, 5.6vw, 3rem) !important;
   }
 
-  /* Тариф 1 / Тариф 2 — фиксируем 16px */
+  /* Тариф 1 / 2 / 3 — фиксируем 16px */
   section:nth-of-type(3) .tariff-label {
     font-size: 1rem !important;
   }
@@ -333,7 +326,7 @@ const openRequestModal = inject('openRequestModal')
     font-size: clamp(1rem, 2.7vw, 1.25rem) !important;
   }
 
-  /* Цена (4000 руб / 100 руб м²) */
+  /* Минимальная стоимость */
   section:nth-of-type(3) .flex.flex-1.flex-col .mb-8 p:last-child {
     font-size: clamp(2rem, 5.6vw, 3rem) !important;
   }

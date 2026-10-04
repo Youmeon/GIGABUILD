@@ -6,7 +6,7 @@ import logoVar2 from '../assets/images/logo-var2.svg'
 import navItems from '../data/nav.json'
 
 // Инжектируем функцию открытия модального окна и его состояние
-const openRequestModal = inject('openRequestModal')
+const openContactModal = inject('openContactModal')
 const isModalOpen = inject('isModalOpen')
 
 const isMenuOpen = ref(false)
@@ -268,10 +268,10 @@ watch(
             </li>
             <li>
               <button
-                @click="openRequestModal(); toggleMenu()"
+                @click="openContactModal(); toggleMenu()"
                 class="flex h-10 w-full items-center justify-center rounded-xl px-5 py-2 text-center transition-all duration-300 ease-out text-base font-medium bg-blue-600 text-white hover:bg-blue-500 focus:bg-blue-400"
               >
-                Оставить заявку
+                Связаться с нами
               </button>
             </li>
           </ul>
@@ -279,12 +279,12 @@ watch(
       </transition>
       </Teleport>
 
-      <!-- Кнопка «Оставить заявку» (для десктопа) -->
+      <!-- Кнопка «Связаться с нами» (для десктопа) -->
       <button
-        @click="openRequestModal"
+        @click="openContactModal"
         class="h-10 text-nowrap rounded-xl bg-blue-600 px-5 py-2 font-sans text-base text-background-neutral-100 transition-all duration-300 ease-out hover:bg-blue-500 focus:bg-blue-400 max-[1024px]:hidden"
       >
-        Оставить заявку
+        Связаться с нами
       </button>
     </header>
   </div>

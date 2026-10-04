@@ -120,7 +120,7 @@
       </div>
     </section>
     <section
-      class="mb-[10px] mt-8 rounded-2xl bg-blue-600 px-8 py-16 text-white max-md:px-4 max-md:py-8"
+      class="mt-8 rounded-2xl rounded-b-none bg-blue-600 px-8 pb-[94px] pt-16 text-white max-md:px-4 max-md:pb-[62px] max-md:pt-8 max-[744px]:pb-12"
     >
       <div class="mb-10 max-sm:mb-6">
         <div class="mb-6 flex items-center gap-1 max-sm:mb-4">
@@ -339,84 +339,7 @@
         </div>
       </div>
     </section>
-    <article class="mt-[-32px] rounded-2xl bg-neutral-200 px-8 py-20 max-md:px-4 max-md:py-10">
-      <div class="mb-10 flex flex-col gap-6">
-        <div class="flex items-center justify-start gap-[4.5px] text-center">
-          <span>
-            <svg
-              width="6"
-              height="7"
-              viewBox="0 0 6 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="3" cy="3.5" r="3" fill="#3D59EB" />
-            </svg>
-          </span>
-          <span
-            class="font-bold uppercase text-text-dark-secondary max-sm:p-1 max-sm:text-[0.7rem]"
-          >
-            Сертификаты
-          </span>
-        </div>
-        <h1
-          class="certificate-title align-middle text-[80px] font-medium leading-[115%] tracking-[-4%] text-text-dark-primary max-lg:text-[5rem] max-md:text-[2.5rem] max-sm:text-[2rem]"
-        >
-          Свидетельство о допуске к строительным и проектировочным работам
-        </h1>
-      </div>
-      <div class="flex flex-col gap-4">
-        <a
-          href="#"
-          class="flex gap-8 rounded-[32px] bg-neutral-100 px-8 py-[34.2px] max-md:flex-col max-md:gap-4"
-        >
-          <img
-            src="@/assets/images/pdf.jpg"
-            alt="icon"
-            class="mb-1 size-20 rounded-xl"
-          />
-          <div class="flex flex-col gap-2">
-            <h4
-              class="text-3xl font-medium leading-tight tracking-tight text-gray-800 max-sm:text-2xl"
-            >
-              ВЫПИСКА из единого реестра сведений о членах СРО
-            </h4>
-            <p
-              class="text-xl font-normal leading-[135%] tracking-tight text-gray-600 max-sm:text-base"
-            >
-              в области инженерных изысканий и в области
-              архитектурно-строительного проектирования и их обязательствах
-            </p>
-          </div>
-        </a>
-        <a
-          href="#"
-          class="flex gap-8 rounded-[32px] bg-neutral-100 px-8 py-[34.2px] max-md:flex-col max-md:gap-4"
-        >
-          <img
-            src="@/assets/images/pdf.jpg"
-            alt="icon"
-            class="mb-1 size-20 rounded-xl"
-          />
-          <div class="flex flex-col gap-2 max-md:flex-col max-md:gap-4">
-            <h4
-              class="text-3xl font-medium leading-tight tracking-tight text-gray-800 max-sm:text-2xl"
-            >
-              УВЕДОМЛЕНИЕ о включении сведений в Национальный реестр
-              специалистов
-            </h4>
-            <p
-              class="text-xl font-normal leading-[135%] tracking-tight text-gray-600 max-sm:text-base"
-            >
-              в области инженерных изысканий и архитектурно-строительного
-              проектирования
-            </p>
-          </div>
-        </a>
-      </div>
-    </article>
   </main>
-  <main class="bg-neutral-200 text-text-dark-primary mb-[30px] max-[744px]:mb-[58px]"></main>
 </template>
 
 <script setup>
@@ -427,25 +350,6 @@ import iconTech from '@/assets/images/icon-tech.jpg'
 </script>
 
 <style scoped>
-/* Адаптивность для заголовка свидетельства */
-@media (min-width: 744px) and (max-width: 1440px) {
-  .certificate-title {
-    font-size: 48px;
-  }
-}
-
-@media (max-width: 744px) {
-  .certificate-title {
-    font-size: clamp(32px, 5vw, 48px);
-  }
-}
-
-@media (max-width: 375px) {
-  .certificate-title {
-    font-size: 32px;
-  }
-}
-
 /* Планшеты и мобильные (до 1023px) */
 @media (max-width: 1023px) {
   /* уменьшаем расстояние между иконкой и заголовком */

@@ -14,7 +14,18 @@
       </p>
     </div>
     
-    <div class="tools-banner__gallery" :style="{ backgroundImage: `url(${currentToolImage})` }">
+    <div class="tools-banner__gallery">
+      <div class="tools-banner__stage">
+        <Transition name="tools-banner-fade" mode="out-in">
+          <img
+            :key="currentTool.id"
+            :src="currentToolImage"
+            :alt="currentTool.fullName || currentTool.title"
+            class="tools-banner__image"
+          />
+        </Transition>
+      </div>
+
       <div class="tools-banner__gallery-overlay">
         <div class="tools-banner__controls">
           <h3 class="tools-banner__tool-name">{{ currentTool.title }}</h3>
@@ -69,7 +80,7 @@
 
 <script setup>
 import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import getImageUrl from '../utils/getImageURL'
 
 const props = defineProps({
@@ -85,6 +96,14 @@ const currentTool = computed(() => props.tools[currentIndex.value] || props.tool
 
 const currentToolImage = computed(() => {
   return getImageUrl(currentTool.value.image)
+})
+
+// Подгружаем все картинки заранее, чтобы при листании не было пустого кадра
+onMounted(() => {
+  props.tools.forEach((tool) => {
+    const img = new Image()
+    img.src = getImageUrl(tool.image)
+  })
 })
 
 const progressWidth = computed(() => {
@@ -171,27 +190,53 @@ const prevTool = () => {
   max-width: 380px;
 }
 
+/* Фиксированная высота: длинное название или другая пропорция картинки не меняют размер баннера */
 .tools-banner__gallery {
   max-width: 1280px;
   flex-grow: 1;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 352px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  background-color: #fff;
   border-radius: 32px;
-  min-height: 500px;
-  transition: background-image 0.5s ease-in-out;
   overflow: hidden;
 }
 
+/* Область под прибор: картинка любого размера вписывается целиком и по центру */
+.tools-banner__stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px 0;
+}
+
+.tools-banner__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* убирает белый фон у фото, если он не идеально белый */
+  mix-blend-mode: multiply;
+}
+
+.tools-banner-fade-enter-active,
+.tools-banner-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.tools-banner-fade-enter-from,
+.tools-banner-fade-leave-to {
+  opacity: 0;
+}
+
 .tools-banner__gallery-overlay {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 22px;
   background: linear-gradient(180deg, rgba(2, 2, 3, 0) 0%, rgba(2, 2, 3, 0.85) 100%);
-  padding: 99px 32px 26px 34px;
-  border-radius: 32px;
-  height: 100%;
+  padding: 64px 32px 26px 34px;
 }
 
 .tools-banner__controls {
@@ -349,16 +394,17 @@ const prevTool = () => {
 }
 @media (max-width: 744px) {
   .tools-banner__gallery {
-    min-height: unset !important;
-    aspect-ratio: 704 / 419;
+    height: auto;
+    aspect-ratio: 1 / 1;
     width: 100%;
-    padding-top: 0 !important;
+  }
+
+  .tools-banner__stage {
+    padding: 1rem 1rem 0;
   }
 
   .tools-banner__gallery-overlay {
-    height: 100%;
-    padding: 0 1rem 1.5rem 1rem;
-    justify-content: flex-end;
+    padding: 1.5rem 1rem 1.5rem 1rem;
   }
 
   .tools-banner__tool-name {

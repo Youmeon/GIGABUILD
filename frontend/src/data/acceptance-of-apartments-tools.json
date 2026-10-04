@@ -1,47 +1,146 @@
 [
   {
     "id": 1,
-    "title": "Секундомер электронный",
-    "image": "acceptance-of-apartments-banner-electronic-stopwatch1.jpg"
+    "title": "Тепловизор",
+    "fullName": "Тепловизор инфракрасный Fluke TiS10 (Госреестр 66512-17)",
+    "image": "banner-acceptance-of-apartments/media/thermal-imager.png"
   },
   {
     "id": 2,
-    "title": "Крановые весы",
-    "image": "acceptance-of-apartments-banner-crane-clock2.jpg"
+    "title": "Цифровой мультиметр",
+    "fullName": "Профессиональный цифровой мультиметр СЕМ DT-9969 (Госреестр РФ 58550-14)",
+    "image": "banner-acceptance-of-apartments/media/digital-multimeter.png"
   },
   {
     "id": 3,
-    "title": "Цифровой мультиметр",
-    "image": "acceptance-of-apartments-banner-digital-multimeter3.jpg"
+    "title": "Мегаомметр",
+    "fullName": "Измеритель сопротивления изоляции и электрических параметров (мегаомметр-цифровой) DT-5505",
+    "image": "banner-acceptance-of-apartments/media/megohmmeter.png"
   },
   {
     "id": 4,
-    "title": "Дифференциальный манометр",
-    "image": "acceptance-of-apartments-banner-differentiated-pressure-gauge4.jpg"
+    "title": "Лазерный дальномер",
+    "fullName": "Дальномер лазерный DISTO D5 (Госреестр 41142-09)",
+    "image": "banner-acceptance-of-apartments/media/laser-rangefinder.png"
   },
   {
     "id": 5,
-    "title": "Моновакуумметр",
-    "image": "acceptance-of-apartments-banner-vacuum-pressure-gauge5.jpg"
+    "title": "Видеоскоп",
+    "fullName": "ВИДЕОСКОП (ВИДЕОБОРОСКОП) BS-150",
+    "image": "banner-acceptance-of-apartments/media/videoscope.png"
   },
-	{
-		"id": 6,
-		"title": "Трубка напорная",
-		"image": "acceptance-of-apartments-banner-pressure-tube6.jpg"
-	},
-	{
-		"id": 7,
-		"title": "Цифровой осциллограф",
-		"image": "acceptance-of-apartments-banner-digital-oscilloscope7.jpg"
-	},
-	{
-		"id": 8,
-		"title": "Барометр",
-		"image": "acceptance-of-apartments-banner-barometer8.jpg"
-	},
-	{
-		"id": 9,
-		"title": "Манометр",
-		"image": "acceptance-of-apartments-banner-pressure-gauge9.jpg"
-	}
+  {
+    "id": 6,
+    "title": "Термогигрометр",
+    "fullName": "Термогигрометр ТЕМП-3.22 (Госреестр№ 37833-08)",
+    "image": "banner-acceptance-of-apartments/media/thermohygrometer.png"
+  },
+  {
+    "id": 7,
+    "title": "Анемометр-термометр",
+    "fullName": "Анемометр-термометр цифровой ИСП-МГ4.01 (Госреестр 35211-07)",
+    "image": "banner-acceptance-of-apartments/media/anemometer-thermometer.png"
+  },
+  {
+    "id": 8,
+    "title": "Влагомер",
+    "fullName": "Измеритель влажности электронный Влагомер-МГ4-У (Госреестр 43674-10)",
+    "image": "banner-acceptance-of-apartments/media/moisture-meter.png"
+  },
+  {
+    "id": 9,
+    "title": "Люксметр-пульсметр",
+    "fullName": "ТКА-ПКМ 08 Люксметр - пульсметр (Госреестр № 24248-09)",
+    "image": "banner-acceptance-of-apartments/media/luxmeter.png"
+  },
+  {
+    "id": 10,
+    "title": "Шумомер",
+    "fullName": "Шумомер цифровой Testo 816-2 (Госреестр 50850-12)",
+    "image": "banner-acceptance-of-apartments/media/sound-level-meter.png"
+  },
+  {
+    "id": 11,
+    "title": "Измеритель прочности",
+    "fullName": "Измеритель прочности бетона ИПС-МГ4 модификация ИПС-МГ4.03 (Госреестр 60741-15)",
+    "image": "banner-acceptance-of-apartments/media/concrete-strength-meter.png"
+  },
+  {
+    "id": 12,
+    "title": "Прочномер",
+    "fullName": "Измеритель прочности материалов ОНИКС-1 модификация ОНИКС-1.ОС.050 №57880-14",
+    "image": "banner-acceptance-of-apartments/media/pull-off-strength-meter.png"
+  },
+  {
+    "id": 13,
+    "title": "Ультразвуковой прибор",
+    "fullName": "Измеритель времени распространения ультразвука ПУЛЬСАР-1.2 (Госреестр 24690-06)",
+    "image": "banner-acceptance-of-apartments/media/ultrasonic-tester.png"
+  },
+  {
+    "id": 14,
+    "title": "Дефектоскоп",
+    "fullName": "Ультразвуковой дефектоскоп NOVOTEST УД2301 (Госреестр№ 71365-18)",
+    "image": "banner-acceptance-of-apartments/media/ultrasonic-flaw-detector.png"
+  },
+  {
+    "id": 15,
+    "title": "Измеритель защитного слоя",
+    "fullName": "Измеритель защитного слоя бетона ПОИСК 2,5 (Госреестр 26398-09)",
+    "image": "banner-acceptance-of-apartments/media/concrete-cover-meter.png"
+  },
+  {
+    "id": 16,
+    "title": "Детектор арматуры",
+    "fullName": "Прибор для измерения толщины защитного слоя бетона Profometr PM-6 тип 650 (Госреестр №42008-15)",
+    "image": "banner-acceptance-of-apartments/media/rebar-detector.png"
+  },
+  {
+    "id": 17,
+    "title": "Измеритель теплопроводности",
+    "fullName": "Измеритель теплопроводности материалов МИТ-1",
+    "image": "banner-acceptance-of-apartments/media/thermal-conductivity-meter.png"
+  },
+  {
+    "id": 18,
+    "title": "Тепломер",
+    "fullName": "Измеритель теплофизических величин ТЕПЛОГРАФ №51094-12",
+    "image": "banner-acceptance-of-apartments/media/heat-flux-meter.png"
+  },
+  {
+    "id": 19,
+    "title": "Толщиномер покрытий",
+    "fullName": "Толщиномер покрытий NOVOTEST ТП-1М",
+    "image": "banner-acceptance-of-apartments/media/coating-thickness-gauge.png"
+  },
+  {
+    "id": 20,
+    "title": "Штангенциркуль",
+    "fullName": "Штангенциркуль ШЦ-1-125 0.1 МИК PRO",
+    "image": "banner-acceptance-of-apartments/media/caliper.png"
+  },
+  {
+    "id": 21,
+    "title": "Лупа измерительная",
+    "fullName": "Лупа измерительная ЛИ-3-10х с подсветкой (L30) (Госреестр№72156-18)",
+    "image": "banner-acceptance-of-apartments/media/measuring-magnifier.png"
+  },
+  {
+    "id": 22,
+    "title": "Металлическая линейка",
+    "fullName": "Линейка измерительная металлическая 30 см (Госреестр №74468-19)",
+    "image": "banner-acceptance-of-apartments/media/metal-ruler.png"
+  },
+  {
+    "id": 23,
+    "title": "Рулетка",
+    "fullName": "Рулетка измерительная металлическая FISCO модиф.UM3M, KT 3, рег.№67910-17",
+    "image": "banner-acceptance-of-apartments/media/tape-measure.png"
+  },
+  {
+    "id": 24,
+    "title": "Угольник",
+    "fullName": "Металлический угольник СИБРТЕХ 32360",
+    "image": "banner-acceptance-of-apartments/media/metal-square.png"
+  }
 ]

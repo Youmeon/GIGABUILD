@@ -14,14 +14,14 @@
         <h2
           class="text-5xl font-semibold leading-[125%] tracking-[-3%] text-neutral-100 max-sm:text-2xl max-[744px]:text-5xl max-[744px]:leading-normal max-[744px]:tracking-[-1.43px] max-[744px]:text-left"
         >
-          Оставьте заявку<br />
-          и мы свяжемся с вами в ближайшее время
+          Напишите нам<br />
+          и мы ответим в ближайшее время
         </h2>
         <button
-          @click = "openRequestModal"
+          @click = "openContactModal"
           class="max-w-[384px] rounded-2xl bg-neutral-800 transition-all duration-300 ease-out px-8 py-5 text-center align-middle text-[20px] font-medium leading-none tracking-[-3%] text-neutral-100 max-sm:text-[16px] hover:bg-neutral-700 max-[744px]:w-full max-[744px]:max-w-[448px] max-[744px]:py-5 max-[744px]:px-8 max-[744px]:text-[20px] max-[744px]:tracking-[-0.59px]"
         >
-          Оставить заявку
+          Связаться с нами
         </button>
       </div>
       <div
@@ -88,9 +88,8 @@
           />
         </router-link>
         <span class="flex-1 text-center max-[744px]:self-end">ООО "СК Дионис" © 2026</span>
-        <router-link to="#" class="flex-1 text-end max-[744px]:self-end max-[744px]:text-right"
-          >Политика конфиденциальности</router-link
-        >
+        <!-- Пустой блок держит название компании по центру (раньше здесь была ссылка на политику конфиденциальности) -->
+        <span class="flex-1 max-[744px]:hidden" aria-hidden="true"></span>
       </div>
     </div>
   </footer>
@@ -100,7 +99,7 @@
 import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
 
-const openRequestModal = inject('openRequestModal')
+const openContactModal = inject('openContactModal')
 
 const route = useRoute()
 const isSpecialPage = computed(() => {
