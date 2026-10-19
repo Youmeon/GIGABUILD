@@ -1,10 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/static/vite.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FFFFFF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
+    <!-- title, description, canonical и og:title/description/url выставляются для каждой страницы в src/seo.js -->
+    <title>СК Дионис — приёмка квартир в Хабаровске</title>
+    <meta
+      name="description"
+      content="Приёмка квартир, строительный контроль, обследование зданий и строительные экспертизы в Хабаровске."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="СК Дионис" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:image" content="https://skdionis.ru/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "ООО «СК Дионис»",
+        "url": "https://skdionis.ru/",
+        "logo": "https://skdionis.ru/android-chrome-512x512.png",
+        "image": "https://skdionis.ru/og-image.jpg",
+        "telephone": ["+7-914-441-06-11", "+7-4212-24-73-65"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ул. Карла Маркса, 62А",
+          "addressLocality": "Хабаровск",
+          "addressCountry": "RU"
+        },
+        "areaServed": "Хабаровск",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "08:00",
+          "closes": "19:00"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>

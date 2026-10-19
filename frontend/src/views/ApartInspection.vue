@@ -181,7 +181,7 @@
 </template>
 
 <script setup>
-import heroImage from '@/assets/images/apart-insp.jpg'
+import heroImage from '@/assets/images/apart-insp.webp'
 import InspectionSlider from '@/components/InspectionSlider.vue'
 import ToolsBanner from '@/components/ToolsBanner.vue'
 import toolsData from '@/data/acceptance-of-apartments-tools.json'

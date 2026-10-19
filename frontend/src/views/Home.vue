@@ -199,7 +199,7 @@
 </template>
 
 <script setup>
-import heroImage from '@/assets/images/img.jpg'
+import heroImage from '@/assets/images/img.webp'
 import servicesData from '@/data/services.json'
 import { ref } from 'vue'
 import ButtonDetails from '../components/ButtonDetails.vue'
@@ -225,7 +225,7 @@ const cards = ref(servicesData)
 }
 
 .priemka {
-  background-image: url(../assets/images/schempomoch.png);
+  background-image: url(../assets/images/schempomoch.webp);
   background-size: cover;
   background-repeat: no-repeat;
 }

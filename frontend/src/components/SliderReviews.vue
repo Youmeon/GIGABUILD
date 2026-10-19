@@ -39,12 +39,12 @@
           <div
             class="review-card__avatar size-12 shrink-0 overflow-hidden rounded-full sm:size-16 lg:size-[4.5rem]"
           >
-            <img
-              :src="getImageUrl(review.avatarAuthor)"
-              :alt="review.nameAuthor"
-              @error="handleImageError"
-              class="size-full object-cover"
-            />
+            <!-- Вместо фото клиента — первая буква имени: фото и имя вместе это персональные данные -->
+            <span
+              class="flex size-full items-center justify-center bg-blue-600 text-xl font-semibold text-white lg:text-2xl"
+              aria-hidden="true"
+              >{{ review.nameAuthor.charAt(0) }}</span
+            >
           </div>
           <div class="min-w-0 flex-1">
             <p
@@ -112,7 +112,6 @@
 import reviewsData from '@/data/reviews.json'
 import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 import { computed, nextTick, onMounted, onUnmounted, reactive, ref } from 'vue'
-import getImageUrl from '../utils/getImageURL'
 
 const reviews = reactive(reviewsData)
 
@@ -195,9 +194,6 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 
-const handleImageError = (event) => {
-  event.target.src = `${getImageUrl('service1.jpg')}`
-}
 </script>
 
 <style scoped>

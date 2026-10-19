@@ -155,7 +155,7 @@
               class="flex min-h-[302px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[200px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon.jpg"
+                src="@/assets/images/icon.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -175,7 +175,7 @@
               class="flex min-h-[383px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-1.jpg"
+                src="@/assets/images/icon-1.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -196,7 +196,7 @@
               class="flex min-h-[343px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-2.jpg"
+                src="@/assets/images/icon-2.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -217,7 +217,7 @@
               class="flex min-h-[353px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-3.jpg"
+                src="@/assets/images/icon-3.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -237,7 +237,7 @@
               class="flex min-h-[332px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-4.jpg"
+                src="@/assets/images/icon-4.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -257,7 +257,7 @@
               class="flex min-h-[343px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-5.jpg"
+                src="@/assets/images/icon-5.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -281,7 +281,7 @@
               class="flex min-h-[302px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[200px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-6.jpg"
+                src="@/assets/images/icon-6.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -300,7 +300,7 @@
               class="flex min-h-[383px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-7.jpg"
+                src="@/assets/images/icon-7.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -320,7 +320,7 @@
               class="flex min-h-[343px] flex-col justify-between gap-4 rounded-3xl bg-white p-8 max-sm:min-h-[220px] max-sm:p-4"
             >
               <img
-                src="@/assets/images/icon-8.jpg"
+                src="@/assets/images/icon-8.webp"
                 alt="icon"
                 class="mb-1 w-16 rounded-xl"
               />
@@ -343,10 +343,10 @@
 </template>
 
 <script setup>
-import textureImage from '@/assets/images/asidetexture.jpg'
-import iconCommand from '@/assets/images/icon-command.jpg'
-import iconShortly from '@/assets/images/icon-shortly.jpg'
-import iconTech from '@/assets/images/icon-tech.jpg'
+import textureImage from '@/assets/images/asidetexture.webp'
+import iconCommand from '@/assets/images/icon-command.webp'
+import iconShortly from '@/assets/images/icon-shortly.webp'
+import iconTech from '@/assets/images/icon-tech.webp'
 </script>
 
 <style scoped>

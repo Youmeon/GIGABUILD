@@ -82,7 +82,7 @@ defineExpose({ openModal })
           @click="openMessenger(messenger)"
           class="flex w-full items-center gap-4 rounded-2xl border border-neutral-300 bg-neutral-100 px-5 py-4 text-left text-[20px] font-medium leading-none tracking-[-3%] text-text-dark-primary transition-colors duration-300 ease-out hover:bg-neutral-200 max-sm:text-[16px]"
         >
-          <!-- Иконки: simple-icons (WhatsApp, Telegram); у MAX — текстовая плашка -->
+          <!-- Иконки: simple-icons (WhatsApp, Telegram), MAX — логотип с Wikimedia Commons -->
           <svg
             v-if="messenger.id === 'whatsapp'"
             class="size-10 shrink-0"
@@ -105,12 +105,38 @@ defineExpose({ openModal })
               d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
             />
           </svg>
-          <span
-            v-else
-            class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-[12px] font-bold text-white"
+          <svg
+            v-else-if="messenger.id === 'max'"
+            class="size-10 shrink-0"
+            viewBox="0 0 24 24"
             aria-hidden="true"
-            >MAX</span
           >
+            <defs>
+              <linearGradient
+                id="max-icon-gradient"
+                x1="0"
+                y1="1"
+                x2="1"
+                y2="0"
+              >
+                <stop offset="0" stop-color="#44C8FF" />
+                <stop offset="0.5" stop-color="#3B3FF0" />
+                <stop offset="1" stop-color="#9B4FE0" />
+              </linearGradient>
+            </defs>
+            <rect
+              width="24"
+              height="24"
+              rx="6"
+              fill="url(#max-icon-gradient)"
+            />
+            <path
+              transform="translate(4.4 4.4) scale(0.37)"
+              fill="#fff"
+              fill-rule="evenodd"
+              d="M21.47 41.88c-4.11 0-6.02-.6-9.34-3-2.1 2.7-8.75 4.81-9.04 1.2 0-2.71-.6-5-1.28-7.5C1 29.5.08 26.07.08 21.1.08 9.23 9.82.3 21.36.3c11.55 0 20.6 9.37 20.6 20.91a20.6 20.6 0 0 1-20.49 20.67m.17-31.32c-5.62-.29-10 3.6-10.97 9.7-.8 5.05.62 11.2 1.83 11.52.58.14 2.04-1.04 2.95-1.95a10.4 10.4 0 0 0 5.08 1.81 10.7 10.7 0 0 0 11.19-9.97 10.7 10.7 0 0 0-10.08-11.1Z"
+            />
+          </svg>
           <span>{{ messenger.title }}</span>
         </button>
       </div>

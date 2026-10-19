@@ -6,6 +6,11 @@ const ENCODED_PHONE = '99923765697'
 
 const decodePhone = () => ENCODED_PHONE.split('').reverse().join('')
 
+// Ссылка на профиль/чат компании в MAX (например, 'https://max.ru/...').
+// В MAX нет ссылок по номеру телефона, поэтому ссылку нужно скопировать в приложении.
+// Пока строка пустая, кнопка MAX на сайте не показывается.
+const MAX_URL = ''
+
 export const messengers = [
   {
     id: 'whatsapp',
@@ -21,8 +26,6 @@ export const messengers = [
   {
     id: 'max',
     title: 'MAX',
-    // В MAX нет ссылок по номеру телефона — нужна ссылка на профиль/чат.
-    // Пока здесь null, кнопка не показывается.
-    getUrl: null,
+    getUrl: MAX_URL ? () => MAX_URL : null,
   },
 ]
